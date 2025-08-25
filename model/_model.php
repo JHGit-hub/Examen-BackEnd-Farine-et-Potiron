@@ -585,7 +585,7 @@ class _model
 
             $url = htmlspecialchars($controller) . "?" . htmlspecialchars($attribute) . "=" . urlencode($valueAttribute);
 
-            $html .= '<a href="' . $url . '">';
+            $html .= '<a href="' . $url . '" class="card_recipe">';
             $html .= "<h3>" . $label1 . "</h3>";
             if($secondLabel) {
                 $html .= "<p>" . $label2 . "</p>";
@@ -595,4 +595,6 @@ class _model
         $html .= "</div>\n";
         return $html;
     }
+
+
 }

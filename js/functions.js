@@ -203,7 +203,7 @@ function recordNewComment(event, divIdToHide, divIdResult) {
     event.preventDefault();
 
     // On récupére le formulaire par son id
-    const form = document.getElementById("form_new_comment"); // form dans frag_form_create_comment.php
+    const form = document.getElementById("form_new_comment"); // form dans recipe_page.php, incluant frag_form_create_comment.php
 
     // Création de l'objet formData à partir du formulaire et récupération des données
     const formData = new FormData(form);
@@ -219,7 +219,7 @@ function recordNewComment(event, divIdToHide, divIdResult) {
         .then(response => response.text())
         .then(htmlAjax => {
             switchHiddenClass(divIdToHide, "");
-            showResults(htmlAjax, divIdResult); // <div> dans frag_list_comments, id="list_comments"
+            showResults(htmlAjax, divIdResult); // <div> dans recipe_page.php, incluant frag_list_comments, id="list_comments"
         })
         .catch(error => {
             alert("Erreur lors de l'enregistrement du commentaire: " + error);
@@ -417,7 +417,7 @@ function showFormModifComment(id, divIdToShow) {
         .then(response => response.text())
         .then(htmlAjax => {
             switchHiddenClass("", divIdToShow)
-            showResults(htmlAjax, divIdToShow) // <div> dans frag_form_modif_comment.php, id="modif_comment"
+            showResults(htmlAjax, divIdToShow) // <div> dans recipe_page.php, incluantfrag_form_modif_comment.php, id="modif_comment"
         })
         .catch(error => {
             alert("Erreur lors de l'ouverture du formulaire de modification : " + error);
@@ -476,7 +476,7 @@ function showFormModifRecipe(id, divIdToShow) {
         .then(response => response.text())
         .then(htmlAjax => {
             switchHiddenClass("", divIdToShow)
-            showResults(htmlAjax, divIdToShow) // <div> dans frag_form_modif_recipe.php, id="modif_recipe"
+            showResults(htmlAjax, divIdToShow) // <div> dans recipe_page, incluant frag_form_modif_recipe.php, id="modif_recipe"
         })
         .catch(error => {
             alert("Erreur lors de l'ouverture du formulaire de modification : " + error);

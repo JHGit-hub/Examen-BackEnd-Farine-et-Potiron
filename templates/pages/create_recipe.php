@@ -18,7 +18,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Create_recipe</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -38,7 +38,7 @@
         </form>
     </header>
     <main>
-        <form>
+        <form method="post" action="save_new_recipe.php">
             <div class="hidden"id="detail_flour"></div> <!-- frag_detail_flour -->
             <div class="hidden" id="form_create_recipe"></div> <!-- frag_form_create_recipe -->
             <div>

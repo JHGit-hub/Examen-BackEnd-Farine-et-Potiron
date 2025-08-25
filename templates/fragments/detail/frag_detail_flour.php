@@ -18,12 +18,13 @@
     <p><?= htmlspecialchars($flour["description"]) ?></p>
 </div>
 <div>
+    <input type="hidden" name="flour_reference" value="<?= htmlspecialchars($flour["reference"]) ?>">
     <div>
         <label for="quantity">Quantité: </label>
-        <input type="number" step="any" name="quantity" placeholder="Quantité">
+        <input type="number" step="any" name="flour_quantity" placeholder="Quantité" required>
     </div>
         <div>
         <label for="unit">Unité: </label>
-        <input type="text" name="unit" placeholder="Unité">
+        <input type="text" name="flour_unit" placeholder="Unité" required>
     </div>
 </div>
