@@ -46,6 +46,8 @@
     <main>
         <div id="detail_recipe"></div> <!-- frag_detail_recipe.php -->
         <div id="list_comments"></div> <!-- frag_list_comments.php -->
+        <div class="modal hidden" id="modif_recipe"></div> <!-- frag_form_modif_recipe.php -->
+        <div class="modal hidden" id="modif_comment"></div> <!-- frag_form_modif_comment.php -->
         <?php
             if($session->isLogged()){
                 $hasCommented = false; // initialisation de la variable $hasCommented
@@ -61,13 +63,7 @@
                 if(!$hasCommented){ // n'a pas commenté
                     // On affiche un formulaire pour ajouter un commentaire
                     ?>
-                        <form id="form_new_comment">
-                            <label for="rate">Note (0 à 5)</label>
-                            <input type="number" name="rate" min="0" max="5" step="1" required>
-
-                            <textarea name="comment" rows="5" cols="40"placeholder="Ajouter un commentaire"></textarea>
-                            <button type="button"onclick="recordNewComment(event, 'form_new_comment', 'list_comments')" class="secondary_btn">Enregistrer</button>
-                        </form>
+                        <?php include 'frag_form_create_comment.php'; ?>
                     <?php
                 }
             }

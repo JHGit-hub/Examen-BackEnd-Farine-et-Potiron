@@ -13,18 +13,18 @@
 
 ?>
 <div>
-    <div class='list_filtered'>
+    <ul class='list_filtered'>
     <?php 
         foreach($list_ingredients as $ingredient): ?>
-        <div class="card_ingredient">
+        <li class="card_ingredient">
             <div class="detail_ingredient">
                 <h3><?= $ingredient['reference'] ?></h3>
                 <p><?= $ingredient['quantity'] ?> <?= $ingredient['unit'] ?></p>
             </div>
             <button onclick="removeIngredient('<?= $ingredient['reference'] ?>', 'list_ingredients')" class="delete-btn">Supprimer</button>
-        </div>
+        </li>
     <?php 
         endforeach; 
     ?>
-    </div>
+    </ul>
 </div>

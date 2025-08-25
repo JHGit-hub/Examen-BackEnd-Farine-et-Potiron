@@ -31,15 +31,20 @@
         </div>
         <form class="form-filter">
             <label for="reference">Choisir une farine: </label>
-            <?php
-            echo _model::createSelect($list_flours, "reference", "flour", "Toutes les farines");
-            ?>
+            <select name="flour" id="flour">
+                <option value="">Choisis ta farine</option>
+                <?php foreach ($list_flours as $reference => $libelle): ?>
+                    <option value="<?= htmlspecialchars($reference) ?>">
+                        <?= htmlspecialchars($libelle) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
             <button type="button" onclick="showDetailFlour(event, 'create_recipe','detail_flour')" class="secondary_btn">Voir détails</button>
         </form>
     </header>
     <main>
         <form method="post" action="save_new_recipe.php">
-            <div class="hidden"id="detail_flour"></div> <!-- frag_detail_flour -->
+            <div class="hidden" id="detail_flour"></div> <!-- frag_detail_flour -->
             <div class="hidden" id="form_create_recipe"></div> <!-- frag_form_create_recipe -->
             <div>
                 <button type="submit" class="secondary_btn open_btn">Enregistrer</button>

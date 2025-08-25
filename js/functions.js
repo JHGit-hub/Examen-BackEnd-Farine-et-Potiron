@@ -87,8 +87,8 @@ function recordModifComment(event, divIdToHide, divIdResult) {
     })
         .then(response => response.text())
         .then(htmlAjax => {
-            switchHiddenClass(divIdToHide, "");
-            showResults(htmlAjax, divIdResult); // <div> dans frag_list_comments.php, id="list_comments"
+            switchHiddenClass(divIdToHide, ""); // on cache le modal id="modif_comment"
+            showResults(htmlAjax, divIdResult); // <div> dans recipe_page.php, incluant frag_list_comments.php, id="list_comments"
         })
         .catch(error => {
             alert("Erreur lors de l'enregistrement des modifications: " + error);
@@ -146,6 +146,8 @@ function recordModifRecipe(event, divIdToHide, divIdResult) {
     //          - attribuer la classe hidden à la <div> que l'on veut cacher
     //
     // paramètres (via formData):
+    //          - id: id de la recette à modifier
+    //          - ingredients: tableau des ingrédients (reference, quantity, unit)
     //          - title: tire de la recette
     //          - reference: reference de la recette
     //          - description: description de la recette
@@ -176,8 +178,8 @@ function recordModifRecipe(event, divIdToHide, divIdResult) {
     })
         .then(response => response.text())
         .then(htmlAjax => {
-            switchHiddenClass(divIdToHide, "");
-            showResults(htmlAjax, divIdResult); // <div> dans frag_detail_recipe.php, id="detail_recipe"
+            switchHiddenClass(divIdToHide, ""); // on cache le modal id="modif_recipe"
+            showResults(htmlAjax, divIdResult); // <div> dans recipe_page.php, incluant frag_detail_recipe.php, id="detail_recipe"
         })
         .catch(error => {
             alert("Erreur lors de l'enregistrement des modifications: " + error);
@@ -185,7 +187,7 @@ function recordModifRecipe(event, divIdToHide, divIdResult) {
         })
 }
 
-function recordNewComment(event, divIdToHide, divIdResult) {
+function recordNewComment(event, divIdResult) {
     // rôle:
     //      - enregistrer un nouveau commentaire et/ou note dans la bdd
     //      - attribuer la classe hidden à la <div> que l'on veut cacher 
@@ -194,7 +196,6 @@ function recordNewComment(event, divIdToHide, divIdResult) {
     //      - content: contenu du commentaire
     //      - rate: note du commentaire
     // autres paramètres:
-    //      - divIdToHide: id de la <div> à cacher
     //      - divIdResult: id de la <div> qui affiche le resultat de l'ajax
     // retour:
     //      - renvoi le résultat (fragment HTML) de l'ajax à la fonction showResults()
