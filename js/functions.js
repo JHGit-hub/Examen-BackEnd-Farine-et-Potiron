@@ -1,4 +1,53 @@
-
+/**
+ * ============================================================
+ *  Fichier : functions.js
+ *  Rôle global :
+ *      - Gère toutes les interactions asynchrones (AJAX/fetch) entre le front et le back (PHP)
+ *      - Permet l'affichage dynamique des fragments HTML (modaux, listes, formulaires) sans rechargement de page
+ *      - Centralise les fonctions d'extraction, enregistrement, modification, suppression, filtrage et affichage
+ *
+ *  Structure des fonctions :
+ *      - Manipulation de données dans la base de données :
+ *          * recordModifComment(event, divIdToHide, divIdResult)
+ *          * recordModifProfil(event, divIdToHide, divIdResult)
+ *          * recordModifRecipe(event, divIdToHide, divIdResult)
+ *          * recordNewComment(event, divIdToHide, divIdResult)
+ *          * removeCurrentIngredient(id, divIdResult)
+ *
+ *      - Manipulation de données en session :
+ *          * addIngredient(event, divIdResult)
+ *          * removeIngredient(reference, divIdResult)
+ *
+ *      - Filtrage de données :
+ *          * filterRecipes(event, divIdResult)
+ *
+ *      - Affichage dynamique des fragments/modaux :
+ *          * showFormCreateUser(divIdToShow)
+ *          * showFormModifComment(id, divIdToShow)
+ *          * showFormModifProfil(divIdToShow)
+ *          * showFormModifRecipe(id, divIdToShow)
+ *          * showDetailFlour(event, divIdToShow, divIdResult)
+ *          * showResults(htmlAjax, divIdResult)
+ *          * switchHiddenClass(divIdToHide, divIdToShow)
+ *          * showPassword()
+ *
+ *  Convention :
+ *      - Toutes les requêtes AJAX utilisent fetch (méthode GET ou POST selon le contexte).
+ *      - Les fragments HTML reçus sont injectés dans le DOM via showResults.
+ *      - Les div à afficher/cacher sont identifiées par leur id, transmis en paramètres.
+ *      - Les fonctions sont pensées pour être reliées à des événements JS (submit, click, etc.).
+ *      - Les formulaires sont systématiquement envoyés en AJAX, en empêchant leur comportement natif.
+ *      - La classe CSS "hidden" est utilisée pour masquer/afficher dynamiquement les éléments.
+ *      - Les erreurs AJAX sont notifiées soit par un alert (pour l'utilisateur), soit par un log en console (pour le dev).
+ *      - Les paramètres transmis aux fonctions sont décrits en début de fonction pour faciliter la maintenance.
+ *
+ *  Remarques :
+ *      - Les réponses du back doivent être soit une chaîne "OK", soit un fragment HTML, soit un message d'erreur.
+ *      - Les JS sont organisés par rôle : manipulation BDD/session, filtrage, affichage dynamique.
+ *      - L'accent est mis sur l'expérience utilisateur : pas de reload, feedback immédiat, affichage conditionnel.
+ *
+ * ============================================================
+ */
 
 
 
