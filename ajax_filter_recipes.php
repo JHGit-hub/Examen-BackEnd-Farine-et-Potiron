@@ -12,4 +12,5 @@
  *
  * Retourne:
  *          - fragment HTML généré par frag_list_recipes.php
+ *          - $list_recipes_filtered: tableau d'objets contenant les recettes filtrées selon les critères choisis
  */

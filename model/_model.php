@@ -49,11 +49,12 @@
 include_once "library/bdd.php";
 
 
-class _model {
+class _model
+{
 
     // Attribut statique pour la connexion Bdd partagée à tous les objets
     protected static $bdd = null;   // Instance partagée de la classe `Bdd` pour toutes les opérations BDD
-    
+
     // Attributs
     protected $table = "";          // Nom de la table associée à l’objet
     protected $champs = [];         // Tableau contenant les noms des champs (hors `id`)
@@ -63,10 +64,11 @@ class _model {
     protected $id;                  // Valeur de la clé primaire (`id`) de l’objet
 
 
-/////////// méthode de gestion de la connexion Bdd
+    /////////// méthode de gestion de la connexion Bdd
 
     //// 1. Initialiser la connexion à la base via PDO
-    public static function initBdd(PDO $pdo) {
+    public static function initBdd(PDO $pdo)
+    {
         // rôle: crée une instance de la classe Bdd et l'assigne à $bdd
         // paramètre:
         //          - $pdo: objet PDO représentant la connexion à la base de données
@@ -76,10 +78,11 @@ class _model {
     }
 
 
-/////////// Constructeur
+    /////////// Constructeur
 
     //// 2. Créer un nouvel objet
-    function __construct($id = null) {
+    function __construct($id = null)
+    {
         // Rôle : constructeur : charger une ligne de la BDD si on précise un id
         // Paramètre :
         //          - $id (facultatif) : id de la ligne à charger
@@ -92,10 +95,11 @@ class _model {
     }
 
 
-/////////// Méthode d'état et d'accés à l'id
+    /////////// Méthode d'état et d'accés à l'id
 
     //// 3. Indiquer si l’objet est chargé
-    function is() {
+    function is()
+    {
         // Rôle : indiquer si l'objet est chargé ou non
         // Paramètres : 
         //          - néant
@@ -103,11 +107,11 @@ class _model {
         //          - true si l'objet est chargé, false sinon
 
         return ! empty($this->id);
-
     }
 
     //// 4. Retourner la valeur de la clé primaire
-    function id() {
+    function id()
+    {
         // Rôle : retourner l'id de l'objet dans la BDD ou 0
         // Paramètres : 
         //          - néant
@@ -118,10 +122,11 @@ class _model {
     }
 
 
-///////////// Getters et Setters
+    ///////////// Getters et Setters
 
     //// 5. Retourner la valeur d’un champ
-    function get(string $nomChamp) {
+    function get(string $nomChamp)
+    {
         // Rôle : Getters; Récupérer la valeur d'un Champ ou d'une propriété dynamique
         // Paramètres : 
         //          - $nomChamp : nom du Champ à récupérer
@@ -140,7 +145,7 @@ class _model {
         }
 
         // On verifie si le champ existe dans la table
-        if(in_array($nomChamp, $this->champs)){
+        if (in_array($nomChamp, $this->champs)) {
             // On verifie s'il y a une valeur
             if (isset($this->valeurs[$nomChamp])) {
                 // On a un valeur : on la retourne
@@ -157,11 +162,11 @@ class _model {
 
         // Sinon, champ inconnu
         return "";
-
     }
 
     //// 6. Définir la valeur d’un champ
-    function set(string $nomChamp, $valeur) {
+    function set(string $nomChamp, $valeur)
+    {
         // Rôle : Setter; donne ou modifie la valeur d'un Champ
         // Paramètres :
         //          - $nomChamp : nom de la Champ concerné
@@ -170,21 +175,21 @@ class _model {
         //          - true si ok, false sinon
 
         // Vérification si $nomChamp est un Champ, s'il n'existe pas, on retourne false
-        if ( ! in_array($nomChamp, $this->champs)){
+        if (! in_array($nomChamp, $this->champs)) {
             return false;
         }
 
         // On met la valeur dans le tableau des valeurs
         $this->valeurs[$nomChamp] = $valeur;
         return true;
-
     }
 
 
-///////////// Méthodes de manipulation de la bdd
+    ///////////// Méthodes de manipulation de la bdd
 
     //// 7. Charger l’objet depuis la BDD
-    function loadFromId($id) {
+    function loadFromId($id)
+    {
         // Rôle : Extraire les données d'un objet à partir de son id
         // Paramètre :
         //          - $id: clé primaire de l'objet
@@ -196,7 +201,7 @@ class _model {
         $sql = "SELECT " . $this->sqlConstruct() . " FROM `$this->table` WHERE `id` = :id";
 
         // Extraire la première ligne
-        $tab = self::$bdd->bddGetFirstLigne($sql, [ ":id" =>  $id ]);
+        $tab = self::$bdd->bddGetFirstLigne($sql, [":id" =>  $id]);
 
         // On verifie le cas d'échec
         if (!$tab) {
@@ -209,11 +214,11 @@ class _model {
         $this->loadFromTab($tab);
         $this->id = $id;
         return true;
-
     }
 
     //// 8. Mettre à jour la ligne courante dans la table
-    function update() {
+    function update()
+    {
         // Rôle : mette à jour l'objet courant dans la BDD
         // Paramètres : 
         //          - néant
@@ -226,8 +231,10 @@ class _model {
         }
 
         // On ignore le champ password s'il est vide ou null
-        if (array_key_exists('password', $this->valeurs) &&
-            ($this->valeurs['password'] === null || $this->valeurs['password'] === "")) {
+        if (
+            array_key_exists('password', $this->valeurs) &&
+            ($this->valeurs['password'] === null || $this->valeurs['password'] === "")
+        ) {
             unset($this->valeurs['password']);
         }
 
@@ -235,7 +242,8 @@ class _model {
     }
 
     //// 9. Insèrer une nouvelle ligne dans la table
-    function insert() {
+    function insert()
+    {
         // Rôle : créer l'objet courant dans la BDD
         // Paramètres : 
         //          - néant
@@ -248,8 +256,10 @@ class _model {
         }
 
         // On ignore le champ password s'il est vide ou null
-        if (array_key_exists('password', $this->valeurs) &&
-            ($this->valeurs['password'] === null || $this->valeurs['password'] === "")) {
+        if (
+            array_key_exists('password', $this->valeurs) &&
+            ($this->valeurs['password'] === null || $this->valeurs['password'] === "")
+        ) {
             unset($this->valeurs['password']);
         }
 
@@ -261,11 +271,11 @@ class _model {
         // On retourne la clé primaire
         $this->id = $id;
         return true;
-
     }
 
     //// 10. Supprimer la ligne courante de la BDD
-    function delete() {
+    function delete()
+    {
         // Rôle : supprimer l'objet courant de  la BDD
         // Paramètres : 
         //          - néant
@@ -285,11 +295,11 @@ class _model {
         // On vide l'id et on retourne true 
         $this->id = null;
         return true;
-
     }
 
     //// 11. Récupèrer tous les objets de la table
-    function getAll() {
+    function getAll()
+    {
         // Rôle : récupérer tous les objets de ce type dans la BDD
         // Paramètres : 
         //          - néant
@@ -304,11 +314,11 @@ class _model {
 
         // Transformation du "tableau de tableau" en un tableau d'objets
         return $this->tblTransform($tab);
-
     }
 
     //// 12. Charger l’objet depuis la BDD
-    function loadFromField(string $champ, $valeurChamp){
+    function loadFromField(string $champ, $valeurChamp)
+    {
         // rôle : extraire les données de la bdd concernant l'utilisateur à partir d'un champ spécifique
         // paramètre : 
         //          - $champ: champ à partir du quel on veux charger les données objets
@@ -335,7 +345,8 @@ class _model {
     }
 
     //// 13. Stocker un fichier uploadé
-    function storeFile(string $tempFile, string $name, string $champ, string $subDir){
+    function storeFile(string $tempFile, string $name, string $champ, string $subDir)
+    {
         // rôle: stocke un fichier temporaire comme photo de l'utilisateur courant (il doit être chargé)
         // paramètres:
         //          - $tempFile : chemin du fichier temporaire
@@ -344,7 +355,7 @@ class _model {
         //          - $subDir: sous-dossier spécifique (ex: user/photo)
         // retour:
         //          - true si réussi, false sinon
-        
+
         // On verifier qu'on a un fichier
         if (!is_uploaded_file($tempFile)) return false;
 
@@ -354,9 +365,9 @@ class _model {
         // Construction du nom : id objet + extension d'origine
         $extension = strtolower(pathinfo($name, PATHINFO_EXTENSION));
         $filename = $this->id() . "." . $extension;
-        
+
         // Utilisation d'un dossier aléatoire entre 10 et 99
-        $dir = rand(10,99);
+        $dir = rand(10, 99);
 
         // Zone de stockage générale
         $basePath = $_SERVER['DOCUMENT_ROOT'] . '/files';
@@ -364,7 +375,7 @@ class _model {
 
         // Suppression de l'ancien fichier si il existe
         $old = $this->get($champ);
-        if (is_string($old) && $old && file_exists("$path/$old")){
+        if (is_string($old) && $old && file_exists("$path/$old")) {
             unlink("$path/$old");
         }
 
@@ -380,10 +391,11 @@ class _model {
         return $this->update();
     }
 
-///////////// Méthodes utilitaires
+    ///////////// Méthodes utilitaires
 
     //// 14. Génèrer la liste des champs
-    function sqlConstruct(){
+    function sqlConstruct()
+    {
         // rôle : construire l'extrait de la commande sql contenant le nom des Champs
         // paramètres:
         //          - néant
@@ -394,14 +406,15 @@ class _model {
         $sqlConcatene = "`id`";
 
         // On boucle avec foreach pour ajouter le nom des Champs dans l'extrait de commande sql
-        foreach($this->champs as $nomChamp){
+        foreach ($this->champs as $nomChamp) {
             $sqlConcatene .= ", `$nomChamp`";
         }
         return $sqlConcatene;
     }
 
     //// 15. Charger les valeurs des champs
-    function loadFromTab(array $tab) {  
+    function loadFromTab(array $tab)
+    {
         // Rôle : extraire les valeurs des Champs dans un tableau indexé par les noms des Champs (sauf l'id)
         // Paramètres :
         //          - $tab : tableau indexé comportant en index le noms des Champs de cet objet et leurs valeurs
@@ -411,7 +424,7 @@ class _model {
         // On verifie si on a une valeur dans le tableau 
         // on donne cette valeur au bon Champ
         foreach ($this->champs as $nomChamp) {
-            if (isset($tab[$nomChamp])){
+            if (isset($tab[$nomChamp])) {
                 $valeur = $tab[$nomChamp];
 
                 // On ignore le champ "password" s'il est vide (car non modifier)
@@ -420,7 +433,7 @@ class _model {
                 }
 
                 //Si la valeur est une chaine vide, on la converti en NULL
-                if($valeur === ""){
+                if ($valeur === "") {
                     $valeur = NULL;
                 };
 
@@ -429,12 +442,12 @@ class _model {
                 $this->set($nomChamp, $valeur);
             }
         }
-        return true; 
-
+        return true;
     }
 
     //// 16. Charge les fichiers uploadés
-    function loadFromFiles(array $files){
+    function loadFromFiles(array $files)
+    {
         // Rôle : extraire les fichiers uploadés dans un tableau indexé par les noms des Champs (hors id)
         // Paramètre :
         //          - $files : tableau indexé par les noms des Champs, typiquement $_FILES
@@ -458,7 +471,8 @@ class _model {
     }
 
     //// 17. Transformer un tableau de tableaux
-    function tblTransform(array $tab) {
+    function tblTransform(array $tab)
+    {
         // Rôle : transformer un tableau de tableaux en un tableau d'objet enrichi 
         //          (pour tous les champs additionnels issus de jointures SQL)
         // Paramètres :
@@ -486,66 +500,57 @@ class _model {
 
             // On l'ajoute à $resultat au bon index
             $resultat[$objet->id()] = $objet;
-
         }
         return $resultat;
-
     }
 
-///////////// Méthodes statiques
+    ///////////// Méthodes statiques
 
     //// 18. Génèrer un `<select>` HTML
-    public static function createSelect(array $objects, string $attribute, string $selectName, string $optionName = "", bool $isDate = false): string {
+    public static function createSelect(array $objects, string $attribute, string $selectName, string $optionName = ""): string
+    {
         // rôle: Générer un <select> HTML pour un attribut issu d'une liste d'objets, trié et sans doublon
         // paramètres:
         //          - $objects:  liste d'objets
         //          - $attribute: nom de l'attribut à extraire
         //          - $selectname: nom et id du select
         //          - $optionName: le texte de l'option par defaut à afficher
-        //          - $isDate: true si attribut = date, false sinon
         // retour:
         //          - code HTML du <select>
 
         // tri de la liste par ordre croissant et suppressions des doublons
 
         $unique_option = [];
-        foreach($objects as $obj){
+        foreach ($objects as $obj) {
             $value = $obj->get($attribute);
-            // on verifie si l'attribut est une date
-            if($isDate){
-                $value = substr($value, 0, 10); // si oui, on ne garde que année-mois-jour
-            }
-            if(!in_array($value, $unique_option)){
+            // on verifie si attribut existe dèjà dans le tableau $unique_option
+            // Si oui, on l'ajoute, sinon on l'ignore
+            if (!in_array($value, $unique_option)) {
                 $unique_option[] = $value;
             }
         }
-        // tri de la liste
-        if($isDate){
-            rsort($unique_option); // les dates les plus récentes d'abord
-        } else {
-            sort($unique_option); // ordre alphabétique
-        }
+        // tri de la liste par ordre alphabétique
+        sort($unique_option);
 
         // génération du HTML
 
         $html = "<select name='" . htmlspecialchars($selectName) . "' id='" . htmlspecialchars($selectName) . "'>";
         $html .= "<option value=''>" . htmlspecialchars($optionName) . "</option>";
-        foreach($unique_option as $opt){
-            $date_fr = $isDate ? date("d/m/Y", strtotime($opt)) : $opt; // on met la date au format français
-            $html .= "<option value='" . htmlspecialchars($opt) . "'>" . htmlspecialchars($date_fr) . "</option>";
+        foreach ($unique_option as $opt) {
+            $html .= "<option value='" . htmlspecialchars($opt) . "'>" . htmlspecialchars($opt) . "</option>";
         }
         $html .= "</select>";
         return $html;
-
     }
 
     ////19. Génèrer une liste HTML d’éléments filtrés
-    public static function createListFiltered(array $objects, string $function, string $attribute, string $firstLabel, string $secondLabel, bool $isSecondDate = false): string{
+    public static function createListFiltered(array $objects, string $controller, string $attribute, string $firstLabel, string $secondLabel = "",bool $isSecondDate = false): string
+    {
         // rôle: générer une liste des objets filtrés sous forme de HTML
         // paramètres:
         //          - $objects: liste d'objects
-        //          - $function: nom de la fonction JS à appeler au click
-        //          - $attribute: nom de l'attribut utilisé comme identifiant passé à la fonction JS
+        //          - $controller: nom du contrôleur à appeler
+        //          - $attribute: nom de l'attribut de l'objet concerné passé en $_GET
         //          - $firstLabel: nom du premier champ à afficher
         //          - $secondLabel: nom du second champ à afficher
         //          - $isSecondDate: true si le second label est une date, false sinon
@@ -553,14 +558,23 @@ class _model {
         //          - code HTML de la liste
 
         $html = "<div class='list_filtered'>\n";
-        foreach($objects as $obj){
-            if($attribute === "id"){
-                $JSAttribute = htmlspecialchars($obj->id());
+        foreach ($objects as $obj) {
+            // Récupération de l'identifiant
+            if ($attribute === "id") {
+                // si l'attribut est "id", on utilise la méthode id()
+                $valueAttribute = htmlspecialchars($obj->id());
             } else {
-                $JSAttribute = htmlspecialchars($obj->get($attribute));
+                // sinon on utilise la méthode get()
+                $valueAttribute = htmlspecialchars($obj->get($attribute));
             }
+
+
+            // on extrait les valeurs des champs à afficher
             $label1 = htmlspecialchars($obj->get($firstLabel));
+            // $label2 = $secondLabel ? htmlspecialchars($obj->get($secondLabel)) : "";
+
             $valueLabel2 = htmlspecialchars($obj->get($secondLabel));
+            
             // on verifie si secondLabel est une date
             if($isSecondDate){
                 $valueLabel2 = substr($valueLabel2, 0, 10); // si oui, on ne garde que année-mois-jour
@@ -568,10 +582,15 @@ class _model {
             } else {
                 $label2 = htmlspecialchars($valueLabel2);
             }
-            $html .= '<div onclick="' . $function . '(\'' . $JSAttribute . '\')" class="element_list_filtered">';
+
+            $url = htmlspecialchars($controller) . "?" . htmlspecialchars($attribute) . "=" . urlencode($valueAttribute);
+
+            $html .= '<a href="' . $url . '">';
             $html .= "<h3>" . $label1 . "</h3>";
-            $html .= "<p>" . $label2 . "</p>";
-            $html .= "</div>\n";
+            if($secondLabel) {
+                $html .= "<p>" . $label2 . "</p>";
+            }
+            $html .= "</a>\n";
         }
         $html .= "</div>\n";
         return $html;

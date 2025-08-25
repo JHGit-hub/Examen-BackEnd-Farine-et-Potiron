@@ -332,7 +332,8 @@ function filterRecipes(event, divIdResult) {
     // rôle:
     //      - Demander au serveur la liste des recettes selon les critéres selectionnés par l'utilisateur
     // paramètres (via querySelector):
-    //      - reference: reference de la farine issu du catalogue farine (issu de l'API)
+    //      - flour_1: reference de la farine issu du catalogue farine (issu de l'API)
+    //      - flour_2: reference de la farine issu du catalogue farine (issu de l'API)
     //      - difficulty: difficulté de la recette (issu de la table recipes)
     // autres paramètres:
     //      - divIdResult: id de la <div> qui va afficher le resultat
@@ -343,16 +344,17 @@ function filterRecipes(event, divIdResult) {
     event.preventDefault();
 
     // On récupére les valeurs issus du formulaire
-    const reference = document.querySelector('select[name="reference"]').value;
+    const flour_1 = document.querySelector('select[name="flour_1"]').value;
+    const flour_2 = document.querySelector('select[name="flour_2"]').value;
     const difficulty = document.querySelector('select[name="difficulty"]').value;
 
 
     // Construction de l'url
-    let url = "ajax_filter_recipes.php?difficulty=" + encodeURIComponent(difficulty) + "&reference=" + encodeURIComponent(reference);
+    let url = "ajax_filter_recipes.php?difficulty=" + encodeURIComponent(difficulty) + "&flour_1=" + encodeURIComponent(flour_1) + "&flour_2=" + encodeURIComponent(flour_2);
     fetch(url)
         .then(response => response.text())
         .then(htmlAjax => {
-            showResults(htmlAjax, divIdResult); // <div> dans frag_list_recipes.php, id="list_recipes"
+            showResults(htmlAjax, divIdResult); // <div> dans homepage.php, id="list_recipes", incluant frag_list_recipes.php
         })
         .catch(error => {
             console.error("Erreur lors de la récupération des recettes :", error);
@@ -384,7 +386,7 @@ function showFormCreateUser(divIdToShow) {
         .then(response => response.text())
         .then(htmlAjax => {
             switchHiddenClass("", divIdToShow)
-            showResults(htmlAjax, divIdToShow); // <div> dans frag_form_create_user.php, id="create_user"
+            showResults(htmlAjax, divIdToShow); // <div> dans homepage.php, id="create_user", incluant frag_form_create_user.php
         })
         .catch(error => {
             alert("Erreur lors de l'ouverture du formulaire de création : " + error);
@@ -444,7 +446,7 @@ function showFormModifProfil(divIdToShow) {
         .then(response => response.text())
         .then(htmlAjax => {
             switchHiddenClass("", divIdToShow)
-            showResults(htmlAjax, divIdToShow) // <div> dans frag_form_modif_profil.php, id="modif_profil"
+            showResults(htmlAjax, divIdToShow) // <div> dans user_page,incluant frag_form_modif_profil.php, id="modif_profil"
         })
         .catch(error => {
             alert("Erreur lors de l'ouverture du formulaire de modification : " + error);
@@ -504,8 +506,9 @@ function showDetailFlour(event, divIdToShow, divIdResult) {
     fetch(url)
         .then(response => response.text())
         .then(htmlAjax => {
-            switchHiddenClass("", divIdToShow); // <div> dans frag_form_create_recipe.php, id="create_recipe"
-            showResults(htmlAjax, divIdResult); // <div> dans frag_list_recipes.php, id="list_recipes"
+            switchHiddenClass("", divIdResult);
+            switchHiddenClass("", divIdToShow); // <div> dans create_recipe.php, incluant frag_form_create_recipe.php, id="form_create_recipe"
+            showResults(htmlAjax, divIdResult); // <div> dans create_recipe.php, incluant frag_detail_flour.php, id="detail_flour"
         })
         .catch(error => {
             alert("Erreur lors de la récupération des recettes :", error);

@@ -6,6 +6,12 @@
  * Fragment de page pour afficher la liste des recettes (outes ou filtrées selon les critères choisis)
  *
  * Paramètres:
- *          - $list_recipes: tableau d'objet contenant les recettes à afficher
+ *          - $list_recipes_filtered: tableau d'objet contenant les recettes à afficher
  *
  */
+
+?>
+
+<?php
+    echo _model::createListFiltered($list_recipes_filtered, "extract_detail_recipe.php", "id", "title", "difficulty", false);
+?>

@@ -10,5 +10,5 @@
  *      - néant
  *
  * Retour:
- *      - néant
+ *      - $list_recipes: tableaux d'objets contenant les recettes incluant leurs titres, leurs id, leurs niveaux de difficultés et les références de farine utilisées
  */

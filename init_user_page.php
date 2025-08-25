@@ -11,5 +11,7 @@
  *      - néant
  *
  * Retour:
- *      - néant
+ *      - $list_recipes_created: tableau d'objets contenant les recettes créées par l'utilisateur
+ *      - $list_recipes_rated: tableau d'objets contenant les recettes commentées et /ou notées par l'utilisateur
+ *      - $user: objet contenant les informations de l'utilisateur
  */
