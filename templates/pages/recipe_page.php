@@ -33,6 +33,10 @@
     <header>
         <div>
             <?php
+                if($session->isLogged()){
+                    // On affiche le header de l'utilisateur connecté
+                    include "templates/fragments/header/frag_header_user_connected.php";
+                }
                 if($session->idConnected() === $detail_recipe->get("user_id")->id()){
                     // On affiche le bouton modifier la recette 
                     ?>
@@ -44,6 +48,7 @@
         <div class="secondary_btn">
             <a href="index.php" class="close_btn logout_btn">
                 <img src="../../../assets/icons/close.svg" alt="fermer la fenetre">
+                <span>retour à l'accueil</span>
             </a>
         </div>
     </header>

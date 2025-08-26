@@ -53,7 +53,7 @@ class User extends _model
 
     }
 
-    //// 2. Récupèrer l’objet utilisateur actuellement connecté
+    //// 2. Extraire l’objet utilisateur actuellement connecté
     public static function getCurrentUser()
     {
         // Rôle : Récupérer l'utlisateur connecté

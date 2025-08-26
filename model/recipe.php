@@ -22,7 +22,7 @@ class Recipe extends _model
     protected $quantity; // la quantité de farine (en grammes) nécessaire pour la recette
 
 
-    ////1. Récupèrer la liste des recettes
+    ////1. Extraire la liste des recettes
     function getRecipes(string $flour1, string $flour2, string $difficulty)
     {
         // rôle: filtrer les recettes selon des critères choisis dans un formulaire ou toutes par défaut
@@ -65,5 +65,24 @@ class Recipe extends _model
 
         // Transformation en objets
         return $this->tblTransform($resultats);
+    }
+
+    ////2. Extraire la liste des recettes créées par l'utilisateur
+    function getRecipesCreatedByUser(int $id){
+        // Rôle:
+        //      - Extraire la liste des recettes créées par l'utilisateur
+        // paramètres:
+        //      - $id: identifiant de l'utilisateur connecté
+        // retour:
+        //      - tableau d'objets représentant les recettes créées par l'utilisateur
+
+        // Création de la requête
+        $sql = "SELECT * FROM recipes WHERE user_id = :id";
+        $param = [":id" => $id];
+
+        //Préparation et execution de la requête
+        $resultats = self::$bdd->bddGetAll($sql, $param);
+
+        return $this->tblTransform($resultats); // converti le résultat et renvoi un tableau d'objets
     }
 }

@@ -21,11 +21,11 @@
     <div class="edit_profil">
         <div class="profil_txt">
             <div class="edit_profil_txt">
-                <p>Pseudo: </p>
-                <h3><?= htmlspecialchars($user->get("lastname")) ?></h3>
+                <strong>Pseudo: </strong>
+                <p><?= htmlspecialchars($user->get("username")) ?></p>
             </div>
             <div class="edit_profil_txt">
-                <p>Email: </p>
+                <strong>Email: </strong>
                 <p><?= htmlspecialchars($user->get("email")) ?></p>
             </div>
         </div>

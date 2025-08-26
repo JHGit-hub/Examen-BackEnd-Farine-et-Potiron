@@ -17,7 +17,7 @@ class Flour extends _model{
     protected $recipe_id; // l'id de la recette à laquelle est associée la farine
     protected $quantity; // la quantité de farine (en grammes) nécessaire pour la recette
 
-    ///1. Récuperer le catalogue des farines
+    ///1. Extraire le catalogue des farines
     public static function getFlourCatalogue(){
         //rôle:
         //      - extraire le catalogue des farines depuis l'API
@@ -49,12 +49,12 @@ class Flour extends _model{
         return json_decode( $response, true);
     }
 
-    ///2. Récuperer la référence et la quantité d'une farine utilisé à partir de l'identifiant d'une recette
-    function getFlourReferenceAndQuantityById($id){
+    ///2. Extraire la référence et la quantité d'une farine utilisé à partir de l'identifiant d'une recette
+    function getFlourReferenceAndQuantityById(int $id){
         // Rôle:
         //      - extraire la référence et la quantité de la farine utilisé à partir d'un identifiant de recette
         // paramètres:
-        //      - $id: idnteifiant de la recette
+        //      - $id: identifiant de la recette
         // retour:
         //      - $objet contenant les details demandées
 
@@ -78,8 +78,8 @@ class Flour extends _model{
         return $result;
     }
 
-    ///3. Récuperer le détail d'une farine
-    public static function getFlourDetail($reference){
+    ///3. Extraire le détail d'une farine
+    public static function getFlourDetail(string $reference){
         // rôle: 
         //      - Extraire le détail d'une farine issus de l'API des détails des farines
         // paramètres

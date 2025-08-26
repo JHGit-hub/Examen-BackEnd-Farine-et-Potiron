@@ -17,7 +17,7 @@ class Ingredient extends _model{
 
 
 
-    ////1. Récupèrer la liste des ingredients d'une recette
+    ////1. Extraire la liste des ingredients d'une recette
     function getIngredients(int $id){
         // rôle: extraire la liste des ingrédients d'une recette
         // paramètres: 

@@ -30,18 +30,40 @@
     <header>
         <div id="edit_profil">
             <?php
-                include("fragments/header/frag_edit_profil.php");
+            include "templates/fragments/header/frag_edit_profil.php";
             ?>
         </div>
         <a href="extract_list_flours.php" class="secondary_btn">Créer une nouvelle recette</a>
     </header>
     <main>
-        <div  class="modal hidden" id="modif_profil"></div> <!-- frag_form_modif_profil.php -->
+        <div class="modal hidden" id="modif_profil"></div> <!-- frag_form_modif_profil.php -->
         <?php
-        _model::createListFiltered($list_recipes_created, "extract_detail_recipe.php", "id", "title", "date", true);
+        echo _model::createListFiltered($list_recipes_created, "extract_detail_recipe.php", "id", "title", "date", true);
 
-        _model::createListFiltered($list_recipes_rated, "extract_detail_recipe.php", "id", "title", "date", true);
         ?>
+        <div class="list_filtered rated">
+            <?php
+            foreach ($list_recipes_rated as $comment) {
+                $recipe_id = $comment->get("recipe_id")->id();
+            ?>
+                <a href="extract_detail_recipe.php?recipe_id=<?= htmlspecialchars($recipe_id) ?>" class="card_recipe">
+                    <h3><?= htmlspecialchars($comment->get("recipe_id")->get("title")) ?></h3>
+                    <?php
+                    if ($comment->get("update_date")) {
+                        $newDate = substr($comment->get("update_date"), 0, 10);
+                        $formattedDate = date("d/m/Y", strtotime($newDate));
+                        echo "mise à jour le: " . $formattedDate;
+                    } else {
+                        $newDate = substr($comment->get("creation_date"), 0, 10);
+                        $formattedDate = date("d/m/Y", strtotime($newDate));
+                        echo "créée le: " . $formattedDate;
+                    }
+                    ?>
+                </a>
+            <?php
+            }
+            ?>
+        </div>
     </main>
     <script src="js/functions.js" type="text/javascript"></script>
 </body>

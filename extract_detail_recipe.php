@@ -27,7 +27,13 @@ include_once "library/init.php";
 $user = User::getCurrentUser();
 
 // On récupére l'id via $_GET
-$id = $_GET["id"] ?? 0;
+$recipe_id = $_GET["recipe_id"] ?? "";
+$id = $_GET["id"] ?? "";
+
+// si $recipe_id n'est pas vide, on attribue sa valeur à $id
+if($recipe_id){
+    $id = $recipe_id;
+}
 
 // On extrait le détail de la recette
 $detail_recipe = new Recipe($id);
