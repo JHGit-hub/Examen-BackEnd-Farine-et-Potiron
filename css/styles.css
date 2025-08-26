@@ -12,7 +12,6 @@ a{
 
 body{
     width: 100vw;
-    background-image: url(../assets/images/ticketing-background.webp);
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -291,6 +290,6 @@ header{
     overflow-y: auto;
 }
 
-.hidden{
-    display:none;
+.hidden {
+    display: none;
 }

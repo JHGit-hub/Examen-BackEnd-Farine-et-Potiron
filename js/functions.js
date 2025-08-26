@@ -68,6 +68,11 @@ function recordModifComment(event, divIdToHide, divIdResult) {
     // retour:
     //          - renvoi le résultat (fragment HTML) de l'ajax à la fonction showResults()
 
+
+    // On retire le flou et on réactive le click sur le background
+    let modalBackground = document.getElementById("modal_background")
+    modalBackground.classList.add("hidden");
+
     // On empêche l'envoi du formulaire
     event.preventDefault();
 
@@ -97,6 +102,43 @@ function recordModifComment(event, divIdToHide, divIdResult) {
 
 }
 
+function deleteComment(event, id, divIdToHide, divIdResult){
+    // rôle:    
+    //          - demander au serveur de supprimer le commentaire
+    //          - attribuer la classe hidden à la <div> que l'on veut cacher
+    //
+    // paramètres:
+    //          - id: id du commentaire à supprimer
+    // autres paramètre:
+    //          - divIdToHide: id de la <div> à cacher
+    //          - divIdResult: id de la <div> qui affiche le resultat de l'ajax
+    // retour:
+    //          - renvoi le résultat (fragment HTML) de l'ajax à la fonction showResults()
+
+
+    // On retire le flou et on réactive le click sur le background
+    let modalBackground = document.getElementById("modal_background")
+    modalBackground.classList.add("hidden");
+
+    // On empêche l'envoi du formulaire
+    event.preventDefault();
+
+    // Construction de l'url à appeler
+    let url = "ajax_delete_comment.php?id=" + id;
+
+    // Requête avec fetch
+    fetch(url)
+        .then(response => response.text())
+        .then(htmlAjax => {
+            switchHiddenClass(divIdToHide, ""); // on cache le modal id="modif_comment"
+            showResults(htmlAjax, divIdResult); // <div> dans recipe_page.php, incluant frag_list_comments.php, id="list_comments"
+        })
+        .catch(error => {
+            alert("Erreur lors de l'enregistrement des modifications: " + error);
+            console.error(error);
+        })
+
+}
 function recordModifProfil(event, divIdToHide, divIdResult) {
     // rôle:    
     //          - demander au serveur d'enregistrer les modifications du profil
@@ -111,6 +153,10 @@ function recordModifProfil(event, divIdToHide, divIdResult) {
     //          - divIdResult: id de la <div> qui affiche le resultat de l'ajax
     // retour:
     //          - renvoi le résultat (fragment HTML) de l'ajax à la fonction showResults()
+
+    // On retire le flou et on réactive le click sur le background
+    let modalBackground = document.getElementById("modal_background")
+    modalBackground.classList.add("hidden");
 
     // On empêche l'envoi du formulaire
     event.preventDefault();

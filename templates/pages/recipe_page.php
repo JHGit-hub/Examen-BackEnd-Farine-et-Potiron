@@ -54,7 +54,7 @@
     </header>
     <main>
         <div class="modal hidden" id="modif_recipe"></div> <!-- frag_form_modif_recipe.php -->
-        <div class="modal hidden" id="modif_comment"></div> <!-- frag_form_modif_comment.php -->
+        <div class="modal hidden" id="modif_comment"></div> 
         <div id="detail_recipe">
             <?php include 'templates/fragments/detail/frag_detail_recipe.php'; ?>
         </div> <!-- frag_detail_recipe.php -->
@@ -62,6 +62,7 @@
             <?php include 'templates/fragments/list/frag_list_comments.php'; ?>
         </div> <!-- frag_list_comments.php -->
             <!-- ICI le code retiré -->
+        <div id="modal_background" class="modal_background hidden"></div>
     </main>
     <script src="js/functions.js" type="text/javascript"></script>
 </body>

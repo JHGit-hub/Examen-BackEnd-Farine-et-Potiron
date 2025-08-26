@@ -4,12 +4,10 @@
  * Contrôleur AJAX
  *
  * Rôle:
- *      - Enregistre les modifications d'un commentaire
+ *      - Supprime le commentaire
  *
  * Paramètre:
- *      - (via $_POST) id: identifiant du commentaire à modifier
- *      - (via $_POST) content: nouveau contenu du commentaire
- *      - (via $_POST) rate: note du commentaire
+ *      - (via $_GET) id: identifiant du commentaire à supprimer
  *
  * Retourne:
  *      - fragment HTML généré par frag_list_comments.php
@@ -28,19 +26,16 @@ if (!$session->isLogged()) {
 ////// Traitement:
 
 // On récupére l'id du commentaire
-$id = $_POST["id"] ?? "";
+$id = $_GET["id"] ?? "";
 
 // On instancie la class Comment
 $comment = new Comment($id);
 
-// On récupére les données du formulaire
-$comment->loadFromTab($_POST);
-
-// On intégre la modification du commentaire à la base de données
-$comment->update();
-
 // On extrait l'id de la recette
 $recipe_id = $comment->get("recipe_id")->id();
+
+// On suprrime le commentaire de la base de données
+$comment->delete();
 
 // On extrait le détail de la recette
 $detail_recipe = new Recipe($recipe_id);
