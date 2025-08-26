@@ -36,4 +36,32 @@ class Ingredient extends _model{
         return $this->tblTransform($resultats);
 
     }
+
+    ////2. Enregistrer des ingredients dans la table de données à partir d'un tableau de la session et de l'id d'une recette
+    public static function saveIngredientsFromArray(array $ingredients, int $id){
+        // Rôle: 
+        //      - enregistrer les ingrédients dans la table de données avec leurs quantité, unité de mesure et l'id de la recette dont ils font partis
+        // paramètres:
+        //      - $ingredients: tableau de tableaux associatifs contenant les ingrédients à ajouter à la recette
+        //      - $id: identifiant de la recette à laquelle les ingrédients sont associés
+        // retour:
+        //      - néant
+        
+        // création de la requête sql
+        $sql = "INSERT INTO `ingredients` (reference, quantity, unit, recipe_id) VALUES (:reference, :quantity, :unit, :recipe_id)";
+
+        // On parcours le tableau des ingredients
+        foreach ($ingredients as $ingredient) {
+            $param = [
+                ":reference" => $ingredient["reference"],
+                ":quantity" => $ingredient["quantity"],
+                ":unit" => $ingredient["unit"],
+                ":recipe_id" => $id
+            ];
+
+            // On exécute la requête pour chaque ingrédient
+            self::$bdd->bddRequest($sql, $param);
+        }
+
+    }
 }

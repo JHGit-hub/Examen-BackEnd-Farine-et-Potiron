@@ -20,7 +20,7 @@
     <input type="number" step="any" name="quantity" id="quantity" placeholder="Quantité" required>
 
     <label for="unit">Unité: </label>
-    <input type="text" name="unit" placeholder="Unité" required>
+    <input type="text" name="unit" id="unit"placeholder="Unité" required>
 
     <button type="button" onclick="addIngredient(event, 'list_ingredients')" class="secondary_btn">Ajouter l'ingrédient</button>
 </div>

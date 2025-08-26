@@ -38,7 +38,7 @@
 </div>
 <div>
     <?php
-        include 'frag_form_add_ingredient.php';
+        include 'templates/fragments/form/frag_form_add_ingredients.php';
     ?>
 </div>
 <div id="list_ingredients"></div> <!-- frag_list_ingredients.php -->

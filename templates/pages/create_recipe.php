@@ -7,6 +7,7 @@
  *
  * Paramètres:
  *          - $list_flours: tableau associatif contenant la liste des farines disponibles
+ *          - $detail_flour: tableau associatif du détail de la farine issu de l'API
  *
  */
 
@@ -31,7 +32,7 @@
         </div>
         <form class="form-filter">
             <label for="reference">Choisir une farine: </label>
-            <select name="flour" id="flour">
+            <select name="reference" id="reference">
                 <option value="">Choisis ta farine</option>
                 <?php foreach ($list_flours as $reference => $libelle): ?>
                     <option value="<?= htmlspecialchars($reference) ?>">
@@ -39,19 +40,22 @@
                     </option>
                 <?php endforeach; ?>
             </select>
-            <button type="button" onclick="showDetailFlour(event, 'create_recipe','detail_flour')" class="secondary_btn">Voir détails</button>
+            <button type="button" onclick="showDetailFlour(event, 'form_create_recipe','detail_flour')" class="secondary_btn">Voir détails</button>
         </form>
     </header>
     <main>
-        <form method="post" action="save_new_recipe.php">
-            <div class="hidden" id="detail_flour"></div> <!-- frag_detail_flour -->
-            <div class="hidden" id="form_create_recipe"></div> <!-- frag_form_create_recipe -->
+        <form method="post" action="save_new_recipe.php" class="hidden"  id="form_create_recipe">
+            <div class="form" id="detail_flour"></div> <!-- frag_detail_flour -->
+            <div class="form">
+                <?php
+                    include 'templates/fragments/form/frag_form_create_recipe.php';
+                ?>
+            </div>
             <div>
                 <button type="submit" class="secondary_btn open_btn">Enregistrer</button>
             </div>
         </form>
-
-
+        <div id="modal_background" class="modal_background hidden"></div>
     </main>
     <script src="js/functions.js" type="text/javascript"></script>
 </body>

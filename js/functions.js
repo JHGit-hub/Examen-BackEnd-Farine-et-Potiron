@@ -139,6 +139,7 @@ function deleteComment(event, id, divIdToHide, divIdResult){
         })
 
 }
+
 function recordModifProfil(event, divIdToHide, divIdResult) {
     // rôle:    
     //          - demander au serveur d'enregistrer les modifications du profil
@@ -307,7 +308,7 @@ function removeCurrentIngredient(id, divIdResult) {
 function addIngredient(event, divIdResult) {
     // rôle:
     //      - demander au controleur AJAX d'enregistrer un nouvel ingredient dans un tableau de la session
-    // paramètres (via formData):
+    // paramètres (via querySelector):
     //      - reference: nom de l'ingredient
     //      - quantity: quantité
     //      - unit: unité de mesure
@@ -319,23 +320,18 @@ function addIngredient(event, divIdResult) {
     // On empêche l'envoi du formulaire
     event.preventDefault();
 
-    // On récupére le formulaire par son id
-    const form = document.getElementById("form_add_ingredient"); // form dans frag_form_add_ingredients.php 
-
-    // Création de l'objet formData à partir du formulaire et récupération des données
-    const formData = new FormData(form);
+    // On récupére les valeurs issus du formulaire
+    const reference = document.querySelector('input[name="reference"]').value;
+    const quantity = document.querySelector('input[name="quantity"]').value;
+    const unit = document.querySelector('input[name="unit"]').value;
 
     // Construction de l'url à appeler
-    let url = "ajax_add_ingredient_into_array.php";
+    let url = "ajax_add_ingredient_into_array.php?reference=" + encodeURIComponent(reference) + "&quantity=" + encodeURIComponent(quantity) + "&unit=" + encodeURIComponent(unit);
 
     // Requête avec fetch
-    fetch(url, {
-        method: "POST",
-        body: formData
-    })
+    fetch(url)
         .then(response => response.text())
         .then(htmlAjax => {
-            form.reset();
             showResults(htmlAjax, divIdResult); // <div> dans frag_list_ingredients, id="list_ingredients"
         })
         .catch(error => {
@@ -356,7 +352,7 @@ function removeIngredient(reference, divIdResult) {
     //      - renvoi le résultat (fragment HTML) de l'ajax à la fonction showResults()
 
     // Construction de l'url à appeler
-    let url = "ajax_add_ingredient_into_array.php?reference=" + encodeURIComponent(reference);
+    let url = "ajax_remove_ingredient_from_array.php?reference=" + encodeURIComponent(reference);
 
     // Requête avec fetch
     fetch(url)

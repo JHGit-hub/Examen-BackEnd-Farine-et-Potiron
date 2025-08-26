@@ -64,6 +64,7 @@
             }
             ?>
         </div>
+        <div id="modal_background" class="modal_background hidden"></div>
     </main>
     <script src="js/functions.js" type="text/javascript"></script>
 </body>
