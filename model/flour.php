@@ -13,7 +13,9 @@ class Flour extends _model{
     protected $champs = ["reference", "recipe_id", "quantity"]; // liste des champs dans la table (sans id)
     protected $liens = ["recipe_id" => "Recipe"]; // liens entre ce modéle et la table associée
 
-
+    protected $reference; // la référence de la farine
+    protected $recipe_id; // l'id de la recette à laquelle est associée la farine
+    protected $quantity; // la quantité de farine (en grammes) nécessaire pour la recette
 
     ///1. Récuperer le catalogue des farines
     public static function getFlourCatalogue(){
@@ -47,10 +49,39 @@ class Flour extends _model{
         return json_decode( $response, true);
     }
 
-    ///2. Récuperer le détail d'une farine
+    ///2. Récuperer la référence et la quantité d'une farine utilisé à partir de l'identifiant d'une recette
+    function getFlourReferenceAndQuantityById($id){
+        // Rôle:
+        //      - extraire la référence et la quantité de la farine utilisé à partir d'un identifiant de recette
+        // paramètres:
+        //      - $id: idnteifiant de la recette
+        // retour:
+        //      - $objet contenant les details demandées
+
+        // création de la requête
+        $sql = "SELECT reference, quantity FROM flours WHERE recipe_id = :id";
+        $param = [":id" => $id];
+
+        // Préparation et exécution de la requête
+        $row = self::$bdd->bddGetFirstLigne($sql, $param);
+
+        if($row && isset($row["reference"]) && isset($row["quantity"])){
+            // si $row n'est pas false et si $row["reference"] et $row["quantity"] existent
+            $result = [
+                "reference" => $row["reference"],
+                "quantity" => $row["quantity"]
+            ];
+        } else {
+            $result = false;
+        }
+
+        return $result;
+    }
+
+    ///3. Récuperer le détail d'une farine
     public static function getFlourDetail($reference){
         // rôle: 
-        //      - Extraire le détail d'une farine issus de l'API des déatils des farines
+        //      - Extraire le détail d'une farine issus de l'API des détails des farines
         // paramètres
         //      - $reference: la référence de la farine à récupérer
         // retour:

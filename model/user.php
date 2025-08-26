@@ -7,7 +7,9 @@ class User extends _model
 
     protected $champs = ["username", "email", "password"]; // liste des champs dans la table (sans id)
 
-
+    protected $username; // le nom d'utilisateur
+    protected $email; // l'email de l'utilisateur
+    protected $password; // le mot de passe de l'utilisateur
 
     //// 1. Valider les identifiants
     public static function validateLogin(string $email, string $password)
@@ -27,7 +29,7 @@ class User extends _model
             return false;
         }
 
-        /* 
+         
         // cas avec mot de passe non hashé
         // On verifie la concordance avec le mot de passe
         if($password === $user->get("password")){ // si oui on renvoi $user
@@ -35,8 +37,9 @@ class User extends _model
         } else {
             return false;
         }
-        */
+        
 
+        /*
         // On récupére le mot de passe hashé
         $password_hashed = $user->get("password");
 
@@ -46,6 +49,8 @@ class User extends _model
         } else {
             return false;
         }
+        */
+
     }
 
     //// 2. Récupèrer l’objet utilisateur actuellement connecté

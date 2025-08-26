@@ -1,7 +1,8 @@
 <?php
 
 
-class Recipe extends _model{
+class Recipe extends _model
+{
 
     protected $table = 'recipes'; // nom de la table dans la bdd
 
@@ -16,9 +17,14 @@ class Recipe extends _model{
     protected $creation_date; // la date de création de la recette
     protected $update_date; // la date de mise à jour de la recette
 
+    protected $reference; // la référence de la farine
+    protected $recipe_id; // l'id de la recette à laquelle est associée la farine
+    protected $quantity; // la quantité de farine (en grammes) nécessaire pour la recette
+
 
     ////1. Récupèrer la liste des recettes
-    function getRecipes(string $flour1, string $flour2, string $difficulty){
+    function getRecipes(string $flour1, string $flour2, string $difficulty)
+    {
         // rôle: filtrer les recettes selon des critères choisis dans un formulaire ou toutes par défaut
         // paramètre:
         //          - $flour1: référence de la première farine sélectionnée
@@ -30,17 +36,20 @@ class Recipe extends _model{
         // Extraction de la liste des recettes filtrées par la date d'achat
 
         // Construction de la requête:
-        $sql = "SELECT * FROM recipes WHERE 1=1";
+        // On selectionne toutes les recettes et associe pour chaque recette la farine qui lui est liée
+        $sql = "SELECT * FROM recipes LEFT JOIN flours ON flours.recipe_id = recipes.id WHERE 1=1";
         $param = [];
 
-        // filtre par premiére réfèrence farine
-        if (!empty($flour1)) {
+        // filtre sur Flour1 et flour2 si les deux sont sélectionnées et différentes
+        if (!empty($flour1) && !empty($flour2) && $flour1 !== $flour2) {
+            $sql .= " AND flours.reference = :flour1 OR flours.reference = :flour2";
+            $param .= [":flour1" => $flour1, ":flour2" => $flour2];
+        } elseif (!empty($flour1)) {
+            // filtre par premiére réfèrence farine
             $sql .= " AND flours.reference = :flour1";
             $param[":flour1"] = $flour1;
-        }
-
-        // filtre par deuxiéme réfèrence farine
-        if (!empty($flour2)) {
+        } elseif (!empty($flour2)) {
+            // filtre par deuxiéme réfèrence farine
             $sql .= " AND flours.reference = :flour2";
             $param[":flour2"] = $flour2;
         }

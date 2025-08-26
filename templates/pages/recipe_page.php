@@ -9,9 +9,13 @@
  * seulement si l'utilisateur est connecté et n'est pas le créateur
  *
  * Paramètres:
- *          - $detail_recipe: objet contenant les informations détaillées de la recette
- *          - $list_comments: tableau d'objet contenant  la liste des commentaires et notes de la recette
+ *      - $detail_recipe: objet contenant les détails de la recette
+ *      - $list_comments: tableau d'objets contenant les commentaires et notes associés à la recette
+ *      - $user: objet contenant les informations de l'utilisateur
+ *      - $detail_flour: objet contenant les informations sur la farine utilisée dans la recette
+ *      - $list_ingredients: liste des ingredients utilisés dans la recette incluant leurs quantités et unité de mesure
  */
+
 
 ?>
 
@@ -44,12 +48,16 @@
         </div>
     </header>
     <main>
-        <div id="detail_recipe"></div> <!-- frag_detail_recipe.php -->
-        <div id="list_comments"></div> <!-- frag_list_comments.php -->
+        <div id="detail_recipe">
+            <?php include 'templates/fragments/detail/frag_detail_recipe.php'; ?>
+        </div> <!-- frag_detail_recipe.php -->
+        <div id="list_comments">
+            <?php include 'templates/fragments/list/frag_list_comments.php'; ?>
+        </div> <!-- frag_list_comments.php -->
         <div class="modal hidden" id="modif_recipe"></div> <!-- frag_form_modif_recipe.php -->
         <div class="modal hidden" id="modif_comment"></div> <!-- frag_form_modif_comment.php -->
         <?php
-            if($session->isLogged()){
+            if($session->isLogged() && $session->idConnected() !== $detail_recipe->get("user_id")->id()){
                 $hasCommented = false; // initialisation de la variable $hasCommented
                 foreach($list_comments as $comment){
                     if($session->idConnected() === $comment->get("user_id")->id()){
@@ -63,7 +71,7 @@
                 if(!$hasCommented){ // n'a pas commenté
                     // On affiche un formulaire pour ajouter un commentaire
                     ?>
-                        <?php include 'frag_form_create_comment.php'; ?>
+                        <?php include 'templates/fragments/form/frag_form_create_comment.php'; ?>
                     <?php
                 }
             }

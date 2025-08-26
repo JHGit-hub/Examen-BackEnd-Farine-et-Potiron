@@ -17,9 +17,6 @@
 ////// Initialisation:
 include_once "library/init.php";
 
-////// Contrôle de session utilisateur:
-
-
 
 ////// Traitement:
 // On récupére le catalogue des farines
