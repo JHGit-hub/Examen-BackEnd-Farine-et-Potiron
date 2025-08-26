@@ -13,7 +13,11 @@ include_once "library/session.php";
 
 // Charger les différentes classes de modèle de données
 include_once "model/_model.php";
-include_once "model/users.php";
+include_once "model/user.php";
+include_once "model/recipe.php";
+include_once "model/flour.php";
+include_once "model/ingredient.php";
+include_once "model/comment.php";
 
 
 // Instanciation de la session

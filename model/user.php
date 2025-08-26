@@ -1,15 +1,17 @@
 <?php
 
-class User extends _model{
+class User extends _model
+{
 
     protected $table = 'users'; // nom de la table dans la bdd
-    
+
     protected $champs = ["username", "email", "password"]; // liste des champs dans la table (sans id)
 
 
 
     //// 1. Valider les identifiants
-    public static function validateLogin(string $email, string $password) {
+    public static function validateLogin(string $email, string $password)
+    {
         // rôle : valider la connection en verifiant la combinaison email et password
         // paramètres: 
         //             $password: mot de passe entré dans le formulaire par method POST
@@ -44,6 +46,23 @@ class User extends _model{
         } else {
             return false;
         }
+    }
 
+    //// 2. Récupèrer l’objet utilisateur actuellement connecté
+    public static function getCurrentUser()
+    {
+        // Rôle : Récupérer l'utlisateur connecté
+        // Paramètres  : 
+        //              néant
+        // Retour : $user: objet utilisateur, chargé avec l'utilisateur connecté, ou non chargé
+
+        global $session;
+
+        $user = new User();
+        if ($session->isLogged()) {
+            $user->loadFromId($session->idConnected());
+        }
+
+        return $user;
     }
 }
