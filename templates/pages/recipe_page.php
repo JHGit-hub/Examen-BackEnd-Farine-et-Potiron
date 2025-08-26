@@ -33,16 +33,16 @@
     <header>
         <div>
             <?php
-                if($session->isLogged()){
-                    // On affiche le header de l'utilisateur connecté
-                    include "templates/fragments/header/frag_header_user_connected.php";
-                }
-                if($session->idConnected() === $detail_recipe->get("user_id")->id()){
-                    // On affiche le bouton modifier la recette 
-                    ?>
-                    <button class="secondary_btn" onclick="showFormModifRecipe(<?= $detail_recipe->id() ?>, 'modif_recipe')">Modifier la recette</button>
-                <?php
-                }
+            if ($session->isLogged()) {
+                // On affiche le header de l'utilisateur connecté
+                include "templates/fragments/header/frag_header_user_connected.php";
+            }
+            if ($session->idConnected() === $detail_recipe->get("user_id")->id()) {
+                // On affiche le bouton modifier la recette 
+            ?>
+                <button class="secondary_btn" onclick="showFormModifRecipe(<?= $detail_recipe->id() ?>, 'modif_recipe')">Modifier la recette</button>
+            <?php
+            }
             ?>
         </div>
         <div class="secondary_btn">
@@ -53,34 +53,15 @@
         </div>
     </header>
     <main>
+        <div class="modal hidden" id="modif_recipe"></div> <!-- frag_form_modif_recipe.php -->
+        <div class="modal hidden" id="modif_comment"></div> <!-- frag_form_modif_comment.php -->
         <div id="detail_recipe">
             <?php include 'templates/fragments/detail/frag_detail_recipe.php'; ?>
         </div> <!-- frag_detail_recipe.php -->
         <div id="list_comments">
             <?php include 'templates/fragments/list/frag_list_comments.php'; ?>
         </div> <!-- frag_list_comments.php -->
-        <div class="modal hidden" id="modif_recipe"></div> <!-- frag_form_modif_recipe.php -->
-        <div class="modal hidden" id="modif_comment"></div> <!-- frag_form_modif_comment.php -->
-        <?php
-            if($session->isLogged() && $session->idConnected() !== $detail_recipe->get("user_id")->id()){
-                $hasCommented = false; // initialisation de la variable $hasCommented
-                foreach($list_comments as $comment){
-                    if($session->idConnected() === $comment->get("user_id")->id()){
-                        // On affiche le bouton modifier son commentaire
-                        $hasCommented = true;
-                        ?>
-                            <button class="secondary_btn" onclick="showFormModifComment(<?= $comment->id() ?>, 'modif_comment')">Modifier le commentaire</button>
-                        <?php
-                    }
-                }
-                if(!$hasCommented){ // n'a pas commenté
-                    // On affiche un formulaire pour ajouter un commentaire
-                    ?>
-                        <?php include 'templates/fragments/form/frag_form_create_comment.php'; ?>
-                    <?php
-                }
-            }
-        ?>
+            <!-- ICI le code retiré -->
     </main>
     <script src="js/functions.js" type="text/javascript"></script>
 </body>

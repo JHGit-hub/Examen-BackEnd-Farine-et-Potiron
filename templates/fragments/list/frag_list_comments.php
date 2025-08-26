@@ -21,12 +21,16 @@ foreach ($list_comments as $comment) {
             <div> 
                 <span class="comment_author"><?= $comment->get("user_id")->get("username") ?></span> 
                 <span class="comment_date">
-                    <?php // si on a une date de mise a jour, on l'affiche
-                        if($comment->get("update_date")){
-                            echo $comment->get("update_date");
-                        }else{
-                            echo $comment->get("date");
-                        } 
+                    <?php
+                        if ($comment->get("update_date")) {
+                            $newDate = substr($comment->get("update_date"), 0, 10);
+                            $formattedDate = date("d/m/Y", strtotime($newDate));
+                            echo "mise à jour le: " . $formattedDate;
+                        } else {
+                            $newDate = substr($comment->get("creation_date"), 0, 10);
+                            $formattedDate = date("d/m/Y", strtotime($newDate));
+                            echo "créée le: " . $formattedDate;
+                        }
                     ?>
                 </span>
             </div>
@@ -40,5 +44,5 @@ foreach ($list_comments as $comment) {
     </div>
 <?php
 }
-
+include 'templates/fragments/form/frag_form_create_comment.php';
 ?>

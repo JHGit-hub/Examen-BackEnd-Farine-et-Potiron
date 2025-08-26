@@ -219,7 +219,6 @@ function recordNewComment(event, divIdResult) {
     })
         .then(response => response.text())
         .then(htmlAjax => {
-            switchHiddenClass(divIdToHide, "");
             showResults(htmlAjax, divIdResult); // <div> dans recipe_page.php, incluant frag_list_comments, id="list_comments"
         })
         .catch(error => {
@@ -418,7 +417,7 @@ function showFormModifComment(id, divIdToShow) {
         .then(response => response.text())
         .then(htmlAjax => {
             switchHiddenClass("", divIdToShow)
-            showResults(htmlAjax, divIdToShow) // <div> dans recipe_page.php, incluantfrag_form_modif_comment.php, id="modif_comment"
+            showResults(htmlAjax, divIdToShow) // <div> dans recipe_page.php, incluant frag_form_modif_comment.php, id="modif_comment"
         })
         .catch(error => {
             alert("Erreur lors de l'ouverture du formulaire de modification : " + error);
