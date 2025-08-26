@@ -6,8 +6,8 @@ class Flour extends _model{
 
     protected $table = 'flours'; // nom de la table dans la bdd
 
-    protected $apiFlourCatalogue = 'https://api.mywebecom.ovh/play/fep/catalogue.php'; // adresse URL de l'API du catalogue des farines
-    protected $apiFlourDetail = 'https://api.mywebecom.ovh/play/fep/catalogue.php?ref='; // adresse URL de l'API du détail d'une farine (à compléter avec la référence de la farine)
+    protected static $apiFlourCatalogue = 'https://api.mywebecom.ovh/play/fep/catalogue.php'; // adresse URL de l'API du catalogue des farines
+    protected static $apiFlourDetail = 'https://api.mywebecom.ovh/play/fep/catalogue.php?ref='; // adresse URL de l'API du détail d'une farine (à compléter avec la référence de la farine)
 
 
     protected $champs = ["reference", "recipe_id", "quantity"]; // liste des champs dans la table (sans id)
@@ -24,9 +24,11 @@ class Flour extends _model{
         // retour:
         //      - un tableau associatif contenant le catalogue des farines, false sinon
 
+        // construction de l'url de l'API
+        $urlApi = self::$apiFlourCatalogue;
 
         // initialisation de l'API
-        $api = curl_init(self::$apiFlourCatalogue);
+        $api = curl_init($urlApi);
         curl_setopt($api, CURLOPT_RETURNTRANSFER, true);
 
         // on soumet la requête et on récupére le résultat

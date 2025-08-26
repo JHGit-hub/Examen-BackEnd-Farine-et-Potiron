@@ -8,7 +8,7 @@
  * 
  * Paramètres:
  *          - $list_recipes: liste des recettes à afficher; toutes ou filtrés selon critères
- * 
+ *          - $list_flours: tableau associatif contenant les références et les libellés des farines
  */
 
 ?>
@@ -39,7 +39,7 @@
         <div class="modal hidden" id="create_user"></div> <!-- frag_form_create_user -->
         <form class="form_filter">
             <div class="select_filter">
-                <label for="reference">Choisir une farine: </label>
+                <label for="flour_1">Choisir une farine: </label>
                 <select name="flour_1" id="flour_1"> <!-- on donne l'identifiant unique à chaque select, ici flour_1 -->
                     <option value="">Choisis ta farine</option>
                     <?php foreach ($list_flours as $reference => $libelle): ?>
@@ -53,7 +53,7 @@
                         </option>
                     <?php endforeach; ?>
                 </select>
-                <label for="reference">Choisir une deuxiéme farine: </label>
+                <label for="flour_2">Choisir une deuxiéme farine: </label>
                 <select name="flour_2" id="flour_2"> <!-- on donne l'identifiant unique à chaque select, ici flour_2 -->
                     <option value="">Choisis ta farine</option>
                     <?php foreach ($list_flours as $reference => $libelle): ?>
@@ -61,7 +61,7 @@
                             <?= htmlspecialchars($libelle) ?>
                         </option>
                     <?php endforeach; ?>
-                </select name="difficulty" id="difficulty">
+                </select>
                 <label for="difficulty">Choisir la difficulté: </label>
                 <?php
                 echo _model::createSelect($list_recipes, "difficulty", "difficulty", "Niveau de difficultés");
@@ -71,7 +71,7 @@
         </form>
         <div>
             <h2>Liste des recettes: </h2>
-            <div id="list_recipes" class="list_recipe">
+            <div id="list_recipes" class="list_recipes">
                 <?php
                 echo _model::createListFiltered($list_recipes, "extract_detail_recipe.php", "id", "title", "difficulty", false);
                 ?>
