@@ -8,7 +8,8 @@
  * Paramètres:
  *          - $detail_recipe: objet contenant les informations de la recette à modifier
  *          - $list_flours: tableau associatif contenant les types de farine disponibles
- *          - $flour: objet contenant les informations sur la farine utilisée dans la recette
+ *          - $detail_flour: objet contenant les informations sur la farine utilisée dans la recette
+ *          - $list_current_ingredients: tableau d'objet contenant les ingrédients enregistrés de la recette
  *
  */
 
@@ -17,6 +18,7 @@
     <div class="secondary_btn">
         <a href="extract_detail_recipe.php?id=<?= $detail_recipe->id() ?>" class="close_btn logout_btn">
             <img src="../../../assets/icons/close.svg" alt="fermer la fenetre">
+            <span>fermer</span>
         </a>
     </div>
 </div>
@@ -34,21 +36,21 @@
         <div>
             <div>
                 <label for="quantity">Quantité (en gr): </label>
-                <input type="number" step="any" name="flour_quantity" placeholder="Quantité" required value="<?= htmlspecialchars($flour->get("flour_quantity")) ?>">
+                <input type="number" step="any" name="flour_quantity" placeholder="Quantité" required value="<?= htmlspecialchars($detail_flour['quantity']) ?>">
             </div>
         </div>
         <div>
             <div>
                 <label for="title">Titre: </label>
-                <input type="text" name="title" id="title" placeholder="Titre de la recette" required value="<?= htmlspecialchars($detail_recipe->title()) ?>">
+                <input type="text" name="title" id="title" placeholder="Titre de la recette" required value="<?= htmlspecialchars($detail_recipe->get("title")) ?>">
             </div>
             <div>
                 <label for="description">Description: </label>
-                <textarea id="description" name="description" rows="5" cols="40" placeholder="Description de la recette" required><?= htmlspecialchars($detail_recipe->description()) ?></textarea>
+                <textarea id="description" name="description" rows="5" cols="40" placeholder="Description de la recette" required><?= htmlspecialchars($detail_recipe->get("description")) ?></textarea>
             </div>
             <div>
                 <label for="execution_time">Temps de préparation (en minutes): </label>
-                <input type="number" id="execution_time" name="execution_time" required value="<?= htmlspecialchars($detail_recipe->execution_time()) ?>">
+                <input type="number" id="execution_time" name="execution_time" required value="<?= htmlspecialchars($detail_recipe->get("execution_time")) ?>">
             </div>
             <div>
                 <label for="difficulty">Difficulté: </label>

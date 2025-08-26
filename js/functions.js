@@ -508,7 +508,7 @@ function showFormModifRecipe(id, divIdToShow) {
 
     // On floute et empêche le click sur le background
     let modalBackground = document.getElementById("modal_background")
-    modalBackground.classList.remove("hidden");
+    // modalBackground.classList.remove("hidden");
 
     // Construction de l'url
     let url = "ajax_init_form_modif_recipe.php?id=" + encodeURIComponent(id);
