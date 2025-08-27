@@ -44,4 +44,4 @@ $_SESSION["ingredients"] = array_values($_SESSION["ingredients"]);
 $list_ingredients = $_SESSION["ingredients"];
 
 ////// Affichage du fragment HTML
-// include "templates/fragments/list/frag_list_ingredients.php";
+include "templates/fragments/list/frag_list_ingredients.php";

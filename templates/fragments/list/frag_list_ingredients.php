@@ -1,5 +1,5 @@
-<?php
 
+<?php
 /**
  * Frag_list_ingredients fragment
  *
@@ -10,21 +10,21 @@
  *          - $list_ingredients: tableau de tableaux associatifs contenant les ingrédients à ajouter à la recette
  *
  */
-
 ?>
-<div>
+
+<div id="list_ingredients">
     <ul class='list_filtered'>
-    <?php 
-        foreach($list_ingredients as $ingredient): ?>
-        <li class="card_ingredient">
-            <div class="detail_ingredient">
-                <h3><?= $ingredient['reference'] ?></h3>
-                <p><?= $ingredient['quantity'] ?> <?= $ingredient['unit'] ?></p>
-            </div>
-            <button onclick="removeIngredient(event,'<?= $ingredient['reference'] ?>', 'list_ingredients')" class="delete-btn">Supprimer</button>
-        </li>
-    <?php 
-        endforeach; 
-    ?>
+        <?php 
+            foreach($list_ingredients as $ingredient): ?>
+            <li class="card_ingredient">
+                <div class="detail_ingredient">
+                    <h3><?= $ingredient['reference'] ?></h3>
+                    <p><?= $ingredient['quantity'] ?> <?= $ingredient['unit'] ?></p>
+                </div>
+                <button onclick="removeIngredient(event,'<?= $ingredient['reference'] ?>', 'list_ingredients')" class="delete-btn">Supprimer</button>
+            </li>
+        <?php 
+            endforeach; 
+        ?>
     </ul>
 </div>
