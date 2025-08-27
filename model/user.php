@@ -1,4 +1,22 @@
 <?php
+/**
+ * ============================================================
+ *  Classe : User
+ *  Rôle global :
+ *      - Modélise les utilisateurs de l’application.
+ *      - Fournit des méthodes pour valider la connexion (login) et récupérer l’utilisateur actuellement connecté.
+ *      - Hérite des méthodes de _model pour la gestion CRUD des utilisateurs.
+ *
+ *  Principales méthodes :
+ *      1. validateLogin($password, $login_mode_name, $login_mode_value) : Valide les identifiants et retourne l’objet User si connexion réussie.
+ *      2. getCurrentUser() : Récupère l’objet utilisateur actuellement connecté (via la session).
+ *
+ *  Convention :
+ *      - Les champs protégés correspondent aux colonnes de la table 'users'.
+ *      - La validation du mot de passe utilise password_verify pour gérer les mots de passe hashés.
+ *
+ * ============================================================
+ */
 
 class User extends _model
 {

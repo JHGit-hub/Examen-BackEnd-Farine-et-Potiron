@@ -1,54 +1,37 @@
 /**
  * ============================================================
- *  Fichier : functions.js
+ *  Fichier : Fonctions JS principales du projet
  *  Rôle global :
- *      - Gère toutes les interactions asynchrones (AJAX/fetch) entre le front et le back (PHP)
- *      - Permet l'affichage dynamique des fragments HTML (modaux, listes, formulaires) sans rechargement de page
- *      - Centralise les fonctions d'extraction, enregistrement, modification, suppression, filtrage et affichage
+ *      - Centralise toutes les fonctions JavaScript utilisées pour la manipulation des données (BDD, session), la gestion des formulaires, l'affichage dynamique et les interactions AJAX.
+ *      - Facilite l’organisation et la maintenance du code client.
  *
- *  Structure des fonctions :
- *      - Manipulation de données dans la base de données :
- *          * recordModifComment(event, divIdToHide, divIdResult)
- *          * recordModifProfil(event, divIdToHide, divIdResult)
- *          * recordModifRecipe(event, divIdToHide, divIdResult)
- *          * recordNewComment(event, divIdToHide, divIdResult)
- *          * removeCurrentIngredient(id, divIdResult)
- *
- *      - Manipulation de données en session :
- *          * addIngredient(event, divIdResult)
- *          * removeIngredient(reference, divIdResult)
- *
- *      - Filtrage de données :
- *          * filterRecipes(event, divIdResult)
- *
- *      - Affichage dynamique des fragments/modaux :
- *          * showFormCreateUser(divIdToShow)
- *          * showFormModifComment(id, divIdToShow)
- *          * showFormModifProfil(divIdToShow)
- *          * showFormModifRecipe(id, divIdToShow)
- *          * showDetailFlour(event, divIdToShow, divIdResult)
- *          * showResults(htmlAjax, divIdResult)
- *          * switchHiddenClass(divIdToHide, divIdToShow)
- *          * showPassword()
+ *  Principales fonctions :
+ *      1. recordModifComment(event, divIdToHide, divIdResult)   : Enregistre les modifications d’un commentaire via AJAX et met à jour l’affichage.
+ *      2. deleteComment(event, id, divIdToHide, divIdResult)    : Supprime un commentaire via AJAX et met à jour l’affichage.
+ *      3. recordModifProfil(event, divIdToHide, divIdResult)    : Enregistre les modifications du profil utilisateur via AJAX.
+ *      4. recordModifRecipe(event, divIdToHide, divIdResult)    : Enregistre les modifications d’une recette via AJAX.
+ *      5. recordNewComment(event, divIdResult)                  : Ajoute un nouveau commentaire sur une recette via AJAX.
+ *      6. removeCurrentIngredient(id, divIdResult)              : Supprime un ingrédient d’une recette (BDD) via AJAX.
+ *      7. addIngredient(event, divIdResult)                     : Ajoute un ingrédient dans la session via AJAX.
+ *      8. removeIngredient(event, reference, divIdResult)       : Supprime un ingrédient du tableau de session via AJAX.
+ *      9. filterRecipes(event, divIdResult)                     : Filtre et affiche les recettes selon des critères dynamiques.
+ *     10. showFormCreateUser(divIdToShow)                       : Affiche le formulaire de création d’utilisateur (modal, AJAX).
+ *     11. showFormModifComment(id, divIdToShow)                 : Affiche le formulaire de modification d’un commentaire (modal, AJAX).
+ *     12. showFormModifProfil(divIdToShow)                      : Affiche le formulaire de modification du profil utilisateur (modal, AJAX).
+ *     13. showFormModifRecipe(id, divIdToShow)                  : Affiche le formulaire de modification d’une recette (modal, AJAX).
+ *     14. showDetailFlour(event, divIdToShow, divIdResult)      : Affiche le détail d’une farine et le formulaire de création de recette.
+ *     15. showResults(htmlAjax, divIdResult)                    : Affiche le contenu HTML reçu par AJAX dans la <div> cible.
+ *     16. switchHiddenClass(divIdToHide, divIdToShow)           : Affiche ou masque une <div> selon les paramètres.
+ *     17. showPassword()                                        : Affiche le champ de modification du mot de passe.
+ *     18. toggleMode()                                          : Alterne entre pseudo et email pour le champ de connexion.
  *
  *  Convention :
- *      - Toutes les requêtes AJAX utilisent fetch (méthode GET ou POST selon le contexte).
- *      - Les fragments HTML reçus sont injectés dans le DOM via showResults.
- *      - Les div à afficher/cacher sont identifiées par leur id, transmis en paramètres.
- *      - Les fonctions sont pensées pour être reliées à des événements JS (submit, click, etc.).
- *      - Les formulaires sont systématiquement envoyés en AJAX, en empêchant leur comportement natif.
- *      - La classe CSS "hidden" est utilisée pour masquer/afficher dynamiquement les éléments.
- *      - Les erreurs AJAX sont notifiées soit par un alert (pour l'utilisateur), soit par un log en console (pour le dev).
- *      - Les paramètres transmis aux fonctions sont décrits en début de fonction pour faciliter la maintenance.
- *
- *  Remarques :
- *      - Les réponses du back doivent être soit une chaîne "OK", soit un fragment HTML, soit un message d'erreur.
- *      - Les JS sont organisés par rôle : manipulation BDD/session, filtrage, affichage dynamique.
- *      - L'accent est mis sur l'expérience utilisateur : pas de reload, feedback immédiat, affichage conditionnel.
+ *      - Les fonctions sont organisées par thème (BDD, session, filtrage, affichage).
+ *      - Toutes les interactions serveur passent par AJAX/fetch.
+ *      - Les effets sont principalement visuels et dynamiques sur la page.
  *
  * ============================================================
  */
-
 
 
 /******* Functions de manipulation de données dans la bdd *******/
@@ -278,7 +261,6 @@ function recordNewComment(event, divIdResult) {
 function removeCurrentIngredient(id, divIdResult) {
     // rôle:
     //      - demande au serveur de supprimer un ingredient de la liste des ingredients de la recette enregistrés dans la bdd
-    //      - afficher la liste des ingredients mise à jour
     // paramètres(via $_GET):
     //      - id: id de l'ingredient a supprimer
     // autre paramètre:
@@ -324,6 +306,12 @@ function addIngredient(event, divIdResult) {
     const reference = document.querySelector('input[name="reference"]').value;
     const quantity = document.querySelector('input[name="quantity"]').value;
     const unit = document.querySelector('input[name="unit"]').value;
+
+    // On verifie que les champs ne sont pas vide
+    if (!reference || !quantity || !unit) {
+    alert("Tous les champs doivent être remplis.");
+    return;
+    }
 
     // Construction de l'url à appeler
     let url = "ajax_add_ingredient_into_array.php?reference=" + encodeURIComponent(reference) + "&quantity=" + encodeURIComponent(quantity) + "&unit=" + encodeURIComponent(unit);
@@ -392,7 +380,6 @@ function filterRecipes(event, divIdResult) {
     const flour_1 = document.querySelector('select[name="flour_1"]').value;
     const flour_2 = document.querySelector('select[name="flour_2"]').value;
     const difficulty = document.querySelector('select[name="difficulty"]').value;
-
 
     // Construction de l'url
     let url = "ajax_filter_recipes.php?difficulty=" + encodeURIComponent(difficulty) + "&flour_1=" + encodeURIComponent(flour_1) + "&flour_2=" + encodeURIComponent(flour_2);
@@ -581,7 +568,8 @@ function showResults(htmlAjax, divIdResult) {
 
 function switchHiddenClass(divIdToHide = "", divIdToShow = "") {
     // rôle: 
-    //      - retirer la classe hidden de la <div> que l'on veut afficher et ajouter la classe hidden a celle que l'on veut cacher
+    //      - retirer la classe hidden de la <div> que l'on veut afficher
+    //      - ajouter la classe hidden a celle que l'on veut cacher
     // paramètres:
     //      - divIdToHide: id de la <div> que l'on veut cacher
     //      - divIdToShow: id de la <div> que l'on veut afficher
@@ -611,7 +599,7 @@ function showPassword() {
 
 function toggleMode() {
     // Rôle:
-    //      - choisir entre le pseudo ou l'email comme identifiant avec fonction native onChange()
+    //      - choisir entre le pseudo ou l'email comme identifiant
     // paramètres:
     //      - (via getElementById) login_select: choix du mode de connexion par le select
     //      - (via getElementById) login_label: label du champ de connexion

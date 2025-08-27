@@ -1,5 +1,24 @@
 <?php
-
+/**
+ * ============================================================
+ *  Classe : Flour
+ *  Rôle global :
+ *      - Modélise les farines utilisées dans les recettes.
+ *      - Fournit des méthodes pour extraire le catalogue des farines depuis l’API, récupérer le détail d’une farine, et obtenir la farine associée à une recette.
+ *      - Hérite des méthodes génériques de _model pour la gestion des données et des liens BDD.
+ *
+ *  Principales méthodes :
+ *      1. getFlourCatalogue()         : Récupère le catalogue complet des farines via l’API.
+ *      2. getFlourFromRecipe($id)     : Récupère la référence et la quantité de farine associée à une recette.
+ *      3. getFlourDetail($reference)  : Récupère le détail d’une farine via l’API selon sa référence.
+ *
+ *  Convention :
+ *      - Les champs protégés correspondent aux colonnes de la table 'flours'.
+ *      - Les accès à l’API se font avec cURL et les réponses sont décodées en tableau associatif.
+ *      - Les méthodes de la classe retournent des objets Flour ou des tableaux associatifs selon le besoin.
+ *
+ * ============================================================
+ */
 
 
 class Flour extends _model{

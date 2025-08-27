@@ -18,6 +18,9 @@
     </a>
 </div>
 <form class="form_create_user" method="post" action="save_new_user.php">
+    <!-- utilisation d'un 'honeypot' pour éviter les soumissions de bots -->
+    <!-- ajout d'un champ caché "website" que les bots remplissent -->
+    <input type="text" name="website" style="display:none"> 
     <div class="create_field">
         <label for="username">Pseudo: </label>
         <input type="text" name="username" id="username" value="" required>

@@ -1,5 +1,23 @@
 <?php
-
+/**
+ * ============================================================
+ *  Classe : Ingredient
+ *  Rôle global :
+ *      - Modélise les ingrédients associés à une recette.
+ *      - Permet d’extraire la liste des ingrédients d’une recette et d’enregistrer un ensemble d’ingrédients à partir d’un tableau (ex: provenant de la session).
+ *      - Hérite des méthodes génériques de _model pour la gestion CRUD et la transformation des données.
+ *
+ *  Principales méthodes :
+ *      1. getIngredients($id)                  : Récupère tous les ingrédients liés à une recette.
+ *      2. saveIngredientsFromArray($ingredients, $id) : Ajoute plusieurs ingrédients à une recette en base à partir d’un tableau.
+ *
+ *  Convention :
+ *      - Les champs protégés correspondent aux colonnes de la table 'ingredients'.
+ *      - Les liens permettent d’associer automatiquement chaque ingrédient à sa recette.
+ *      - Les méthodes de la classe manipulent et transforment les données en objets Ingredient.
+ *
+ * ============================================================
+ */
 
 
 

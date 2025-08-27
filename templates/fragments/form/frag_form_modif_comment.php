@@ -12,6 +12,12 @@
 ?>
 
 <form method="post" id="form_modif_comment">
+    <div>
+        <a href="extract_detail_recipe.php?id=<?= $detail_comment->get("recipe_id")->id() ?>" class="close_btn logout_btn">
+            <img src="../../../assets/icons/close.svg" alt="fermer la fenetre">
+            <span>fermer</span>
+        </a>
+    </div>
     <input type="hidden" name="id" value="<?= $detail_comment->id() ?>">
 
     <label for="rate">Note (0 à 5)</label>

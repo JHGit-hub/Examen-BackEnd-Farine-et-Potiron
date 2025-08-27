@@ -1,5 +1,24 @@
 <?php
-
+/**
+ * ============================================================
+ *  Classe : Recipe
+ *  Rôle global :
+ *      - Modélise les recettes et gère leur manipulation en base.
+ *      - Permet de filtrer, récupérer ou supprimer des recettes en fonction de différents critères.
+ *      - Hérite des méthodes de _model pour la gestion CRUD et la transformation des données.
+ *
+ *  Principales méthodes :
+ *      1. getRecipes($flour1, $flour2, $difficulty)          : Filtre et récupère les recettes selon farines et niveau de difficulté.
+ *      2. getRecipesCreatedByUser($id)                       : Récupère toutes les recettes créées par un utilisateur donné.
+ *      3. deleteRecipeById($id)                              : Supprime une recette et ses ingrédients et farine associés en base.
+ *
+ *  Convention :
+ *      - Les champs protégés correspondent aux colonnes de la table 'recipes'.
+ *      - Les liens permettent d’associer chaque recette à son utilisateur créateur.
+ *      - Les méthodes de la classe manipulent et transforment les données en objets Recipe.
+ *
+ * ============================================================
+ */
 
 class Recipe extends _model
 {
@@ -123,7 +142,7 @@ class Recipe extends _model
         if(!$delete_flour || !$delete_ingredients || !$delete_recipe){
             return false;
         }
-        
+
         return true;
 
     }

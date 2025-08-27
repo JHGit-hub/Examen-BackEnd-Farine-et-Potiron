@@ -1,5 +1,23 @@
 <?php
-
+/**
+ * ============================================================
+ *  Classe : Comment
+ *  Rôle global :
+ *      - Modélise les commentaires associés à une recette et à un utilisateur.
+ *      - Permet d’extraire les commentaires d’une recette ou d’un utilisateur via des méthodes dédiées.
+ *      - Hérite des méthodes génériques de _model pour la gestion CRUD et la transformation des données.
+ *
+ *  Principales méthodes :
+ *      1. getComments($id)        : Récupère tous les commentaires et notes liés à une recette.
+ *      2. getCommentsByUser($id)  : Récupère tous les commentaires et notes laissés par un utilisateur donné.
+ *
+ *  Convention :
+ *      - Les champs protégés correspondent aux colonnes de la table 'comments'.
+ *      - Les liens permettent d’associer automatiquement chaque commentaire à son utilisateur et à sa recette.
+ *      - Les méthodes de la classe retournent des tableaux d’objets Comment.
+ *
+ * ============================================================
+ */
 
 
 class Comment extends _model{
