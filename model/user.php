@@ -12,17 +12,24 @@ class User extends _model
     protected $password; // le mot de passe de l'utilisateur
 
     //// 1. Valider les identifiants
-    public static function validateLogin(string $email, string $password)
+    public static function validateLogin(string $password, string $login_mode_name, string $login_mode_value)
     {
-        // rôle : valider la connection en verifiant la combinaison email et password
+        // rôle : 
+        //      - valider la connection en verifiant la combinaison email et password
         // paramètres: 
-        //             $password: mot de passe entré dans le formulaire par method POST
-        //             $email: email entré dans le formulaire par method POST
-        // retour : objet User si connexion réussie, false sinon
+        //      - $password: mot de passe entré dans le formulaire par method POST
+        //      - $login_mode_name: mode connexion choisi (pseudo ou email)
+        //      - $login_mode_value: valeur du mode de connexion (pseudo ou email)
+        // retour : 
+        //      -objet User si connexion réussie, false sinon
 
-        // Chargement des informations de l'utilisateur dont on a l'email
+        // Chargement des informations de l'utilisateur selon le mode de connexion choisi
         $user = new User();
-        $user->loadFromField("email", $email);
+        if ($login_mode_name === "email") {
+            $user->loadFromField("email", $login_mode_value);
+        } else {
+            $user->loadFromField("username", $login_mode_value);
+        }
 
         // On verifie qu'il existe
         if (!$user->is()) {

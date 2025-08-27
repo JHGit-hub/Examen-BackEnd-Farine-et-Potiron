@@ -36,6 +36,16 @@
         ?>
     </header>
     <main>
+        <?php
+            // Affichage d'un message d'erreur si erreur de connexion
+            if (isset($_SESSION['error_msg'])) { ?>
+                <div class="error-msg">
+                    <?= htmlspecialchars($_SESSION['error_msg']) ?>
+                </div>
+                <?php
+                unset($_SESSION['error_msg']);
+            }
+        ?>
         <div class="modal hidden" id="create_user"></div> <!-- frag_form_create_user -->
         <form class="form_filter">
             <div class="select_filter">

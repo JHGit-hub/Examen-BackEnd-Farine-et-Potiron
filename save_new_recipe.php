@@ -90,4 +90,5 @@ $comment = new Comment();
 $list_recipes_rated = $comment->getCommentsByUser($id);
 
 ////// Redirection vers la page de l'utilisateur
-include 'templates/pages/user_page.php';
+header('Location: user_page.php'); // redirection vers la page de l'utilisateur pour eviter la duplication
+exit();

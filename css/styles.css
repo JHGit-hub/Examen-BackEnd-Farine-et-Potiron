@@ -24,7 +24,8 @@ main{
 
 /****** MODAL ******/
 
-.modal, .modal_main{
+.modal {
+    width: 650px;
     position:fixed;
     background-color: #ffffff;
     border: outset 2px #00315A;
@@ -37,18 +38,6 @@ main{
     box-shadow: 0 0 30px rgba(0,0,0,0.3);
 }
 
-.modal{
-    width: 650px;
-}
-
-.modal_main{
-    width: 80%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    background-color: #D7EEFF;
-}
 
 .modal_background{
     position: fixed;
@@ -285,10 +274,19 @@ header{
     padding: 1rem 0;
 }
 
-#products_filtered{
-    max-height: 400px;
-    overflow-y: auto;
+/****** ALERTS ******/
+
+.error-msg {
+    color: red;
+    background: #ffeaea;
+    border: 1px solid #ff0000;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-weight: bold;
 }
+
+
 
 .hidden {
     display: none;

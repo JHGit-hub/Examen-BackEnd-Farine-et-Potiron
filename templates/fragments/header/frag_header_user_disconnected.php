@@ -16,9 +16,18 @@
 <div class="header_login">
     <button onclick="showFormCreateUser('create_user')">Créer un compte</button>
     <form class="login_form" method="post" action="connect.php">
-        <div class="login_field"> <!-- mettre une checkbox pour choisir entre email et pseudo -->
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Entrez votre Email"  value="<?= htmlspecialchars($_POST["email"] ?? '') ?>">
+        <div class="login_field"> 
+            <label for="login_mode">Se connecter avec :</label>
+            <!-- le select permet de choisir entre email et pseudo -->
+            <select id="login_mode" name="login_mode" onchange="toggleMode()"> <!-- la fonction toggleMode permet de changer le mode de connexion -->
+                <option value="email">Email</option>
+                <option value="username">Pseudo</option>
+            </select>
+
+            <label id="login_label" for="login_input">Email :</label> <!-- mode sur Email par defaut -->
+            <!-- le texte du label, la valeur du input et son type sont modifiés dynamiquement grace à toggleMode() -->
+            <input type="email" id="login_input" name="login_input" value="<?= htmlspecialchars($_POST["login_input"] ?? '') ?>" required>
+
             <label for="password">Mot de Passe:</label>
             <input type="password" id="password" name="password" placeholder="Mot de Passe" required>            
         </div>

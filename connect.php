@@ -19,19 +19,24 @@
 ////// Initialisation:
 include_once "library/init.php";
 
-// Récupération des paramètres:
+//// Récupération des paramètres:
 // On verife si le formulaire est bien rempli
-if (empty($_POST["email"]) || empty($_POST["password"])) {
+if (empty($_POST["login_input"]) || empty($_POST["password"])) {
     $_SESSION['error_msg'] = "Merci de remplir tous les champs."; //affichage d'un message d'erreur
     header('location: index.php'); // renvoi vers la page du formulaire
     exit; // arrete le script si form invalide
 }
 
-$email = $_POST["email"];
+// On récupére le mot de passe
 $password = $_POST["password"];
 
+// On récupére le mode de connexion et la valeur du champ de l'input
+$login_mode_name = $_POST["login_mode"];
+$login_mode_value = $_POST["login_input"];
+
+
 // Verification de la connexion
-$user = User::validateLogin($email, $password);
+$user = User::validateLogin($password, $login_mode_name, $login_mode_value);
 
 if (!$user) { // connexion refusé, retour au formulaire
     $_SESSION['error_msg'] = "Adresse email ou mot de passe incorrect."; //affichage d'un message d'erreur
@@ -40,7 +45,6 @@ if (!$user) { // connexion refusé, retour au formulaire
 }
 
 // connexion réussi, on le log à la session
-$_SESSION['sucess_msg'] = "Connexion réussie.";
 $session->logged($user->id());
 header('location: index.php');
 exit;

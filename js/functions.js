@@ -608,3 +608,30 @@ function showPassword() {
     //      - néant
     document.getElementById("modifPassword").style.display = "block";
 }
+
+function toggleMode() {
+    // Rôle:
+    //      - choisir entre le pseudo ou l'email comme identifiant avec fonction native onChange()
+    // paramètres:
+    //      - (via getElementById) login_select: choix du mode de connexion par le select
+    //      - (via getElementById) login_label: label du champ de connexion
+    //      - (via getElementById) login_input: champ de saisie du login
+    // retour:
+    //      - changement des valeurs du label, type et input
+
+
+    // On récupére les éléments
+    const mode = document.getElementById('login_mode').value;
+    const label = document.getElementById('login_label');
+    const input = document.getElementById('login_input');
+
+    if (mode === 'email') {
+        label.innerText = 'Email :';
+        input.type = 'email';
+        input.placeholder = "Entrez votre Email";
+    } else {
+        label.innerText = 'Pseudo :';
+        input.type = 'text';
+        input.placeholder = "Entrez votre pseudo";
+    }
+}
