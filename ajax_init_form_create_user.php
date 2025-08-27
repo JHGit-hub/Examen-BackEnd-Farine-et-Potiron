@@ -1,16 +1,17 @@
 <?php
 
 /**
- * Contrôleur AJAX
+ * ============================================================
+ *  Contrôleur : ajax_init_form_create_user.php
+ *  Rôle :
+ *      - Prépare le formulaire de création d'utilisateur.
  *
- * Rôle:
- *      - Prépare le formulaire de création d'utilisateur
- *
- * Paramètre:
+ *  Paramètre attendu :
  *      - néant
  *
- * Retourne:
- *      - fragment HTML généré par frag_form_create_user.php
+ *  Retourne :
+ *      - Fragment HTML généré par 'frag_form_create_user.php'.
+ * ============================================================
  */
 
 ////// Initialisation:

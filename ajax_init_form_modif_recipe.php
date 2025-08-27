@@ -1,22 +1,22 @@
 <?php
 
 /**
- * Contrôleur AJAX
+ * ============================================================
+ *  Contrôleur : ajax_init_form_modif_recipe.php
+ *  Rôle :
+ *      - Prépare le formulaire de modification d'une recette.
  *
- * Rôle:
- *      - Prépare le formulaire de modification d'une recette
+ *  Paramètre attendu :
+ *      - (via $_GET) id : identifiant de la recette à modifier
  *
- * Paramètre:
- *      - (via $_GET)id: identifiant de la recette à modifier
- *
- * Retourne:
- *      - $detail_recipe: objet contenant les informations de la recette à modifier
- *      - $list_flours: tableau associatif contenant les types de farine disponibles
- *      - $flour_from_recipe: objet contenant les informations sur la farine utilisée dans la recette
- *      - $list_current_ingredients: tableau d'objet contenant les ingrédients enregistrés de la recette
+ *  Retourne :
+ *      - $detail_recipe : objet contenant les informations de la recette à modifier
+ *      - $list_flours : tableau associatif contenant les types de farine disponibles
+ *      - $flour_from_recipe : objet contenant les informations sur la farine utilisée dans la recette
+ *      - $list_current_ingredients : tableau d'objets contenant les ingrédients enregistrés de la recette
  *      - fragment HTML généré par frag_form_modif_recipe.php
+ * ============================================================
  */
-
 ////// Initialisation:
 include_once "library/init.php";
 

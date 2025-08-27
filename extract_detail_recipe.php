@@ -1,22 +1,23 @@
 <?php
 
 /**
- * Contrôleur d'extraction de données
+ * ============================================================
+ *  Contrôleur : extract_detail_recipe.php
+ *  Rôle :
+ *      - Extrait les détails d'une recette à partir de la base de données
+ *      - Extrait les commentaires et notes de cette recette
+ *      - Affiche un bouton "modifier" si l'utilisateur connecté est le créateur de la recette
  *
- * Rôle:
- *      - extrait les détails d'une recette à partir de la base de données
- *      - extrait les commentaires et notes de cette recette
- *      - affiche un bouton modifier si l'utilisateur connecté et le créateur de la recette
+ *  Paramètres attendus :
+ *      - (via $_GET) id : identifiant de la recette
  *
- * Paramètres:
- *      - (via $_GET)id: identifiant de la recette
- *
- * Retour:
- *      - $detail_recipe: objet contenant les détails de la recette
- *      - $list_comments: tableau d'objets contenant les commentaires et notes associés à la recette
- *      - $detail_flour: tableau associatif contenant les informations sur la farine utilisée dans la recette
- *      - $list_ingredients: tableau d'objets incluant la liste des ingredients utilisés dans la recette
- *      - $flour_from_recipe: objet contenant la quantité et la référence de la farine utilisée dans la recette
+ *  Retour :
+ *      - $detail_recipe : objet contenant les détails de la recette
+ *      - $list_comments : tableau d'objets contenant les commentaires et notes associés à la recette
+ *      - $detail_flour : tableau associatif avec infos farine
+ *      - $list_ingredients : tableau d'objets des ingrédients utilisés
+ *      - $flour_from_recipe : objet quantité/référence de la farine utilisée
+ * ============================================================
  */
 
 ////// Initialisation:
@@ -24,7 +25,7 @@ include_once "library/init.php";
 
 ////// Traitement
 
-// On récupére l'id via $_GET
+// On récupère l'id via $_GET
 $recipe_id = $_GET["recipe_id"] ?? "";
 $id = $_GET["id"] ?? "";
 
@@ -33,7 +34,7 @@ if($recipe_id){
     $id = $recipe_id;
 }
 // On vide le tableau de la session s'il existe
-// Pour vider la liste des ingredients à ajouter a une recette
+// Pour vider la liste des ingrédients à ajouter a une recette
 if (isset($_SESSION["ingredients"])) {
     $_SESSION["ingredients"] = [];
 }
@@ -45,7 +46,7 @@ $detail_recipe = new Recipe($id);
 $comments = new Comment();
 $list_comments = $comments->getComments($id);
 
-// On extrait la liste des ingredients de la recette
+// On extrait la liste des ingrédients de la recette
 $ingredient = new Ingredient();
 $list_ingredients = $ingredient->getIngredients($id);
 

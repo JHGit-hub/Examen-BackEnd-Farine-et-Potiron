@@ -1,18 +1,19 @@
 <?php
 
 /**
- * Contrôleur d'enregistrement de donnée
- *
- * Rôle:
+ * ============================================================
+ *  Contrôleur d'enregistrement de donnée : save_new_user.php
+ *  Rôle :
  *      - Enregistre un nouvel utilisateur dans la base de données
  *
- * Paramètres:
- *      - (via $_POST) email: adresse email de l'utilisateur
- *      - (via $_POST) password: mot de passe de l'utilisateur
- *      - (via $_POST) username: pseudo de l'utilisateur
+ *  Paramètres attendus :
+ *      - (via $_POST) email : adresse email de l'utilisateur
+ *      - (via $_POST) password : mot de passe de l'utilisateur
+ *      - (via $_POST) username : pseudo de l'utilisateur
  *
- * Retour:
- *      - néant
+ *  Retour :
+ *      - néant (redirection ou affichage page accueil)
+ * ============================================================
  */
 
 ////// Initialisation:

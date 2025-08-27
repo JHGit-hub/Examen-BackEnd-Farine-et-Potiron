@@ -1,13 +1,15 @@
 <?php
 
 /**
- * Frag_list_current_ingredients fragment
+ * ============================================================
+ *  Fragment : frag_list_current_ingredients.php
+ *  Rôle global :
+ *      - Affiche la liste des ingrédients enregistrés d'une recette.
+ *      - Permet de supprimer un ingrédient avec le bouton associé.
  *
- * Fragment de page pour afficher la liste des ingrédients enregistrés d'une recette
- *
- * Paramètres:
- *          - $list_current_ingredients: tableau d'objet contenant les ingrédients enregistrés de la recette
- *
+ *  Paramètre attendu :
+ *      - $list_current_ingredients : tableau d'objets contenant les ingrédients enregistrés de la recette
+ * ============================================================
  */
 
 ?>
@@ -19,8 +21,8 @@
         foreach($list_current_ingredients as $current_ingredient): ?>
         <li class="card_ingredient">
             <div class="detail_ingredient">
-                <h3><?= $current_ingredient->get("reference") ?></h3>
-                <p><?= $current_ingredient->get("quantity") ?> <?= $current_ingredient->get("unit") ?></p>
+                <h3><?= htmlspecialchars($current_ingredient->get("reference")) ?></h3>
+                <p><?= htmlspecialchars($current_ingredient->get("quantity")) ?> <?= htmlspecialchars($current_ingredient->get("unit")) ?></p>
             </div>
             <button onclick="removeCurrentIngredient('<?= $current_ingredient->id() ?>', 'list_current_ingredients')" class="delete-btn">Supprimer</button>
         </li>

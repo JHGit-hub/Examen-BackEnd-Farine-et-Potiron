@@ -1,14 +1,14 @@
 <?php
-
 /**
- * Frag_header_user_disconnected fragment
+ * ============================================================
+ *  Fragment : frag_header_user_disconnected.php
+ *  Rôle :
+ *      - Affiche la navbar lorsque l'utilisateur n'est pas connecté
+ *      - Bouton "Créer un compte" et formulaire de connexion (email ou pseudo)
  *
- * Fragment de page pour afficher la navbar lorsque l'utilisateur n'est pas connecté
- * avec un bouton connexion ou création de compte
- *
- * Paramètres:
- *          - néant
- *
+ *  Paramètres :
+ *      - néant
+ * ============================================================
  */
 
 ?>
@@ -28,7 +28,7 @@
             <!-- le texte du label, la valeur du input et son type sont modifiés dynamiquement grace à toggleMode() -->
             <input type="email" id="login_input" name="login_input" value="<?= htmlspecialchars($_POST["login_input"] ?? '') ?>" required>
 
-            <label for="password">Mot de Passe:</label>
+            <label for="password">Mot de passe:</label>
             <input type="password" id="password" name="password" placeholder="Mot de Passe" required>            
         </div>
         <div>

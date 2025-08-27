@@ -1,13 +1,14 @@
 <?php
 
 /**
- * Frag_form_add_ingredients fragment
+ * ============================================================
+ *  Fragment : frag_form_add_ingredients.php
+ *  Rôle :
+ *      - Affiche le formulaire pour ajouter un ingrédient à la recette
  *
- * Fragment de page pour afficher le formulaire de création et d'ajout d'un ingrédient à la recette
- *
- * Paramètres:
- *          - néant
- *
+ *  Paramètres :
+ *      - néant
+ * ============================================================
  */
 
 ?>

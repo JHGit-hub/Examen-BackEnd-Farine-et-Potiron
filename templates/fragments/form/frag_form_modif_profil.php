@@ -1,15 +1,18 @@
 <?php
 
 /**
- * Frag_form_modif_profil fragment
+ * ============================================================
+ *  Fragment : frag_form_modif_profil.php
+ *  Rôle global :
+ *      - Affiche le formulaire de modification du profil utilisateur.
+ *      - Permet de modifier le nom, l’email et le mot de passe.
+ *      - Propose un bouton pour enregistrer les modifications et un bouton pour fermer le formulaire.
  *
- * Fragment de page pour afficher le formulaire de modification de profil utilisateur
+ *  Paramètre attendu :
+ *      - $user : objet contenant les informations de l’utilisateur connecté.
  *
- * Paramètres:
- *          - $user: objet contenant les informations de l'utilisateur connecté
- *
+ * ============================================================
  */
-
 
 ?>
 

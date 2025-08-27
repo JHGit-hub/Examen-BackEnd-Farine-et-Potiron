@@ -1,17 +1,18 @@
 <?php
 
 /**
- * Contrôleur principal
+ * ============================================================
+ *  Contrôleur principal : index.php
+ *  Rôle :
+ *      - Prépare l'affichage de la page d'accueil (homepage)
  *
- * Rôle:
- *      - prépare l'affichage de la page homepage
- *
- * Paramètres:
+ *  Paramètres :
  *      - néant
  *
- * Retour:
- *      - $list_recipes: tableaux d'objets contenant les recettes incluant leurs titres, leurs id, leurs niveaux de difficultés et les références de farine utilisées
- *      - $list_flours: tableau associatif contenant les références et les libellés des farines
+ *  Retour :
+ *      - $list_recipes : tableau d'objets contenant les recettes (titre, id, difficulté, référence farine)
+ *      - $list_flours : tableau associatif (références et libellés des farines)
+ * ============================================================
  */
 
 ////// Initialisation:

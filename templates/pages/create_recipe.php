@@ -1,13 +1,14 @@
 <?php
-
 /**
- * Form_create_recipe template
+ * ============================================================
+ *  Template : create_recipe.php
+ *  Rôle :
+ *      - Affiche le formulaire complet de création d'une recette.
+ *      - Permet de choisir une farine, d'afficher ses détails, puis de compléter et enregistrer la recette.
  *
- * Template de page compléte pour afficher le formulaire de création d'une recette
- *
- * Paramètres:
- *          - $list_flours: tableau associatif contenant la liste des farines disponibles
- *
+ *  Paramètres attendus :
+ *      - $list_flours : tableau associatif contenant la liste des farines disponibles
+ * ============================================================
  */
 
 ?>

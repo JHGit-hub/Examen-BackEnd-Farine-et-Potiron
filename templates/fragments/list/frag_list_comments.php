@@ -1,13 +1,17 @@
 <?php
 
 /**
- * Frag_list_comments fragment
+ * ============================================================
+ *  Fragment : frag_list_comments
+ *  Rôle global :
+ *      - Affiche la liste des commentaires et/ou notes.
+ *      - Affiche, pour chaque commentaire : auteur, date (création ou mise à jour), note et contenu.
+ *      - Ajoute le fragment du formulaire de création de commentaire à la fin.
  *
- * Fragment de page pour afficher la liste des commentaires et/ou notes
+ *  Paramètre attendu :
+ *      - $list_comments : tableau d’objets contenant les commentaires et/ou notes à afficher.
  *
- * Paramètres:
- *          - $list_comments: tableau d'objet contenant les commentaires et/ou notes à afficher
- *
+ * ============================================================
  */
 
 ?>

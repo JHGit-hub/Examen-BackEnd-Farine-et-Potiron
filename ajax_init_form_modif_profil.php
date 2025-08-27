@@ -1,16 +1,18 @@
 <?php
 
 /**
- * Contrôleur AJAX
+ * ============================================================
+ *  Contrôleur : ajax_init_form_modif_profil.php
+ *  Rôle :
+ *      - Prépare le formulaire de modification du profil utilisateur.
  *
- * Rôle:
- *      - Prépare le formulaire de modification du profil utilisateur
- *
- * Paramètre:
+ *  Paramètre attendu :
  *      - néant
  *
- * Retourne:
- *      - fragment HTML généré par frag_form_modif_profil.php
+ *  Retourne :
+ *      - $user : objet contenant les informations de l’utilisateur connecté.
+ *      - Fragment HTML généré par 'frag_form_modif_profil.php'.
+ * ============================================================
  */
 
 ////// Initialisation:

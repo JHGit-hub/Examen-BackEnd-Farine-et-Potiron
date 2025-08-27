@@ -1,14 +1,16 @@
 <?php
 
 /**
- * Homepage template
- * 
- * Template de page compléte dans lequel on affichera un header selon si l'utilisateur est connecté ou non
- * Affichage de la liste des recettes et d'un systéme de filtrage selon farine et difficulté
- * 
- * Paramètres:
- *          - $list_recipes: liste des recettes à afficher; toutes ou filtrés selon critères
- *          - $list_flours: tableau associatif contenant les références et les libellés des farines
+ * ============================================================
+ *  Template : homepage.php
+ *  Rôle :
+ *      - Affiche la page d'accueil avec header selon l'état de connexion
+ *      - Affiche la liste des recettes avec système de filtrage par farine(s) et difficulté
+ *
+ *  Paramètres attendus :
+ *      - $list_recipes : liste des recettes à afficher (toutes ou filtrées)
+ *      - $list_flours : tableau associatif avec références et libellés des farines
+ * ============================================================
  */
 
 ?>

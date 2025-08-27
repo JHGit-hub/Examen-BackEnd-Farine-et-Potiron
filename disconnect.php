@@ -1,16 +1,17 @@
 <?php
 
 /**
- * Contrôleur de déconnexion utilisateur
+ * ============================================================
+ *  Contrôleur : disconnect.php
+ *  Rôle :
+ *      - Déconnecte l'utilisateur de la session.
  *
- * Rôle:
- *      - déconnecte l'utilisateur de la session
- *
- * Paramètres:
+ *  Paramètres :
  *      - néant
  *
- * Retour:
- *      - néant
+ *  Retour :
+ *      - néant (redirection vers la page d'accueil)
+ * ============================================================
  */
 
 ////// Initialisation:

@@ -1,13 +1,18 @@
 <?php
 
 /**
- * Frag_form_modif_comment fragment
+ * ============================================================
+ *  Fragment : frag_form_modif_comment.php
+ *  Rôle global :
+ *      - Affiche le formulaire de modification d’un commentaire et/ou note.
+ *      - Propose le bouton pour fermer le formulaire et revenir au détail de la recette.
+ *      - Permet de modifier la note et le contenu du commentaire.
+ *      - Propose les boutons pour enregistrer ou supprimer le commentaire.
  *
- * Fragment de page pour afficher le formulaire de modification de commentaire et/ou note
+ *  Paramètre attendu :
+ *      - $detail_comment : objet contenant les informations du commentaire et/ou note à modifier.
  *
- * Paramètres:
- *          - $detail_comment: objet contenant les informations du commentaire et/ou note à modifier
- *
+ * ============================================================
  */
 ?>
 

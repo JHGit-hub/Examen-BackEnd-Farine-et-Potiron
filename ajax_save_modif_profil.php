@@ -1,18 +1,20 @@
 <?php
 
 /**
- * Contrôleur AJAX
+ * ============================================================
+ *  Contrôleur : ajax_save_modif_profil.php
+ *  Rôle :
+ *      - Enregistre les modifications du profil utilisateur.
  *
- * Rôle:
- *      - Enregistre les modifications du profil utilisateur
+ *  Paramètres attendus :
+ *      - (via $_POST) password : mot de passe du profil
+ *      - (via $_POST) username : pseudo du profil
+ *      - (via $_POST) email : nouvel email du profil
  *
- * Paramètre:
- *      - (via $_POST)password: mot de passe du profil
- *      - (via $_POST)username: pseudo du profil
- *      - (via $_POST)email: nouvel email du profil
- *
- * Retourne:
+ *  Retourne :
+ *      - $user : objet contenant les informations de l’utilisateur connecté
  *      - fragment HTML généré par frag_edit_profil.php
+ * ============================================================
  */
 
 ////// Initialisation:
@@ -30,7 +32,6 @@ if (!$session->isLogged()) {
 $user = new User($session->idConnected());
 
 // On charge les données du formulaire
-// Chargement des champs textes du formulaire
 $user->loadFromTab($_POST);
 
 // Mise à jour du mot de passe uniquement s'il a été modifié

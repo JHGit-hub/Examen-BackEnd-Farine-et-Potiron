@@ -1,16 +1,18 @@
 <?php
 
 /**
- * Contrôleur AJAX
+ * ============================================================
+ *  Contrôleur : ajax_init_form_modif_comment.php
+ *  Rôle :
+ *      - Prépare le formulaire de modification d'un commentaire et/ou note.
  *
- * Rôle:
- *      - Prépare le formulaire de modification d'un commentaire et/ou note
+ *  Paramètre attendu :
+ *      - (via $_GET) id : identifiant du commentaire et/ou note à modifier.
  *
- * Paramètre:
- *      - (via $_GET)id: identifiant du commentaire et/ou note à modifier
- *
- * Retourne:
- *      - fragment HTML généré par frag_form_modif_comment.php
+ *  Retourne :
+ *      - $detail_comment : objet contenant les informations du commentaire et/ou note à modifier
+ *      - Fragment HTML généré par 'frag_form_modif_comment.php'.
+ * ============================================================
  */
 
 ////// Initialisation:

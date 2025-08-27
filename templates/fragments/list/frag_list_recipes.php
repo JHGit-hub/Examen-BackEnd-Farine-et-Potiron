@@ -1,13 +1,15 @@
 <?php
 
 /**
- * Frag_list_recipes fragment
+ * ============================================================
+ *  Fragment : frag_list_recipes.php
+ *  Rôle global :
+ *      - Affiche la liste des recettes (toutes ou filtrées selon les critères).
  *
- * Fragment de page pour afficher la liste des recettes (outes ou filtrées selon les critères choisis)
+ *  Paramètre attendu :
+ *      - $list_recipes : tableau d’objets contenant les recettes à afficher.
  *
- * Paramètres:
- *          - $list_recipes: tableau d'objet contenant les recettes à afficher
- *
+ * ============================================================
  */
 
 ?>

@@ -1,13 +1,14 @@
 <?php
 
 /**
- * Frag_form_create_recipe fragment
+ * ============================================================
+ *  Fragment : frag_form_create_recipe.php
+ *  Rôle :
+ *      - Affiche le formulaire de création d'une recette
  *
- * Fragment de page pour afficher le formulaire de création d'une recette
- *
- * Paramètres:
- *          - néant
- *
+ *  Paramètres :
+ *      - néant
+ * ============================================================
  */
 
 ?>

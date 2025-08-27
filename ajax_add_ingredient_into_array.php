@@ -1,18 +1,21 @@
 <?php
 
 /**
- * Contrôleur AJAX 
- * 
- * Rôle:
- *      - Stocke les détails de l'ingredient de la recette dans un tableau associatif de la session $_SESSION
+ * ============================================================
+ *  Contrôleur : ajax_add_ingredient_into_array.php
+ *  Rôle :
+ *      - Stocke les détails d’un ingrédient de recette dans un tableau associatif de la session $_SESSION.
+ *      - Génère et retourne le fragment HTML de la liste d’ingrédients actualisée.
  *
- * Paramètres:
- *          - (via $_POST)reference: nom de l'ingrédient à ajouter
- *          - (via $_POST)quantity: quantité de l'ingrédient à ajouter
- *          - (via $_POST)unit: unité de mesure de l'ingrédient à ajouter
+ *  Paramètres attendus :
+ *      - (via $_GET) reference : nom de l’ingrédient à ajouter
+ *      - (via $_GET) quantity  : quantité de l’ingrédient à ajouter
+ *      - (via $_GET) unit      : unité de mesure à ajouter
  *
- * Retourne:
- *          - fragment HTML généré par frag_list_ingredients.php
+ *  Retourne :
+ *      - $list_ingredients : tableau de tableaux associatifs contenant les ingrédients à afficher.
+ *      - Fragment HTML généré par 'frag_list_ingredients.php', affichant la liste à jour.
+ * ============================================================
  */
 
 ////// Initialisation:

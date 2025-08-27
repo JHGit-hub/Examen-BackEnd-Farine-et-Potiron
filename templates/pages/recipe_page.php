@@ -1,19 +1,20 @@
 <?php
 
 /**
- * Recipe template
+ * ============================================================
+ *  Template : recipe_page.php
+ *  Rôle :
+ *      - Affiche les détails d'une recette, la farine, les ingrédients et les commentaires.
+ *      - Si on est le créateur : bouton "Modifier la recette".
+ *      - Si utilisateur connecté mais pas créateur : possibilité de commenter ou modifier son commentaire.
  *
- * Template de page compléte pour afficher les détails d'une recette
- * Si on est le créateur, un bouton spécifique sera disponible pour la modifier
- * Sinon, on pourra laisser un commentaire (ou note) et eventuellement le(la) modifier
- * seulement si l'utilisateur est connecté et n'est pas le créateur
- *
- * Paramètres:
- *      - $detail_recipe: objet contenant les détails de la recette
- *      - $list_comments: tableau d'objets contenant les commentaires et notes associés à la recette
- *      - $detail_flour: tableau associatif contenant les informations sur la farine utilisée dans la recette
- *      - $list_ingredients: tableau d'objets incluant la liste des ingredients utilisés dans la recette
- *      - $flour_from_recipe: objet contenant la quantité et la référence de la farine utilisée dans la recette
+ *  Paramètres attendus :
+ *      - $detail_recipe : objet contenant les détails de la recette
+ *      - $list_comments : tableau d'objets contenant les commentaires et notes associés à la recette
+ *      - $detail_flour : tableau associatif avec infos farine
+ *      - $list_ingredients : tableau d'objets des ingrédients utilisés
+ *      - $flour_from_recipe : objet quantité/référence de la farine utilisée
+ * ============================================================
  */
 
 

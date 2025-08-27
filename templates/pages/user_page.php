@@ -1,17 +1,18 @@
 <?php
 
 /**
- * User_page template
+ * ============================================================
+ *  Template : user_page.php
+ *  Rôle :
+ *      - Affiche les informations de l'utilisateur connecté
+ *      - Affiche la liste des recettes créées par l'utilisateur
+ *      - Affiche la liste des recettes commentées et/ou notées par l'utilisateur
  *
- * Template de page compléte pour afficher les informations de l'utilisateur
- * On y affichera la liste des recettes créées par l'utilisateur et
- * celles qu'il a commentées et/ou notées
- *
- * Paramètres:
- *          - $user: objet contenant les informations de l'utilisateur
- *          - $list_recipes_rated: tableau d'objets contenant les recettes commentées et /ou notées par l'utilisateur
- *          - $list_recipes_created: tableau d'objets contenant les recettes créées par l'utilisateur
- *
+ *  Paramètres attendus :
+ *      - $user : objet contenant les informations de l'utilisateur
+ *      - $list_recipes_rated : tableau d'objets contenant les recettes commentées et/ou notées
+ *      - $list_recipes_created : tableau d'objets contenant les recettes créées
+ * ============================================================
  */
 
 ?>
@@ -28,7 +29,7 @@
 
 <body>
     <header>
-        <div class="navrbar">
+        <div class="navbar">
             <?php
             include "templates/fragments/header/frag_header_user_connected.php";
             ?>
@@ -42,6 +43,7 @@
     </header>
     <main>
         <div class="modal hidden" id="modif_profil"></div> <!-- frag_form_modif_profil.php -->
+        <h2>Recettes créées</h2>
         <div class="list created">
             <?php
             foreach ($list_recipes_created as $recipe) {
@@ -65,6 +67,7 @@
             }
             ?>
         </div>
+        <h2>Recettes commentées / notées</h2>
         <div class="list rated">
             <?php
             foreach ($list_recipes_rated as $comment) {

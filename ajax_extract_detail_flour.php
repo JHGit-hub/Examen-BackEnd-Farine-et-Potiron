@@ -1,17 +1,18 @@
 <?php
 
 /**
- * Contrôleur AJAX
+ * ============================================================
+ *  Contrôleur : ajax_extract_detail_flour.php
+ *  Rôle :
+ *      - Récupère les détails d'une farine sélectionnée à partir de l'API.
  *
- * Rôle:
- *      - Récupère les détails d'une farine selectionnée à partir de l'API
+ *  Paramètre attendu :
+ *      - (via $_GET) reference : référence de la farine à extraire.
  *
- * Paramètres:
- *          - (via $_GET)reference: reference de la farine à extraire
- *
- * Retourne:
- *          - $detail_flour: tableau associatif du détail de la farine issu de l'API
- *          - fragment HTML généré par frag_detail_flour.php
+ *  Retourne :
+ *      - $detail_flour : tableau associatif du détail de la farine issu de l'API.
+ *      - Fragment HTML généré par 'frag_detail_flour.php'.
+ * ============================================================
  */
 
 ////// Initialisation:

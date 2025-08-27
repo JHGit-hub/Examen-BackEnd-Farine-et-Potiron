@@ -1,13 +1,17 @@
 <?php
 
 /**
- * Frag_form_create_user fragment
+ * ============================================================
+ *  Fragment : frag_form_create_user.php
+ *  Rôle global :
+ *      - Affiche le formulaire de création de compte utilisateur.
+ *      - Propose un bouton pour fermer le formulaire.
+ *      - Utilise un champ "honeypot" caché pour limiter les soumissions automatiques par des bots.
  *
- * Fragment de page pour afficher le formulaire de création de compte utilisateur
+ *  Paramètres attendus :
+ *      - néant
  *
- * Paramètres:
- *          - néant
- *
+ * ============================================================
  */
 
 ?>

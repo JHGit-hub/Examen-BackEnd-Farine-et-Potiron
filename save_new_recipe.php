@@ -1,21 +1,22 @@
 <?php
 
 /**
- * Contrôleur d'enregistrement de données
+ * ============================================================
+ *  Contrôleur d'enregistrement de données : save_new_recipe.php
+ *  Rôle :
+ *      - Enregistre la nouvelle recette créée par l'utilisateur
  *
- * Rôle:
- *      - enregistre la nouvelle recette créée par l'utilisateur
+ *  Paramètres attendus :
+ *      - (via $_POST) reference : référence de la farine
+ *      - (via $_POST) title : titre de la recette
+ *      - (via $_POST) execution_time : temps de préparation
+ *      - (via $_POST) description : description détaillée de la recette
+ *      - (via $_POST) difficulty : difficulté de la recette
+ *      - (via $_SESSION) ingredients : ingrédients nécessaires à sa réalisation
  *
- * Paramètres:
- *      - (via $_POST) reference: reference de la farine
- *      - (via $_POST) title: titre de la recette
- *      - (via $_POST) execution_time: temps de préparation
- *      - (via $_POST) description: description détaillée de la recette
- *      - (via $_POST) difficulty: difficulté de la recette
- *      - (via $_SESSION) ingredients: ingredients necessaire à sa réalisation
- *
- * Retour:
- *      - néant
+ *  Retour :
+ *      - néant (redirection)
+ * ============================================================
  */
 
 ////// Initialisation:

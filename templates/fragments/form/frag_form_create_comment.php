@@ -1,13 +1,15 @@
 <?php
 
 /**
- * Frag_form_create_comment fragment
+ * ============================================================
+ *  Fragment : frag_form_create_comment.php
+ *  Rôle :
+ *      - Affiche le formulaire de création de commentaire et/ou note pour une recette
  *
- * Fragment de page pour afficher le formulaire de création de commentaire et/ou note
- *
- * Paramètres:
- *          - $detail_recipe: objet contenant le détail de la recette
- *
+ *  Paramètres :
+ *      - $detail_recipe : objet contenant le détail de la recette
+ *      - $list_comments : tableau des commentaires existants pour la recette
+ * ============================================================
  */
 
 ?>

@@ -1,16 +1,17 @@
 <?php
 
 /**
- * Contrôleur de suppression de données
+ * ============================================================
+ *  Contrôleur : delete_recipe.php
+ *  Rôle :
+ *      - Supprime la recette sélectionnée par l'utilisateur ainsi que tous les ingrédients liés.
  *
- * Rôle:
- *      - supprime la recette sélectionnée par l'utilisateur
+ *  Paramètre attendu :
+ *      - (via $_GET) id : identifiant de la recette
  *
- * Paramètres:
- *      - (via $_GET) id: id de la recette
- *
- * Retour:
- *      - néant
+ *  Retour :
+ *      - néant (redirection vers la page utilisateur)
+ * ============================================================
  */
 
 ////// Initialisation:
@@ -18,13 +19,13 @@ include_once "library/init.php";
 
 ////// Contrôle de session utilisateur:
 if (!$session->isLogged()) {
-    // L'utilisateur N'EST PAS connecté
+    // L'utilisateur n'est PAS connecté
     header('Location: index.php');
     exit();
 }
 
 ////// Traitement
-// On récupére l'id de la recette à supprimer
+// On récupère l'id de la recette à supprimer
 $recipe_id = $_GET["id"] ?? 0;
 
 

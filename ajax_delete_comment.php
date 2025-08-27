@@ -1,16 +1,18 @@
 <?php
 
 /**
- * Contrôleur AJAX
+ * ============================================================
+ *  Contrôleur : ajax_delete_comment.php
+ *  Rôle :
+ *      - Supprime un commentaire identifié et met à jour l’affichage des commentaires liés à une recette.
  *
- * Rôle:
- *      - Supprime le commentaire
+ *  Paramètre attendu :
+ *      - (via $_GET) id : identifiant du commentaire à supprimer
  *
- * Paramètre:
- *      - (via $_GET) id: identifiant du commentaire à supprimer
- *
- * Retourne:
- *      - fragment HTML généré par frag_list_comments.php
+ *  Retourne :
+ *      - $list_comments : tableau d’objets contenant les commentaires et/ou notes à afficher.
+ *      - Fragment HTML généré par 'frag_list_comments.php', affichant la liste à jour.
+ * ============================================================
  */
 
 ////// Initialisation:

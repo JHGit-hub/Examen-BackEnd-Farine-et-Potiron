@@ -1,17 +1,18 @@
 <?php
 
 /**
- * Contrôleur d'extraction de données
+ * ============================================================
+ *  Contrôleur : extract_list_flours.php
+ *  Rôle :
+ *      - Extrait la liste des farines disponibles à partir de l'API
+ *      - Prépare le formulaire de création de recette
  *
- * Rôle:
- *      - extrait la liste des farines disponibles à partir de l'API
- *      - prépare le formulaire de création de recette
- *
- * Paramètres:
+ *  Paramètres :
  *      - néant
  *
- * Retour:
- *      - $list_flours: tableau associatif contenant la liste des farines
+ *  Retour :
+ *      - $list_flours : tableau associatif contenant la liste des farines
+ * ============================================================
  */
 
 ////// Initialisation:

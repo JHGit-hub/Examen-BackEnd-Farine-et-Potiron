@@ -1,27 +1,26 @@
 <?php
-
 /**
- * Contrôleur AJAX
+ * ============================================================
+ *  Contrôleur : ajax_save_modif_recipe.php
+ *  Rôle :
+ *      - Enregistre les modifications d'une recette (infos, farine, ingrédients).
  *
- * Rôle:
- *      - Enregistre les modifications d'une recette
+ *  Paramètres attendus :
+ *      - (via $_POST) id : identifiant de la recette à modifier
+ *      - (via $_POST) title : titre de la recette
+ *      - (via $_POST) description : description de la recette
+ *      - (via $_POST) execution_time : temps de préparation
+ *      - (via $_POST) difficulty : difficulté de la recette
+ *      - (via $_POST) ingredients : liste des ingrédients mise à jour
+ *      - (via $_SESSION) ingredients : nouveaux ingrédients à ajouter
  *
- * Paramètre:
- *      - (via $_POST)id: identifiant de la recette à modifier
- *      - (via $_POST)title: titre de la recette
- *      - (via $_POST)description: description de la recette
- *      - (via $_POST)execution_time: temps de préparation
- *      - (via $_POST)difficulty: difficulté de la recette
- *      - (via $_POST)ingredients: liste des ingrédients de la recette mise à jour
- *      - (via $_SESSION)new_ingredients: nouveaux ingrédients de la recette à ajouter
- *
- * Retourne:
- *      - $detail_recipe: objet contenant les détails de la recette
- *      - $detail_flour: tableau associatif contenant les informations sur la farine utilisée dans la recette
- *      - $list_ingredients: tableau d'objets incluant la liste des ingredients utilisés dans la recette
- *      - $flour_from_recipe: objet contenant la quantité et la référence de la farine utilisée dans la recette
- * 
+ *  Retourne :
+ *      - $detail_recipe : objet contenant les détails de la recette
+ *      - $detail_flour : tableau associatif contenant les infos sur la farine utilisée
+ *      - $list_ingredients : tableau d'objets, liste des ingrédients
+ *      - $flour_from_recipe : objet avec quantité et référence de la farine
  *      - fragment HTML généré par frag_detail_recipe.php
+ * ============================================================
  */
 
 ////// Initialisation:

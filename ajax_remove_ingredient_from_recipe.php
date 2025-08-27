@@ -1,16 +1,18 @@
 <?php
 
 /**
- * Contrôleur AJAX
+ * ============================================================
+ *  Contrôleur : ajax_removeingredient_from_recipe.php
+ *  Rôle :
+ *      - Supprime un ingrédient d'une recette.
  *
- * Rôle:
- *      - Supprime un ingrédient d'une recette
+ *  Paramètre attendu :
+ *      - (via $_GET) id : identifiant de l'ingrédient à supprimer
  *
- * Paramètre:
- *      - (via $_GET)id: identifiant de l'ingrédient à supprimer
- *
- * Retourne:
+ *  Retourne :
+ *      - $list_current_ingredients : tableau d'objets contenant les ingrédients enregistrés de la recette
  *      - fragment HTML généré par frag_list_current_ingredients.php
+ * ============================================================
  */
 
 ////// Initialisation:
@@ -27,7 +29,7 @@ if (!$session->isLogged()) {
 // On récupére l'id de l'ingredient (via $_GET)
 $id = $_GET["id"] ?? 0;
 
-// On charge l'objet ingredient selectionné
+// On charge l'objet ingrédient sélectionné
 $ingredient = new Ingredient($id);
 
 // On récupére l'id de la recette avant de supprimer l'ingrédient

@@ -1,14 +1,20 @@
 
 <?php
 /**
- * Frag_list_ingredients fragment
+ * ============================================================
+ *  Fragment : frag_list_ingredients
+ *  Rôle global :
+ *      - Affiche la liste des ingrédients à ajouter à une recette sous forme de liste HTML.
+ *      - Permet la suppression d’un ingrédient via un bouton "Supprimer" (action JS).
  *
- * Fragment de page pour afficher la liste des ingrédients à ajouter à une recette
- * On pourra supprimer les ingrédients de cette liste grâce à un bouton "Supprimer"
+ *  Paramètre attendu :
+ *      - $list_ingredients : tableau de tableaux associatifs contenant les ingrédients à afficher.
  *
- * Paramètres:
- *          - $list_ingredients: tableau de tableaux associatifs contenant les ingrédients à ajouter à la recette
+ *  Fonctionnalités principales :
+ *      - Parcours du tableau $list_ingredients et affichage de chaque ingrédient (référence, quantité, unité).
+ *      - Bouton associé à chaque ingrédient pour le retirer dynamiquement de la liste.
  *
+ * ============================================================
  */
 ?>
 

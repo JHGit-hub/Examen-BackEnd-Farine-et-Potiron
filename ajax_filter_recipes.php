@@ -1,19 +1,20 @@
 <?php
 
 /**
- * Contrôleur AJAX
+ * ============================================================
+ *  Contrôleur : ajax_filter_recipes.php
+ *  Rôle :
+ *      - Filtre les recettes en fonction des critères sélectionnés (difficulté ou nom de la farine).
  *
- * Rôle:
- *      - Filtre les recettes en fonction des critères selectionnées (difficulté ou nom de la farine)
+ *  Paramètres attendus :
+ *      - (via $_GET) flour_1    : référence de la première farine sélectionnée
+ *      - (via $_GET) flour_2    : référence de la deuxième farine sélectionnée
+ *      - (via $_GET) difficulty : niveau de difficulté de la recette
  *
- * Paramètres:
- *          - (via $_GET)flour_1: référence de la premiére farine selectionnée
- *          - (via $_GET)flour_2: référence de la deuxiéme farine selectionnée
- *          - (via $_GET)difficulty: niveau de difficulté de la recette
- *
- * Retourne:
- *          - fragment HTML généré par frag_list_recipes.php
- *          - $list_recipes: tableau d'objets contenant les recettes filtrées selon les critères choisis
+ *  Retourne :
+ *      - fragment HTML généré par 'frag_list_recipes.php'
+ *      - $list_recipes : tableau d’objets contenant les recettes filtrées selon les critères choisis
+ * ============================================================
  */
 
 ////// Initialisation:

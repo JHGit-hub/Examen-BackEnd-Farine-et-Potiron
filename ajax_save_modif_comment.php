@@ -1,18 +1,20 @@
 <?php
 
 /**
- * Contrôleur AJAX
+ * ============================================================
+ *  Contrôleur : ajax_save_modif_comment.php
+ *  Rôle :
+ *      - Enregistre les modifications d'un commentaire.
  *
- * Rôle:
- *      - Enregistre les modifications d'un commentaire
+ *  Paramètres attendus :
+ *      - (via $_POST) id : identifiant du commentaire à modifier
+ *      - (via $_POST) content : nouveau contenu du commentaire
+ *      - (via $_POST) rate : note du commentaire
  *
- * Paramètre:
- *      - (via $_POST) id: identifiant du commentaire à modifier
- *      - (via $_POST) content: nouveau contenu du commentaire
- *      - (via $_POST) rate: note du commentaire
- *
- * Retourne:
+ *  Retourne :
+ *      - $list_comments : tableau d’objets contenant les commentaires et/ou notes à afficher
  *      - fragment HTML généré par frag_list_comments.php
+ * ============================================================
  */
 
 ////// Initialisation:
@@ -27,13 +29,13 @@ if (!$session->isLogged()) {
 
 ////// Traitement:
 
-// On récupére l'id du commentaire
+// On récupère l'id du commentaire
 $id = $_POST["id"] ?? "";
 
-// On instancie la class Comment
+// On instancie la classe Comment
 $comment = new Comment($id);
 
-// On récupére les données du formulaire
+// On récupère les données du formulaire
 $comment->loadFromTab($_POST);
 
 // On intégre la modification du commentaire à la base de données

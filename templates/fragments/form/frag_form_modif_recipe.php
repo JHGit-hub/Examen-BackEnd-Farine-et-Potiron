@@ -1,16 +1,22 @@
 <?php
 
 /**
- * Frag_form_modif_recipe fragment
+ * ============================================================
+ *  Fragment : frag_form_modif_recipe.php
+ *  Rôle global :
+ *      - Affiche le formulaire de modification d'une recette.
+ *      - Permet de modifier la farine, la quantité, le titre, la description, le temps de préparation, la difficulté.
+ *      - Affiche la liste des ingrédients actuels et le formulaire d'ajout d'ingrédients.
+ *      - Propose un bouton pour enregistrer les modifications et un lien pour supprimer la recette.
+ *      - Propose un bouton pour fermer le formulaire et revenir au détail de la recette.
  *
- * Fragment de page pour afficher le formulaire de modification de recette
+ *  Paramètres attendus :
+ *      - $detail_recipe : objet contenant les informations de la recette à modifier
+ *      - $list_flours : tableau associatif contenant les types de farine disponibles
+ *      - $flour_from_recipe : objet contenant les informations sur la farine utilisée dans la recette
+ *      - $list_current_ingredients : tableau d'objets contenant les ingrédients enregistrés de la recette
  *
- * Paramètres:
- *          - $detail_recipe: objet contenant les informations de la recette à modifier
- *          - $list_flours: tableau associatif contenant les types de farine disponibles
- *          - $flour_from_recipe: objet contenant les informations sur la farine utilisée dans la recette
- *          - $list_current_ingredients: tableau d'objet contenant les ingrédients enregistrés de la recette
- *
+ * ============================================================
  */
 
 ?>

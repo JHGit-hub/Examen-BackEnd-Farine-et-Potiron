@@ -1,13 +1,16 @@
 <?php
 
 /**
- * Frag_edit_profil fragment
+ * ============================================================
+ *  Fragment : frag_edit_profil.php
+ *  Rôle global :
+ *      - Affiche le détail du profil utilisateur connecté.
+ *      - Affiche le pseudo et l’email.
+ *      - Propose un bouton pour ouvrir le formulaire de modification du profil.
  *
- * Fragment de page pour afficher le détail du profil utilisateur
- *
- * Paramètres:
- *          - $user: objet contenant les informations de l'utilisateur connecté
- *
+ *  Paramètre attendu :
+ *      - $user : objet contenant les informations de l’utilisateur connecté
+ * ============================================================
  */
 
 ?>

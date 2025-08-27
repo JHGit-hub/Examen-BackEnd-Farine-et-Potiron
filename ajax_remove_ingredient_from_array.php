@@ -1,16 +1,18 @@
 <?php
 
 /**
- * Contrôleur AJAX
+ * ============================================================
+ *  Contrôleur : ajax_remove_ingredient_from_array.php
+ *  Rôle :
+ *      - Supprime un ingrédient du tableau des ingrédients enregistré en session.
  *
- * Rôle:
- *      - Supprime un ingrédient du tableau des ingrédients
+ *  Paramètre attendu :
+ *      - (via $_GET) reference : nom (référence) de l'ingrédient à supprimer
  *
- * Paramètre:
- *      - (via $_GET)reference: nom de l'ingrédient à supprimer
- *
- * Retourne:
+ *  Retourne :
+ *      - $list_ingredients : tableau de tableaux associatifs contenant les ingrédients à afficher.
  *      - fragment HTML généré par frag_list_ingredients.php
+ * ============================================================
  */
 
 ////// Initialisation:

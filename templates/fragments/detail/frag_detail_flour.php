@@ -1,15 +1,16 @@
 <?php
-
 /**
- * Frag_detail_flour fragment
+ * ============================================================
+ *  Fragment : frag_detail_flour
+ *  Rôle global :
+ *      - Affiche les détails d'une farine sous forme de fiche.
+ *      - Prépare le formulaire d'ajout de quantité pour une recette.
  *
- * Fragment de page pour afficher les détails d'une farine
+ *  Paramètre attendu :
+ *      - $detail_flour : tableau associatif contenant le détail de la farine issu de l’API.
  *
- * Paramètres:
- *          - $detail_flour: tableau associatif du détail de la farine issu de l'API
- *
+ * ============================================================
  */
-
 
 ?>
 

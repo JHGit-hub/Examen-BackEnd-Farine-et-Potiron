@@ -1,13 +1,15 @@
 <?php
 
 /**
- * Frag_header_user_connected fragment
+ * ============================================================
+ *  Fragment : frag_header_user_connected.php
+ *  Rôle :
+ *      - Affiche la navbar lorsque l'utilisateur est connecté
+ *      - Accès au compte et bouton déconnexion
  *
- * Fragment de page pour afficher la navbar de l'utilisateur connecté
- *
- * Paramètres:
- *          - néant
- *
+ *  Paramètres :
+ *      - néant
+ * ============================================================
  */
 
 ?>

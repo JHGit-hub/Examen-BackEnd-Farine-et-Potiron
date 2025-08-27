@@ -1,18 +1,19 @@
 <?php
 
 /**
- * Contrôleur AJAX
+ * ============================================================
+ *  Contrôleur : ajax_save_new_comment.php
+ *  Rôle :
+ *      - Enregistre un nouveau commentaire sur une recette.
  *
- * Rôle:
- *      - Enregistre un nouveau commentaire
+ *  Paramètres attendus :
+ *      - (via $_POST) id : identifiant de la recette
+ *      - (via $_POST) content : contenu du commentaire
+ *      - (via $_POST) rate : note du commentaire
  *
- * Paramètre:
- *      - (via $_POST)id: identifiant de la recette
- *      - (via $_POST)content: contenu du commentaire
- *      - (via $_POST)rate: note du commentaire
- *
- * Retourne:
+ *  Retourne :
  *      - fragment HTML généré par frag_list_comments.php
+ * ============================================================
  */
 
 ////// Initialisation:
@@ -26,13 +27,13 @@ if (!$session->isLogged()) {
 }
 
 ////// Traitement:
-// On récupére l'id de l'utilisateur
+// On récupére  l'id de l'utilisateur
 $user_id = $session->idConnected();
 
-// On instancie la class Comment
+// On instancie la classe Comment
 $comment = new Comment();
 
-// On récupére les données du formulaire
+// On récupére  les données du formulaire
 $comment->loadFromTab($_POST);
 
 // On intégre user_id dans $comment
