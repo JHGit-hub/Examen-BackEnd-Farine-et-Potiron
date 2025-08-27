@@ -14,17 +14,15 @@
  * Retour:
  *      - $detail_recipe: objet contenant les détails de la recette
  *      - $list_comments: tableau d'objets contenant les commentaires et notes associés à la recette
- *      - $user: objet contenant les informations de l'utilisateur
- *      - $detail_flour: objet contenant les informations sur la farine utilisée dans la recette
- *      - $list_ingredients: liste des ingredients utilisés dans la recette incluant leurs quantités et unité de mesure
+ *      - $detail_flour: tableau associatif contenant les informations sur la farine utilisée dans la recette
+ *      - $list_ingredients: tableau d'objets incluant la liste des ingredients utilisés dans la recette
+ *      - $flour_from_recipe: objet contenant la quantité et la référence de la farine utilisée dans la recette
  */
 
 ////// Initialisation:
 include_once "library/init.php";
 
 ////// Traitement
-// On charge l'utilisateur connecté si la session est active, vide sinon
-$user = User::getCurrentUser();
 
 // On récupére l'id via $_GET
 $recipe_id = $_GET["recipe_id"] ?? "";
@@ -33,6 +31,11 @@ $id = $_GET["id"] ?? "";
 // si $recipe_id n'est pas vide, on attribue sa valeur à $id
 if($recipe_id){
     $id = $recipe_id;
+}
+// On vide le tableau de la session s'il existe
+// Pour vider la liste des ingredients à ajouter a une recette
+if (isset($_SESSION["ingredients"])) {
+    $_SESSION["ingredients"] = [];
 }
 
 // On extrait le détail de la recette
@@ -48,11 +51,11 @@ $list_ingredients = $ingredient->getIngredients($id);
 
 // On extrait le détail de la farine contenu dans la recette
 $flour = new Flour();
-$flour_used = $flour->getFlourReferenceAndQuantityById($id);
+$flour_from_recipe = $flour->getFlourFromRecipe($id);
 
-$detail_flour = $flour->getFlourDetail($flour_used["reference"]);
-$quantity_flour = $flour_used["quantity"];
+$reference = $flour_from_recipe->get("reference");
 
+$detail_flour = $flour->getFlourDetail($reference);
 
 ////// Affichage de la page
 include "templates/pages/recipe_page.php";

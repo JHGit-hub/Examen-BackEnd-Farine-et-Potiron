@@ -10,6 +10,7 @@
  *          - (via $_GET)reference: reference de la farine à extraire
  *
  * Retourne:
+ *          - $detail_flour: tableau associatif du détail de la farine issu de l'API
  *          - fragment HTML généré par frag_detail_flour.php
  */
 

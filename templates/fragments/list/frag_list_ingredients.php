@@ -21,7 +21,7 @@
                 <h3><?= $ingredient['reference'] ?></h3>
                 <p><?= $ingredient['quantity'] ?> <?= $ingredient['unit'] ?></p>
             </div>
-            <button onclick="removeIngredient('<?= $ingredient['reference'] ?>', 'list_ingredients')" class="delete-btn">Supprimer</button>
+            <button onclick="removeIngredient(event,'<?= $ingredient['reference'] ?>', 'list_ingredients')" class="delete-btn">Supprimer</button>
         </li>
     <?php 
         endforeach; 

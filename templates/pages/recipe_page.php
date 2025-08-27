@@ -11,9 +11,9 @@
  * Paramètres:
  *      - $detail_recipe: objet contenant les détails de la recette
  *      - $list_comments: tableau d'objets contenant les commentaires et notes associés à la recette
- *      - $user: objet contenant les informations de l'utilisateur
- *      - $detail_flour: objet contenant les informations sur la farine utilisée dans la recette
- *      - $list_ingredients: liste des ingredients utilisés dans la recette incluant leurs quantités et unité de mesure
+ *      - $detail_flour: tableau associatif contenant les informations sur la farine utilisée dans la recette
+ *      - $list_ingredients: tableau d'objets incluant la liste des ingredients utilisés dans la recette
+ *      - $flour_from_recipe: objet contenant la quantité et la référence de la farine utilisée dans la recette
  */
 
 
@@ -54,14 +54,13 @@
     </header>
     <main>
         <div class="modal hidden" id="modif_recipe"></div> <!-- frag_form_modif_recipe.php -->
-        <div class="modal hidden" id="modif_comment"></div> 
+        <div class="modal hidden" id="modif_comment"></div> <!-- frag_form_modif_comment.php -->
         <div id="detail_recipe">
             <?php include 'templates/fragments/detail/frag_detail_recipe.php'; ?>
-        </div> <!-- frag_detail_recipe.php -->
+        </div>
         <div id="list_comments">
             <?php include 'templates/fragments/list/frag_list_comments.php'; ?>
-        </div> <!-- frag_list_comments.php -->
-            <!-- ICI le code retiré -->
+        </div>
         <div id="modal_background" class="modal_background hidden"></div>
     </main>
     <script src="js/functions.js" type="text/javascript"></script>

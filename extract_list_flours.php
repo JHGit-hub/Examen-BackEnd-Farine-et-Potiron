@@ -12,7 +12,6 @@
  *
  * Retour:
  *      - $list_flours: tableau associatif contenant la liste des farines
- *      - $detail_flour: tableau associatif du détail de la farine issu de l'API
  */
 
 ////// Initialisation:

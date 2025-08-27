@@ -50,32 +50,35 @@ class Flour extends _model{
     }
 
     ///2. Extraire la référence et la quantité d'une farine utilisé à partir de l'identifiant d'une recette
-    function getFlourReferenceAndQuantityById(int $id){
+    function getFlourFromRecipe(int $id){
         // Rôle:
-        //      - extraire la référence et la quantité de la farine utilisé à partir d'un identifiant de recette
+        //      - extraire le detail de la farine utilisé dans la recette issus de la table flours
         // paramètres:
         //      - $id: identifiant de la recette
         // retour:
         //      - $objet contenant les details demandées
 
         // création de la requête
-        $sql = "SELECT reference, quantity FROM flours WHERE recipe_id = :id";
+        $sql = "SELECT id,reference, quantity FROM flours WHERE recipe_id = :id";
         $param = [":id" => $id];
 
         // Préparation et exécution de la requête
         $row = self::$bdd->bddGetFirstLigne($sql, $param);
 
-        if($row && isset($row["reference"]) && isset($row["quantity"])){
-            // si $row n'est pas false et si $row["reference"] et $row["quantity"] existent
-            $result = [
-                "reference" => $row["reference"],
-                "quantity" => $row["quantity"]
-            ];
-        } else {
-            $result = false;
+        // On verifie que le résultat n'est pas vide
+        if(!$row){
+            return false;
         }
 
-        return $result;
+        // On créée un objet Four et on le remplit
+        $flour = new Flour();
+        $flour->loadFromTab($row);
+
+        $id = $row["id"];
+        $flour->set("id", $id);
+
+        return $flour;
+
     }
 
     ///3. Extraire le détail d'une farine

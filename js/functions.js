@@ -341,7 +341,7 @@ function addIngredient(event, divIdResult) {
 
 }
 
-function removeIngredient(reference, divIdResult) {
+function removeIngredient(event, reference, divIdResult) {
     // rôle:
     //      - demander au controleur AJAX de supprimer un ingredient du tableau de la session
     // paramètres (via $_GET):
@@ -350,6 +350,9 @@ function removeIngredient(reference, divIdResult) {
     //      - divIdResult: id de la <div> qui va afficher le resultat
     // retour:
     //      - renvoi le résultat (fragment HTML) de l'ajax à la fonction showResults()
+
+    // On empêche l'envoi du formulaire
+    event.preventDefault();
 
     // Construction de l'url à appeler
     let url = "ajax_remove_ingredient_from_array.php?reference=" + encodeURIComponent(reference);
