@@ -63,5 +63,12 @@ class Ingredient extends _model{
             self::$bdd->bddRequest($sql, $param);
         }
 
+        // Mise a jour de la date de modification de la recette
+        // On demande à la bdd de donner la date du jour a update_date
+        $sql_update_date = "UPDATE recipes SET update_date = NOW() WHERE id = :id";
+        $param_update_date = [":id" => $id];
+
+        // On execute la requête
+        self::$bdd->bddRequest($sql_update_date, $param_update_date);
     }
 }

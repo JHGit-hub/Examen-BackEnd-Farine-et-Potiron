@@ -85,4 +85,46 @@ class Recipe extends _model
 
         return $this->tblTransform($resultats); // converti le résultat et renvoi un tableau d'objets
     }
+
+    ////3. Supprimer une recette et ses ingredients de la base de donnée
+    public static function deleteRecipeById( int $id){
+        // rôle: 
+        //      - supprimer une recette et ses ingrédients associés de la base de donnée
+        // paramètres:
+        //      -id: identifiant de la recette à supprimer
+        // retour:
+        //      - true ou false si echec
+
+
+        //// Suppression de la farine associée
+        // création de la requête sql pour supprimer la farine de la table flours
+        $sql_flour = "DELETE FROM flours WHERE recipe_id = :id";
+        $param_flour = [":id" => $id];
+
+        // Execution de la requête
+        $delete_flour = self::$bdd->bddRequest($sql_flour, $param_flour);
+
+        //// Suppression des ingredients associés
+        // création de la requête sql pour supprimer les ingrédients de la table ingredients
+        $sql_ingredients = "DELETE FROM ingredients WHERE recipe_id = :id";
+        $param_ingredients = [":id" => $id];
+
+        // Execution de la requête
+        $delete_ingredients = self::$bdd->bddRequest($sql_ingredients, $param_ingredients);
+
+        //// Suppression de la recette
+        // création de la requête sql pour supprimer la recette de la table recipes
+        $sql_recipe = "DELETE FROM recipes WHERE id = :id";
+        $param_recipe = [":id" => $id];
+
+        // Execution de la requête
+        $delete_recipe = self::$bdd->bddRequest($sql_recipe, $param_recipe);
+
+        if(!$delete_flour || !$delete_ingredients || !$delete_recipe){
+            return false;
+        }
+        
+        return true;
+
+    }
 }

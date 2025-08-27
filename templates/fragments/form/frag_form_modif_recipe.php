@@ -86,4 +86,7 @@
 
         <button type="button" class="secondary_btn open_btn" onclick="recordModifRecipe(event, 'modif_recipe', 'detail_recipe')">Enregistrer</button>
     </form>
+    <div>
+        <a href="delete_recipe.php?id=<?= $detail_recipe->id() ?>">Supprimer la recette</a>
+    </div>
 </div>

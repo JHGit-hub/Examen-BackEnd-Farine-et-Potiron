@@ -72,23 +72,6 @@ $flour->insert();
 //// On enregistre les ingrédients de la recette dans la table ingredients
 Ingredient::saveIngredientsFromArray($_SESSION["ingredients"], $recipe_id);
 
-// On vide le tableau des ingrédients
-$_SESSION["ingredients"] = [];
-
-// On charge l'utilisateur connecté si la session est active, vide sinon
-$user = User::getCurrentUser();
-
-// On charge l'id de l'utilisateur connecté
-$id = $session->idConnected();
-
-// ON charge la liste des recettes créées par l'utilisateur connecté
-$recipe = new Recipe();
-$list_recipes_created = $recipe->getRecipesCreatedByUser($id);
-
-// On charge la liste des commentaires et notes laissés par l'utilisateur connecté
-$comment = new Comment();
-$list_recipes_rated = $comment->getCommentsByUser($id);
-
-////// Redirection vers la page de l'utilisateur
-header('Location: user_page.php'); // redirection vers la page de l'utilisateur pour eviter la duplication
+////// Redirection vers la controleur de la page de l'utilisateur
+header('Location: init_user_page.php');
 exit();
