@@ -29,7 +29,7 @@ class User extends _model
             return false;
         }
 
-         
+        /*
         // cas avec mot de passe non hashé
         // On verifie la concordance avec le mot de passe
         if($password === $user->get("password")){ // si oui on renvoi $user
@@ -37,9 +37,10 @@ class User extends _model
         } else {
             return false;
         }
-        
+        */
 
-        /*
+        
+        // cas avec mot de passe hashé
         // On récupére le mot de passe hashé
         $password_hashed = $user->get("password");
 
@@ -49,7 +50,7 @@ class User extends _model
         } else {
             return false;
         }
-        */
+        
 
     }
 

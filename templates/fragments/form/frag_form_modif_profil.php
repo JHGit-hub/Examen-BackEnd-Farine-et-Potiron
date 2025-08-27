@@ -23,8 +23,8 @@
         <div class="edit_profil">
             <div class="profil_txt">
                 <div class="edit_profil_txt">
-                    <label for="surname">Nom: </label>
-                        <input type="text" name="surname" id="surname" value="<?= htmlspecialchars($user->get("surname")) ?>">
+                    <label for="username">Nom: </label>
+                        <input type="text" name="username" id="username" value="<?= htmlspecialchars($user->get("username")) ?>">
                 </div>
                 <div class="edit_profil_txt">
                     <label for="email">Email: </label>

@@ -12,7 +12,7 @@
  */
 ?>
 
-<div id="list_ingredients">
+<div>
     <ul class='list_filtered'>
         <?php 
             foreach($list_ingredients as $ingredient): ?>

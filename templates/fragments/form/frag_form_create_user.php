@@ -19,8 +19,8 @@
 </div>
 <form class="form_create_user" method="post" action="save_new_user.php">
     <div class="create_field">
-        <label for="surname">Pseudo: </label>
-        <input type="text" name="surname" id="surname" value="" required>
+        <label for="username">Pseudo: </label>
+        <input type="text" name="username" id="username" value="" required>
     </div>
     <div class="create_field">
         <label for="email">Email: </label>

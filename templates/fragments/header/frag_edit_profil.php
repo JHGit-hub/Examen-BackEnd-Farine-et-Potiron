@@ -11,7 +11,6 @@
  */
 
 ?>
-
 <div class="secondary_btn">
     <a href="index.php" class="close_btn logout_btn">
         <img src="../../../assets/icons/close.svg" alt="fermer la fenetre">

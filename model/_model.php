@@ -256,11 +256,16 @@ class _model
         }
 
         // On ignore le champ password s'il est vide ou null
-        if (
-            array_key_exists('password', $this->valeurs) &&
-            ($this->valeurs['password'] === null || $this->valeurs['password'] === "")
-        ) {
+        if (array_key_exists('password', $this->valeurs) &&
+            ($this->valeurs['password'] === null || $this->valeurs['password'] === "")) {
+
             unset($this->valeurs['password']);
+
+        } elseif (array_key_exists('password', $this->valeurs) &&
+            ($this->valeurs['password'] !== null || $this->valeurs['password'] !== "")){
+        // s'il n'est pas null ou vide, on le hash avant de l'enregistrer dans la base de donnée
+
+                $this->valeurs['password'] = password_hash($this->valeurs['password'], PASSWORD_DEFAULT);
         }
 
         $id = self::$bdd->bddInsert($this->table, $this->valeurs);

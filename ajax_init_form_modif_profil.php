@@ -32,4 +32,4 @@ $user = new User($id);
 
 
 ////// Affichage de la page:
-include "templates/fragments/profil/frag_form_modif_profil.php";
+include "templates/fragments/form/frag_form_modif_profil.php";
