@@ -15,6 +15,9 @@
  */
 
 ?>
+<div class='recipe-img'>
+    <img src="assets/images/recipe_default.png" alt="image de recette par defaut">
+</div>
 <div class="recipe-title">
     <h2><?= htmlspecialchars($detail_recipe->get("title")) ?></h2>
     <span>
@@ -40,6 +43,7 @@
     <h3>Description de la recette</h3>
     <p><?= htmlspecialchars($detail_recipe->get("description")) ?></p>
     <span><strong>Temps d'exécution : </strong><?= htmlspecialchars($detail_recipe->get("execution_time")) ?> minutes</span>
+    <span><strong>Difficulté : </strong><?= htmlspecialchars($detail_recipe->get("difficulty")) ?></span>
 </div>
 <div class="recipe-ingredients">
     <strong>Ingrédients :</strong>

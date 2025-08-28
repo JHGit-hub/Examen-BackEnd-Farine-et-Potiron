@@ -541,6 +541,17 @@ function showDetailFlour(event, divIdToShow, divIdResult) {
             switchHiddenClass("", divIdResult);
             switchHiddenClass("", divIdToShow); // <div> dans create_recipe.php, incluant frag_form_create_recipe.php, id="form_create_recipe"
             showResults(htmlAjax, divIdResult); // <div> dans create_recipe.php, incluant frag_detail_flour.php, id="detail_flour"
+
+            // Si le fragment d’erreur est présent, on cache la div du formulaire
+            if (htmlAjax.includes('error-msg')) {
+                document.getElementById(divIdToShow).style.display = 'none';
+                // On affiche la div du message d'erreur
+                switchHiddenClass("", "error_container");
+                showResults(htmlAjax, "error_container");
+            } else {
+                switchHiddenClass("error_container","");
+                document.getElementById(divIdToShow).style.display = '';
+            }
         })
         .catch(error => {
             alert("Erreur lors de la récupération des recettes :", error);
@@ -594,7 +605,7 @@ function showPassword() {
     //      - néant
     // retour : 
     //      - néant
-    document.getElementById("modifPassword").style.display = "block";
+    document.getElementById("modif_password").style.display = "flex";
 }
 
 function toggleMode() {

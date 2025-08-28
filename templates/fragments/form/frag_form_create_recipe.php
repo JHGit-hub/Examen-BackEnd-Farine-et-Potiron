@@ -13,20 +13,20 @@
 
 ?>
 
-<div>
+<div class="recipe-title">
     <label for="title">Titre: </label>
     <input type="text" name="title" id="title" placeholder="Titre de la recette" required>
 </div>
-<div>
+<div class="recipe-description">
     <label for="description">Description: </label>
     <textarea id="description" name="description" rows="5" cols="40" placeholder="Description de la recette" required></textarea>
 </div>
-<div>
+<div class="recipe-description">
     <label for="execution_time">Temps de préparation (en minutes): </label>
     <input type="number" id="execution_time" name="execution_time" required>
 </div>
-<div>
-    <label for="difficulty">Difficulté: </label>
+<div class="recipe-description">
+    <span>Difficulté: </span>
 
     <input type="radio" id="tres_facile" name="difficulty" value="très facile"required>
     <label for="tres_facile">Très facile</label>

@@ -14,28 +14,15 @@
  */
 
 ?>
-<div class="secondary-btn">
-    <a href="index.php" class="close-btn logout-btn">
-        <img src="../../../assets/icons/close.svg" alt="fermer la fenetre">
-    </a>
-</div>
-<div>
-    <div class="edit-profil">
-        <div class="profil-txt">
-            <div class="edit-profil-txt">
-                <strong>Pseudo: </strong>
-                <p><?= htmlspecialchars($user->get("username")) ?></p>
-            </div>
-            <div class="edit-profil-txt">
-                <strong>Email: </strong>
-                <p><?= htmlspecialchars($user->get("email")) ?></p>
-            </div>
-        </div>
-    </div>
+<a href="index.php" class="secondary-btn">accueil</a>
+<div class="detail-profil">
     <div class="button-profil">
-        <button type="button" class="secondary-btn open-btn" onclick="showFormModifProfil('modif_profil')">
-            <img src="../../../assets/icons/modif_profil.svg" alt="modifier le profil">
-            <span>Modifier le profil</span>
+        <button type="button" class="secondary-btn" onclick="showFormModifProfil('modif_profil')">
+            <p>Modifier le profil</p>
+            <img src="../../../assets/icons/modif_user.svg" alt="modifier le profil">
         </button>
     </div>
+    <a href="extract_list_flours.php" class="secondary-btn">nouvelle recette
+        <img src="../../../assets/icons/add_recipe.svg" alt="Créer une nouvelle recette">
+    </a>
 </div>

@@ -18,7 +18,7 @@
     <div class="header-profil">
         <a href="init_user_page.php" title="Accéder à mon compte">
             <?= $user->get("username") ?>
-            <img src="../assets/images/user_profil.svg" alt="Image du profil">
+            <img src="../assets/images/user_profil.svg" alt="Image du profil par défaut">
         </a>
     </div>
     <div class="logout-btn">
@@ -27,6 +27,8 @@
         </a>
     </div>
 </div>
+<!--
 <div class="banner-title">
     <img src="../assets/images/title.png" alt="Titre du site">
 </div>
+-->

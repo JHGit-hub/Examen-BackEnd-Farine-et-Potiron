@@ -12,6 +12,7 @@
  *
  *  Retour :
  *      - $list_flours : tableau associatif contenant la liste des farines
+ *      - $user : objet de l'utilisateur connecté
  * ============================================================
  */
 
@@ -30,6 +31,8 @@ if (!$session->isLogged()) {
 // On récupére le catalogue des farines
 $list_flours = Flour::getFlourCatalogue();
 
+// On charge l'utilisateur connecté si la session est active, vide sinon
+$user = User::getCurrentUser();
 
 ////// Affichage de la page
 include "templates/pages/create_recipe.php";

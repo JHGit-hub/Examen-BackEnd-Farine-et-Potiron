@@ -34,62 +34,86 @@
             include "templates/fragments/header/frag_header_user_connected.php";
             ?>
         </div>
+        <div class="banner-title">
+            <img src="../assets/images/title.png" alt="Titre du site">
+        </div>
         <div id="edit_profil">
             <?php
             include "templates/fragments/header/frag_edit_profil.php";
             ?>
         </div>
-        <a href="extract_list_flours.php" class="secondary-btn">Créer une nouvelle recette</a>
     </header>
     <main>
         <div class="modal hidden" id="modif_profil"></div> <!-- frag_form_modif_profil.php -->
-        <h2>Recettes créées</h2>
-        <div class="list-created">
-            <?php
-            foreach ($list_recipes_created as $recipe) {
-                $recipe_id = $recipe->id();
-            ?>
-                <a href="extract_detail_recipe.php?recipe_id=<?= htmlspecialchars($recipe_id) ?>" class="card-recipe">
-                    <h3><?= htmlspecialchars($recipe->get("title")) ?></h3>
-                    <?php
-                    if ($recipe->get("update_date")) {
-                        $newDate = substr($recipe->get("update_date"), 0, 10);
-                        $formattedDate = date("d/m/Y", strtotime($newDate));
-                        echo "mise à jour le: " . $formattedDate;
-                    } else {
-                        $newDate = substr($recipe->get("creation_date"), 0, 10);
-                        $formattedDate = date("d/m/Y", strtotime($newDate));
-                        echo "créée le: " . $formattedDate;
-                    }
-                    ?>
-                </a>
-            <?php
-            }
-            ?>
+        <div class="list-container">
+            <h2>Recettes créées</h2>
+            <div class="list-recipes">
+                <?php
+                foreach ($list_recipes_created as $recipe) {
+                    $recipe_id = $recipe->id();
+                ?>
+                    <a href="extract_detail_recipe.php?recipe_id=<?= htmlspecialchars($recipe_id) ?>" class="card-recipe">
+                        <div class="card-recipe">
+                            <div class='card-img'>
+                                <img src="assets/images/recipe_default.png" alt="image de recette par defaut">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title"><?= htmlspecialchars($recipe->get("title")) ?></h3>
+                                <div class="card-date">
+                                    <?php
+                                    if ($recipe->get("update_date")) {
+                                        $newDate = substr($recipe->get("update_date"), 0, 10);
+                                        $formattedDate = date("d/m/Y", strtotime($newDate));
+                                        echo "mise à jour le: " . $formattedDate;
+                                    } else {
+                                        $newDate = substr($recipe->get("creation_date"), 0, 10);
+                                        $formattedDate = date("d/m/Y", strtotime($newDate));
+                                        echo "créée le: " . $formattedDate;
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                <?php
+                }
+                ?>
+            </div>
         </div>
-        <h2>Recettes commentées / notées</h2>
-        <div class="list-rated">
-            <?php
-            foreach ($list_recipes_rated as $comment) {
-                $recipe_id = $comment->get("recipe_id")->id();
-            ?>
-                <a href="extract_detail_recipe.php?recipe_id=<?= htmlspecialchars($recipe_id) ?>" class="card-recipe">
-                    <h3><?= htmlspecialchars($comment->get("recipe_id")->get("title")) ?></h3>
-                    <?php
-                    if ($comment->get("update_date")) {
-                        $newDate = substr($comment->get("update_date"), 0, 10);
-                        $formattedDate = date("d/m/Y", strtotime($newDate));
-                        echo "mise à jour le: " . $formattedDate;
-                    } else {
-                        $newDate = substr($comment->get("creation_date"), 0, 10);
-                        $formattedDate = date("d/m/Y", strtotime($newDate));
-                        echo "créée le: " . $formattedDate;
-                    }
-                    ?>
-                </a>
-            <?php
-            }
-            ?>
+        <div class="list-container">
+            <h2>Recettes commentées / notées</h2>
+            <div class="list-recipes">
+                <?php
+                foreach ($list_recipes_rated as $comment) {
+                    $recipe_id = $comment->get("recipe_id")->id();
+                ?>
+                    <a href="extract_detail_recipe.php?recipe_id=<?= htmlspecialchars($recipe_id) ?>" class="card-recipe">
+                        <div class="card-recipe">
+                            <div class='card-img'>
+                                <img src="assets/images/recipe_default.png" alt="image de recette par defaut">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title"><?= htmlspecialchars($comment->get("recipe_id")->get("title")) ?></h3>
+                                <div class="card-date">
+                                    <?php
+                                    if ($comment->get("update_date")) {
+                                        $newDate = substr($comment->get("update_date"), 0, 10);
+                                        $formattedDate = date("d/m/Y", strtotime($newDate));
+                                        echo "mise à jour le: " . $formattedDate;
+                                    } else {
+                                        $newDate = substr($comment->get("creation_date"), 0, 10);
+                                        $formattedDate = date("d/m/Y", strtotime($newDate));
+                                        echo "créée le: " . $formattedDate;
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                <?php
+                }
+                ?>
+            </div>
         </div>
         <div id="modal_background" class="modal_background hidden"></div>
     </main>

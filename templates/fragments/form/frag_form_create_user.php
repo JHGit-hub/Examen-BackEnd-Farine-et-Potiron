@@ -21,7 +21,7 @@
             <img src="../assets/icons/close.svg" alt="fermer la fenetre">
         </a>
     </div>
-    <form class="form-create_user" method="post" action="save_new_user.php">
+    <form class="form-create-user" method="post" action="save_new_user.php">
         <!-- utilisation d'un 'honeypot' pour éviter les soumissions de bots -->
         <!-- ajout d'un champ caché "website" que les bots remplissent -->
         <input type="text" name="website" style="display:none">

@@ -19,10 +19,8 @@
     <p><strong>Nom de la farine :</strong> <?= htmlspecialchars($detail_flour["libelle"]) ?></p>
     <p><?= htmlspecialchars($detail_flour["description"]) ?></p>
 </div>
-<div>
+<div class="flour-quantity">
     <input type="hidden" name="flour_reference" value="<?= htmlspecialchars($detail_flour["reference"]) ?>">
-    <div>
-        <label for="quantity">Quantité (en gr): </label>
-        <input type="number" step="any" name="flour_quantity" placeholder="Quantité" required>
-    </div>
+    <label for="quantity">Quantité (en gr): </label>
+    <input type="number" step="any" name="flour_quantity" placeholder="Quantité" required>
 </div>

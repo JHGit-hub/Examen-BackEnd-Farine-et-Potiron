@@ -39,6 +39,3 @@
         <img src="assets/icons/add_user.svg" alt="Ajouter un utilisateur">
     </button>
 </div>
-<div class="banner-title">
-    <img src="assets/images/title.png" alt="Titre du site">
-</div>

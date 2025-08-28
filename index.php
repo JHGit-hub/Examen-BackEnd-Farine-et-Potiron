@@ -12,6 +12,7 @@
  *  Retour :
  *      - $list_recipes : tableau d'objets contenant les recettes (titre, id, difficulté, référence farine)
  *      - $list_flours : tableau associatif (références et libellés des farines)
+ *      - $user : objet de l'utilisateur connecté
  * ============================================================
  */
 

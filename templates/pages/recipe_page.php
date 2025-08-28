@@ -14,6 +14,7 @@
  *      - $detail_flour : tableau associatif avec infos farine
  *      - $list_ingredients : tableau d'objets des ingrédients utilisés
  *      - $flour_from_recipe : objet quantité/référence de la farine utilisée
+ *      - $user : objet de l'utilisateur connecté
  * ============================================================
  */
 
@@ -32,33 +33,42 @@
 
 <body>
     <header>
-        <div>
             <?php
             if ($session->isLogged()) {
                 // On affiche le header de l'utilisateur connecté
                 include "templates/fragments/header/frag_header_user_connected.php";
-            }
-            if ($session->idConnected() === $detail_recipe->get("user_id")->id()) {
-                // On affiche le bouton modifier la recette 
-            ?>
-                <button class="secondary-btn" onclick="showFormModifRecipe(<?= $detail_recipe->id() ?>, 'modif_recipe')">Modifier la recette</button>
-            <?php
+            } else {
+                // On affiche le header de l'utilisateur non connecté
+                include "templates/fragments/header/frag_header_user_disconnected.php";
             }
             ?>
-        </div>
-        <div class="secondary-btn">
-            <a href="index.php" class="close-btn logout-btn">
-                <img src="../../../assets/icons/close.svg" alt="fermer la fenetre">
-                <span>retour à l'accueil</span>
-            </a>
-        </div>
+            <div class="banner-title">
+                <img src="../assets/images/title.png" alt="Titre du site">
+            </div>
+            <div class="back-btn">
+                <a href="index.php" class="secondary-btn">accueil</a>
+            </div>
     </header>
     <main>
         <div class="modal hidden" id="modif_recipe"></div> <!-- frag_form_modif_recipe.php -->
         <div class="modal hidden" id="modif_comment"></div> <!-- frag_form_modif_comment.php -->
+        <div class="banner-header">
+            <h2 class="title-recipe-page">Recette</h2>
+            <div> 
+            <?php
+                if ($session->idConnected() === $detail_recipe->get("user_id")->id()) {
+                    // On affiche le bouton modifier la recette 
+                ?>
+                    <button class="modif-recipe-btn" onclick="showFormModifRecipe(<?= $detail_recipe->id() ?>, 'modif_recipe')">Modifier la recette</button>
+                <?php
+                }
+                ?>
+            </div>
+        </div>
         <div id="detail_recipe">
             <?php include 'templates/fragments/detail/frag_detail_recipe.php'; ?>
         </div>
+        <h2 class="title-recipe-page">Commentaires</h2>
         <div id="list_comments">
             <?php include 'templates/fragments/list/frag_list_comments.php'; ?>
         </div>

@@ -10,6 +10,7 @@
  *  Paramètres attendus :
  *      - $list_recipes : liste des recettes à afficher (toutes ou filtrées)
  *      - $list_flours : tableau associatif avec références et libellés des farines
+ *      - $user : objet de l'utilisateur connecté
  * ============================================================
  */
 
@@ -36,6 +37,9 @@
             include 'templates/fragments/header/frag_header_user_disconnected.php';
         }
         ?>
+        <div class="banner-title">
+            <img src="../assets/images/title.png" alt="Titre du site">
+        </div>
     </header>
     <main>
         <?php
@@ -48,6 +52,10 @@
                 unset($_SESSION['error_msg']);
             }
         ?>
+        <div class="banner">
+            <h1>Bienvenue sur Farine & Potiron</h1>
+            <h2>Nous sommes passionnés par les farines spéciales et leur incroyable richesse en cuisine</h2>
+        </div>
         <div class="modal hidden" id="create_user"></div> <!-- frag_form_create_user -->
         <form class="form-filter">
             <div class="select-filter">

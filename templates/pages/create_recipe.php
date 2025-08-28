@@ -8,6 +8,7 @@
  *
  *  Paramètres attendus :
  *      - $list_flours : tableau associatif contenant la liste des farines disponibles
+ *      - $user : objet de l'utilisateur connecté
  * ============================================================
  */
 
@@ -25,12 +26,20 @@
 
 <body>
     <header>
-        <div class="secondary-btn">
-            <a href="index.php" class="close-btn logout-btn">
-                <img src="../../../assets/icons/close.svg" alt="fermer la fenetre">
-            </a>
+        <div class="navbar">
+            <?php
+            include "templates/fragments/header/frag_header_user_connected.php";
+            ?>
         </div>
-        <form class="form-filter">
+        <div class="banner-title">
+            <img src="../assets/images/title.png" alt="Titre du site">
+        </div>
+        <div id="edit_profil">
+            <?php
+            include "templates/fragments/header/frag_edit_profil.php";
+            ?>
+        </div>
+        <form class="create-recipe-filter">
             <label for="reference">Choisir une farine: </label>
             <select name="reference" id="reference">
                 <option value="">Choisis ta farine</option>
@@ -40,13 +49,14 @@
                     </option>
                 <?php endforeach; ?>
             </select>
-            <button type="button" onclick="showDetailFlour(event, 'form_create_recipe','detail_flour')" class="secondary-btn">Voir détails</button>
+            <button type="button" onclick="showDetailFlour(event, 'form_create_recipe','detail_flour')" class="validate-btn">Voir détails</button>
         </form>
     </header>
     <main>
+        <div id="error_container" class="hidden"></div>
         <form method="post" action="save_new_recipe.php" class="hidden"  id="form_create_recipe">
             <div class="form" id="detail_flour"></div> <!-- frag_detail_flour -->
-            <div class="form">
+            <div class="form-create-recipe">
                 <?php
                     include 'templates/fragments/form/frag_form_create_recipe.php';
                 ?>

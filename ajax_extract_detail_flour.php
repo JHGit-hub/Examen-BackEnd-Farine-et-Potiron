@@ -30,6 +30,12 @@ if (!$session->isLogged()) {
 // On récupére la référence de la farine (via $_GET)
 $reference = $_GET["reference"] ?? "";
 
+if (!$reference) { // aucune farine sélectionnée
+    //affichage d'un message d'erreur
+    include "templates/fragments/detail/frag_detail_error_flour.php";
+    exit;
+}
+
 // On extrait le détail de la farine selectionnée
 $flour = new Flour();
 

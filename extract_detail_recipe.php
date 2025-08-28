@@ -17,6 +17,7 @@
  *      - $detail_flour : tableau associatif avec infos farine
  *      - $list_ingredients : tableau d'objets des ingrédients utilisés
  *      - $flour_from_recipe : objet quantité/référence de la farine utilisée
+ *      - $user : objet de l'utilisateur connecté
  * ============================================================
  */
 
@@ -57,6 +58,9 @@ $flour_from_recipe = $flour->getFlourFromRecipe($id);
 $reference = $flour_from_recipe->get("reference");
 
 $detail_flour = $flour->getFlourDetail($reference);
+
+// On charge l'utilisateur connecté si la session est active, vide sinon
+$user = User::getCurrentUser();
 
 ////// Affichage de la page
 include "templates/pages/recipe_page.php";
