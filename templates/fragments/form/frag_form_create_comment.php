@@ -22,7 +22,7 @@ if ($session->isLogged() && $session->idConnected() !== $detail_recipe->get("use
             // On affiche le bouton modifier son commentaire
             $hasCommented = true;
 ?>
-            <button class="secondary_btn" onclick="showFormModifComment(<?= $comment->id() ?>, 'modif_comment')">Modifier le commentaire</button>
+            <button class="secondary-btn" onclick="showFormModifComment(<?= $comment->id() ?>, 'modif_comment')">Modifier le commentaire</button>
         <?php
         }
     }
@@ -35,7 +35,7 @@ if ($session->isLogged() && $session->idConnected() !== $detail_recipe->get("use
             <input type="number" name="rate" min="0" max="5" step="1" required>
 
             <textarea name="content" rows="5" cols="40" placeholder="Ajouter un commentaire"></textarea>
-            <button type="button" onclick="recordNewComment(event, 'list_comments')" class="secondary_btn">Enregistrer</button>
+            <button type="button" onclick="recordNewComment(event, 'list_comments')" class="secondary-btn">Enregistrer</button>
         </form>
 <?php
     }

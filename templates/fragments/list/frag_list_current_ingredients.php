@@ -16,11 +16,11 @@
 
 
 <div>
-    <ul class='list_filtered'>
+    <ul class='list-filtered'>
     <?php 
         foreach($list_current_ingredients as $current_ingredient): ?>
-        <li class="card_ingredient">
-            <div class="detail_ingredient">
+        <li class="card-ingredient">
+            <div class="detail-ingredient">
                 <h3><?= htmlspecialchars($current_ingredient->get("reference")) ?></h3>
                 <p><?= htmlspecialchars($current_ingredient->get("quantity")) ?> <?= htmlspecialchars($current_ingredient->get("unit")) ?></p>
             </div>

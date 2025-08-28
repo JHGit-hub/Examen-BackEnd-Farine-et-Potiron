@@ -8,17 +8,25 @@
  *      - Accès au compte et bouton déconnexion
  *
  *  Paramètres :
- *      - néant
+ *      - $user : objet User de l'utilisateur connecté
  * ============================================================
  */
 
 ?>
 
-<div class="header_login">
-    <div>
-        <a href="init_user_page.php" title="Accéder à mon compte">Mon compte</a>
+<div class="header-login">
+    <div class="header-profil">
+        <a href="init_user_page.php" title="Accéder à mon compte">
+            <?= $user->get("username") ?>
+            <img src="../assets/images/user_profil.svg" alt="Image du profil">
+        </a>
     </div>
-    <div class="primary_btn logout_btn">
-        <a href="disconnect.php" title="se déconnecter de la session">Se déconnecter</a>
+    <div class="logout-btn">
+        <a href="disconnect.php" title="se déconnecter de la session">
+            <img src="../assets/icons/logout.svg" alt="Se déconnecter">
+        </a>
     </div>
+</div>
+<div class="banner-title">
+    <img src="../assets/images/title.png" alt="Titre du site">
 </div>

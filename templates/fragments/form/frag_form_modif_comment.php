@@ -18,7 +18,7 @@
 
 <form method="post" id="form_modif_comment">
     <div>
-        <a href="extract_detail_recipe.php?id=<?= $detail_comment->get("recipe_id")->id() ?>" class="close_btn logout_btn">
+        <a href="extract_detail_recipe.php?id=<?= $detail_comment->get("recipe_id")->id() ?>" class="close-btn logout-btn">
             <img src="../../../assets/icons/close.svg" alt="fermer la fenetre">
             <span>fermer</span>
         </a>
@@ -30,7 +30,7 @@
 
     <textarea name="content" rows="5" cols="40"><?= htmlspecialchars($detail_comment->get("content")) ?></textarea>
     <div>
-        <button type="button" onclick="recordModifComment(event, 'modif_comment', 'list_comments')" class="secondary_btn">Enregistrer</button>
-        <button type="button" onclick="deleteComment(event, <?= $detail_comment->id() ?>, 'modif_comment', 'list_comments')" class="delete_btn">Supprimer</button>
+        <button type="button" onclick="recordModifComment(event, 'modif_comment', 'list_comments')" class="secondary-btn">Enregistrer</button>
+        <button type="button" onclick="deleteComment(event, <?= $detail_comment->id() ?>, 'modif_comment', 'list_comments')" class="delete-btn">Supprimer</button>
     </div>
 </form>

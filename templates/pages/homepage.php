@@ -49,8 +49,8 @@
             }
         ?>
         <div class="modal hidden" id="create_user"></div> <!-- frag_form_create_user -->
-        <form class="form_filter">
-            <div class="select_filter">
+        <form class="form-filter">
+            <div class="select-filter">
                 <label for="flour_1">Choisir une farine: </label>
                 <select name="flour_1" id="flour_1"> <!-- on donne l'identifiant unique à chaque select, ici flour_1 -->
                     <option value="">Choisis ta farine</option>
@@ -79,14 +79,40 @@
                 echo _model::createSelect($list_recipes, "difficulty", "difficulty", "Niveau de difficultés");
                 ?>
             </div>
-            <button type="button" onclick="filterRecipes(event, 'list_recipes')" class="secondary_btn">Filtrer</button>
+            <div class="filter-btn">
+                <button type="button" onclick="filterRecipes(event, 'list_recipes')" class="validate-btn">Filtrer</button>
+            </div>
         </form>
-        <div>
+        <div class="list-container">
             <h2>Liste des recettes: </h2>
-            <div id="list_recipes" class="list_recipes">
-                <?php
-                echo _model::createListFiltered($list_recipes, "extract_detail_recipe.php", "id", "title", "difficulty", false);
-                ?>
+            <div id="list_recipes" class="list-recipes">
+            <?php foreach($list_recipes as $recipe): ?>
+                <a href = "extract_detail_recipe.php?id=<?= $recipe->id(); ?>">
+                    <div class='card-recipe'>
+                        <div class='card-img'>
+                            <img src="assets/images/recipe_default.png" alt="image de recette par defaut">
+                        </div>
+                        <div class='card-content'>
+                            <h3 class="card-title"><?= htmlspecialchars($recipe->get('title')); ?></h3>
+                            <p class="card-author"><strong>Créée par : </strong><?= htmlspecialchars($recipe->get('user_id')->get("username")); ?></p>
+                            <p class="card-date">
+                                <?php
+                                if ($recipe->get("update_date")) {
+                                    $newDate = substr($recipe->get("update_date"), 0, 10);
+                                    $formattedDate = date("d/m/Y", strtotime($newDate));
+                                    echo "mise à jour le : " . $formattedDate;
+                                } else {
+                                    $newDate = substr($recipe->get("creation_date"), 0, 10);
+                                    $formattedDate = date("d/m/Y", strtotime($newDate));
+                                    echo "créée le : " . $formattedDate;
+                                }
+                                ?>
+                            </span>
+                            <p class="card-difficulty">Difficulté: <?= htmlspecialchars($recipe->get('difficulty')); ?></p>
+                        </div>
+                    </div>
+                </a>
+            <?php endforeach; ?>
             </div>
         </div>
         <div id="modal_background" class="modal_background hidden"></div>

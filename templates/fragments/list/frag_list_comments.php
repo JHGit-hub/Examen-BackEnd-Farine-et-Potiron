@@ -21,10 +21,10 @@
 foreach ($list_comments as $comment) {
 ?>
     <div class="comment">
-        <div class="comment_header">
+        <div class="comment-header">
             <div> 
-                <span class="comment_author"><?= $comment->get("user_id")->get("username") ?></span> 
-                <span class="comment_date">
+                <span class="comment-author"><?= $comment->get("user_id")->get("username") ?></span> 
+                <span class="comment-date">
                     <?php
                         if ($comment->get("update_date")) {
                             $newDate = substr($comment->get("update_date"), 0, 10);
@@ -42,7 +42,7 @@ foreach ($list_comments as $comment) {
                 <p>Note: <?= $comment->get("rate") ?></p>
             </div>
         </div>
-        <div class="comment_body">
+        <div class="comment-body">
             <p><?= $comment->get("content") ?></p>
         </div>
     </div>

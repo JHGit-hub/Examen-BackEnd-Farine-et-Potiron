@@ -15,7 +15,7 @@
  */
 
 ?>
-<div class="recipe_title">
+<div class="recipe-title">
     <h2><?= htmlspecialchars($detail_recipe->get("title")) ?></h2>
     <span>
         <?php
@@ -31,17 +31,17 @@
         ?>
     </span>
 </div>
-<div class="recipe_flour">
+<div class="recipe-flour">
     <p><strong>Nom de farine : </strong> <?= htmlspecialchars($detail_flour["libelle"]) ?></p>
     <p><strong>Description : </strong> <?= htmlspecialchars($detail_flour["description"]) ?></p>
     <p><strong>Quantité : </strong> <?= htmlspecialchars($flour_from_recipe->get("quantity")) ?> gr</p>
 </div>
-<div class="recipe_description">
+<div class="recipe-description">
     <h3>Description de la recette</h3>
     <p><?= htmlspecialchars($detail_recipe->get("description")) ?></p>
     <span><strong>Temps d'exécution : </strong><?= htmlspecialchars($detail_recipe->get("execution_time")) ?> minutes</span>
 </div>
-<div class="recipe_ingredients">
+<div class="recipe-ingredients">
     <strong>Ingrédients :</strong>
     <ul>
         <?php foreach ($list_ingredients as $ingredient): ?>

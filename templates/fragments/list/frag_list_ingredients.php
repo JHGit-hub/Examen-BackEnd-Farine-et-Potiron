@@ -19,11 +19,11 @@
 ?>
 
 <div>
-    <ul class='list_filtered'>
+    <ul class='list-filtered'>
         <?php 
             foreach($list_ingredients as $ingredient): ?>
-            <li class="card_ingredient">
-                <div class="detail_ingredient">
+            <li class="card-ingredient">
+                <div class="detail-ingredient">
                     <h3><?= $ingredient['reference'] ?></h3>
                     <p><?= $ingredient['quantity'] ?> <?= $ingredient['unit'] ?></p>
                 </div>

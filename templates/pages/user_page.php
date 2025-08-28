@@ -39,17 +39,17 @@
             include "templates/fragments/header/frag_edit_profil.php";
             ?>
         </div>
-        <a href="extract_list_flours.php" class="secondary_btn">Créer une nouvelle recette</a>
+        <a href="extract_list_flours.php" class="secondary-btn">Créer une nouvelle recette</a>
     </header>
     <main>
         <div class="modal hidden" id="modif_profil"></div> <!-- frag_form_modif_profil.php -->
         <h2>Recettes créées</h2>
-        <div class="list created">
+        <div class="list-created">
             <?php
             foreach ($list_recipes_created as $recipe) {
                 $recipe_id = $recipe->id();
             ?>
-                <a href="extract_detail_recipe.php?recipe_id=<?= htmlspecialchars($recipe_id) ?>" class="card_recipe">
+                <a href="extract_detail_recipe.php?recipe_id=<?= htmlspecialchars($recipe_id) ?>" class="card-recipe">
                     <h3><?= htmlspecialchars($recipe->get("title")) ?></h3>
                     <?php
                     if ($recipe->get("update_date")) {
@@ -68,12 +68,12 @@
             ?>
         </div>
         <h2>Recettes commentées / notées</h2>
-        <div class="list rated">
+        <div class="list-rated">
             <?php
             foreach ($list_recipes_rated as $comment) {
                 $recipe_id = $comment->get("recipe_id")->id();
             ?>
-                <a href="extract_detail_recipe.php?recipe_id=<?= htmlspecialchars($recipe_id) ?>" class="card_recipe">
+                <a href="extract_detail_recipe.php?recipe_id=<?= htmlspecialchars($recipe_id) ?>" class="card-recipe">
                     <h3><?= htmlspecialchars($comment->get("recipe_id")->get("title")) ?></h3>
                     <?php
                     if ($comment->get("update_date")) {

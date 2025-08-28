@@ -21,8 +21,8 @@
 
 ?>
 <div>
-    <div class="secondary_btn">
-        <a href="extract_detail_recipe.php?id=<?= $detail_recipe->id() ?>" class="close_btn logout_btn">
+    <div class="secondary-btn">
+        <a href="extract_detail_recipe.php?id=<?= $detail_recipe->id() ?>" class="close-btn logout-btn">
             <img src="../../../assets/icons/close.svg" alt="fermer la fenetre">
             <span>fermer</span>
         </a>
@@ -90,7 +90,7 @@
         </div>
         <div id="list_ingredients"></div> <!-- frag_list_ingredients.php -->
 
-        <button type="button" class="secondary_btn open_btn" onclick="recordModifRecipe(event, 'modif_recipe', 'detail_recipe')">Enregistrer</button>
+        <button type="button" class="secondary-btn open-btn" onclick="recordModifRecipe(event, 'modif_recipe', 'detail_recipe')">Enregistrer</button>
     </form>
     <div>
         <a href="delete_recipe.php?id=<?= $detail_recipe->id() ?>">Supprimer la recette</a>

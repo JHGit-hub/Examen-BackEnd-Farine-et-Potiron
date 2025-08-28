@@ -41,13 +41,13 @@
             if ($session->idConnected() === $detail_recipe->get("user_id")->id()) {
                 // On affiche le bouton modifier la recette 
             ?>
-                <button class="secondary_btn" onclick="showFormModifRecipe(<?= $detail_recipe->id() ?>, 'modif_recipe')">Modifier la recette</button>
+                <button class="secondary-btn" onclick="showFormModifRecipe(<?= $detail_recipe->id() ?>, 'modif_recipe')">Modifier la recette</button>
             <?php
             }
             ?>
         </div>
-        <div class="secondary_btn">
-            <a href="index.php" class="close_btn logout_btn">
+        <div class="secondary-btn">
+            <a href="index.php" class="close-btn logout-btn">
                 <img src="../../../assets/icons/close.svg" alt="fermer la fenetre">
                 <span>retour à l'accueil</span>
             </a>

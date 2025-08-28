@@ -25,8 +25,8 @@
 
 <body>
     <header>
-        <div class="secondary_btn">
-            <a href="index.php" class="close_btn logout_btn">
+        <div class="secondary-btn">
+            <a href="index.php" class="close-btn logout-btn">
                 <img src="../../../assets/icons/close.svg" alt="fermer la fenetre">
             </a>
         </div>
@@ -40,7 +40,7 @@
                     </option>
                 <?php endforeach; ?>
             </select>
-            <button type="button" onclick="showDetailFlour(event, 'form_create_recipe','detail_flour')" class="secondary_btn">Voir détails</button>
+            <button type="button" onclick="showDetailFlour(event, 'form_create_recipe','detail_flour')" class="secondary-btn">Voir détails</button>
         </form>
     </header>
     <main>
@@ -52,7 +52,7 @@
                 ?>
             </div>
             <div>
-                <button type="submit" class="secondary_btn open_btn">Enregistrer</button>
+                <button type="submit" class="secondary-btn open-btn">Enregistrer</button>
             </div>
         </form>
         <div id="modal_background" class="modal_background hidden"></div>

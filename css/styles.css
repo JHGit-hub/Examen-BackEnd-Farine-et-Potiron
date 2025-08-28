@@ -19,46 +19,119 @@ body{
 main{
     height: 100vh;
     position:relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
-/****** MODAL ******/
+/****** FONTS ******/
 
-.modal {
-    width: 650px;
-    position:fixed;
-    background-color: #ffffff;
-    border: outset 2px #00315A;
-    border-radius:4px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 1rem;
-    z-index: 1100;
-    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+@font-face {
+    font-family: "Merriweather";
+    src: url(../assets/fonts/Merriweather_48pt-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Lato";
+    src: url(../assets/fonts/Lato-Regular.ttf);
+}
+
+h1{
+    font-family: "Merriweather";
+    text-transform: capitalize;
+    font-size: 4.75rem;
+    font-weight: 500;
+    color: #412710
+}
+
+h2{
+    font-family: "Merriweather";
+    font-size: 2rem;
+    font-weight: 500;
+    color: #412710
+}
+
+h3{
+    font-family: "Merriweather";
+    font-size: 1.625;
+    font-weight: 500;
+    color: #412710
+}
+
+h4{
+    font-family: "Merriweather";
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #412710;
+}
+
+h5{
+    font-family: "Merriweather";
+    font-size: 1rem;
+    font-weight: 500;
+    color: #412710;
+}
+
+p{
+    font-family: "Lato";
+    font-size: 0.875rem;
+    color: #412710;
+}
+
+a{
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: #412710;
+    text-decoration: none;
 }
 
 
-.modal_background{
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.2);
-    backdrop-filter: blur(5px);
-    z-index: 1000;
-    pointer-events: all;
-}
+
+
 
 
 /****** BUTTONS ******/
+
+.add-user {
+    border: none;
+    background-color: #ffffff;
+}
+
+.validate-btn {
+    background-color: #27ae60;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+}
+
+.close-btn {
+    display: flex;
+    margin-bottom: 1rem;
+    background-color: red;
+    border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .primary_btn{
     border-radius: 4px;
     padding: 0.5rem 2rem;
 }
 
-.secondary_btn{
+.secondary_btn {
     border-radius:4px;
     border-color: #00315A;
     background-color: #ffffff;
@@ -69,29 +142,17 @@ main{
     gap: 0.5rem;
 }
 
-.logout_btn{
-    background-color: red;
-    border:outset 2px;
-    color:#000000;
-    border-color:red;
-    border-radius: 4px;
+.logout_btn {
+    border:solid 2px;
+    border-color:#ff0000;
+    border-radius: 8px;
+    width:50px;
+    height:50px;
+    img{
+        width:100%;
+    }
 }
 
-.login_btn{
-    background-color: #1D8E90;
-    color:#ffffff;
-    border:outset 2px;
-    border-radius: 4px;
-}
-
-.close_btn{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 1rem;
-    gap: 0.5rem;
-    padding:0;
-}
 
 .open_btn{
     background-color: #1D8E90;
@@ -106,13 +167,57 @@ main{
 
 
 /******* HEADER ******/
+
 header{
     border-bottom: solid 2px;
-    border-color: #00315A;
+    border-color: #412710;
     padding:0.5rem;
 }
 
-.login_form{
+.header-login{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0.5rem 1rem;
+    gap: 3rem;
+}
+
+#login-mode{
+    border:outset;
+}
+
+.login-field input{
+    border: solid 1px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+
+.banner-title {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-profil a{
+    font-size: 1.6rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    img{
+        width:60px;
+    }
+}
+
+
+
+
+
+
+.login-form{
     display:flex;
     flex-direction: row;
     align-items: center;
@@ -122,20 +227,7 @@ header{
 }
 
 
-.profil_field{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
 
-.header_login{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0.5rem 2rem;
-}
 
 
 /****** NAVBAR ******/
@@ -152,7 +244,7 @@ header{
 
 /****** PROFIL ******/
 
-.edit_profil{
+.edit-profil{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -160,12 +252,12 @@ header{
     margin: 2rem 0;
 }
 
-.profil_img img{
+.profil-img img{
     width:200px;
     height: auto;
 }
 
-.profil_txt{
+.profil-txt{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -173,23 +265,13 @@ header{
     align-items: flex-end;
 }
 
-.edit_profil_txt, .edit_sale_txt{
+.edit-profil-txt, .edit-sale-txt{
     display: flex;
     flex-direction: row;
     align-items: center;
     gap:0.7rem;
 }
 
-#form_new_sale{
-    margin-top: 1rem;
-}
-
-.edit_sale{
-    display: flex;
-    flex-direction: column;
-    gap:1rem;
-
-}
 .profil_name{
     display:flex;
     flex-direction: row;
@@ -197,7 +279,7 @@ header{
     gap: 2rem;
 }
 
-.profil_field{
+.profil-field{
     border-radius:4px;
     border-color: #00315A;
     background-color: #ffffff;
@@ -208,12 +290,12 @@ header{
     padding: 0rem 2rem;
 }
 
-.profil_field img{
+.profil-field img{
     width:50px;
     height:auto;
 }
 
-#form_profil .secondary_btn, #edit_profil .secondary_btn, .button_profil{
+#form_profil .secondary-btn, #edit_profil .secondary-btn, .button_profil{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -226,36 +308,69 @@ header{
     gap:1rem;
 }
 
+
 /****** FORM ******/
 
-.form_filter, .form_ticket{
+
+.create-user{ 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap:1rem;
+    gap: 2rem;
+    width: 350px;
 }
 
-.form_filter{
-    align-items: flex-end;
-    margin-bottom: 1rem;  
+.form-create-user {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.form_ticket{
+.create-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 80%;
+    justify-content: flex-end;
     align-items: flex-start;
+    padding-left:2rem;
+    input{
+        border: solid 1px;
+        border-radius: 4px;
+        text-align: center;
+    }
 }
 
-.form-ticket .open_btn{
-    align-self: flex-end;
+.form-filter {
+    display: flex;
+    flex-direction: row;
+    margin: 2rem 0;
+    width: 70%;
+    gap: 1rem;
+    .filter_btn{
+        display: flex;
+        justify-content: flex-end;  
+    }
 }
 
-.select_filter{
+.select-filter{
     width:100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap:1rem;
+    gap:1.5rem;
+    select{
+        width:15%;
+    }
 }
+
+
+
+
+
+
+
+
 
 .frag_purchase, .list_filtered{
     display: flex;
@@ -274,6 +389,60 @@ header{
     padding: 1rem 0;
 }
 
+/****** CARD ******/
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+
+
+.list-recipes{
+    display: flex;
+    flex-wrap: wrap;
+    gap:2rem;
+    flex:1 1 calc( 49% - 2rem );
+    a {
+        text-transform: capitalize;
+        font-weight: 500;
+        font-size: 1.125rem;
+        color: #412710;
+        text-decoration: none;
+        border: solid 1px;
+        border-radius: 8px;
+        width: 550px;
+
+}
+
+.card-recipe{
+    display: flex;
+    width:100%;
+    height:250px;
+    gap: 1rem;
+    padding: 1rem;
+    .card-img img {
+        height: 100%;
+    }
+    .card-content{
+        display: flex;
+        flex-direction: column;
+        gap:1.5rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 /****** ALERTS ******/
 
 .error-msg {
@@ -286,8 +455,47 @@ header{
     font-weight: bold;
 }
 
+/****** MODAL ******/
 
+.modal {
+    width: 650px;
+    position:fixed;
+    background-color: #ffffff;
+    border: solid 2px #412710;
+    border-radius: 8px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    z-index: 1100;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+}
 
+.modal_background{
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    pointer-events: all;
+}
+
+#create_user{
+    width:400px;
+}
+
+.close-modal {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-modal{
+    width:100%;
+    display: flex;
+    justify-content: flex-end;
+}
 .hidden {
     display: none;
 }

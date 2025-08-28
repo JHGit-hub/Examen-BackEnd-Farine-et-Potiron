@@ -23,5 +23,5 @@
     <label for="unit">Unité: </label>
     <input type="text" name="unit" id="unit"placeholder="Unité" required>
 
-    <button type="button" onclick="addIngredient(event, 'list_ingredients')" class="secondary_btn">Ajouter l'ingrédient</button>
+    <button type="button" onclick="addIngredient(event, 'list_ingredients')" class="secondary-btn">Ajouter l'ingrédient</button>
 </div>
