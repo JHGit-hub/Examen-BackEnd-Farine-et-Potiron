@@ -189,6 +189,10 @@ function recordModifRecipe(event, divIdToHide, divIdResult) {
     // retour:
     //          - renvoi le résultat (fragment HTML) de l'ajax à la fonction showResults()
 
+    // On retire le flou et on réactive le click sur le background
+    let modalBackground = document.getElementById("modal_background")
+    modalBackground.classList.add("hidden");
+    
     // On empêche l'envoi du formulaire
     event.preventDefault();
 
@@ -498,7 +502,7 @@ function showFormModifRecipe(id, divIdToShow) {
 
     // On floute et empêche le click sur le background
     let modalBackground = document.getElementById("modal_background")
-    // modalBackground.classList.remove("hidden");
+    modalBackground.classList.remove("hidden");
 
     // Construction de l'url
     let url = "ajax_init_form_modif_recipe.php?id=" + encodeURIComponent(id);

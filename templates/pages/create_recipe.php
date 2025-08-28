@@ -62,7 +62,7 @@
                 ?>
             </div>
             <div>
-                <button type="submit" class="secondary-btn open-btn">Enregistrer</button>
+                <button type="submit" class="validate-btn">Enregistrer</button>
             </div>
         </form>
         <div id="modal_background" class="modal_background hidden"></div>

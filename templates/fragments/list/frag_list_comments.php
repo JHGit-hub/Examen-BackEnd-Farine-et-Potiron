@@ -33,7 +33,7 @@ foreach ($list_comments as $comment) {
                         } else {
                             $newDate = substr($comment->get("creation_date"), 0, 10);
                             $formattedDate = date("d/m/Y", strtotime($newDate));
-                            echo "créée le: " . $formattedDate;
+                            echo "créé le: " . $formattedDate;
                         }
                     ?>
                 </span>

@@ -21,17 +21,14 @@
 
 ?>
 <div>
-    <div class="secondary-btn">
-        <a href="extract_detail_recipe.php?id=<?= $detail_recipe->id() ?>" class="close-btn logout-btn">
-            <img src="../../../assets/icons/close.svg" alt="fermer la fenetre">
-            <span>fermer</span>
+    <div class="close-modal">
+        <a href="init_user_page.php" class="close-btn">
+            <img src="../assets/icons/close.svg" alt="fermer la fenetre">
         </a>
     </div>
-</div>
-<div>
     <form id="form_modif_recipe">
         <input type="hidden" name="id" value="<?= $detail_recipe->id() ?>">
-        <select name="flour" id="flour">
+        <select name="flour" id="flour" class="select-modif-recipe">
             <option value="">Choisis ta farine</option>
             <?php foreach ($list_flours as $reference => $libelle): ?>
             <!-- on parcours le tableau des references, et si on trouve la reference de la farine de la recette on ajoute l'attribut selected -->
@@ -43,56 +40,53 @@
             </option>
             <?php endforeach; ?>
         </select>
-        <div>
-            <div>
-                <label for="quantity">Quantité (en gr): </label>
-                <input type="number" step="any" name="flour_quantity" placeholder="Quantité" required value="<?= htmlspecialchars($flour_from_recipe->get("quantity")) ?>">
-            </div>
+        <div class="modif-quantity-flour">
+            <label for="quantity">Quantité (en gr): </label>
+            <input type="number" step="any" name="flour_quantity" placeholder="Quantité" required value="<?= htmlspecialchars($flour_from_recipe->get("quantity")) ?>">
         </div>
-        <div>
-            <div>
-                <label for="title">Titre: </label>
-                <input type="text" name="title" id="title" placeholder="Titre de la recette" required value="<?= htmlspecialchars($detail_recipe->get("title")) ?>">
-            </div>
-            <div>
-                <label for="description">Description: </label>
-                <textarea id="description" name="description" rows="5" cols="40" placeholder="Description de la recette" required><?= htmlspecialchars($detail_recipe->get("description")) ?></textarea>
-            </div>
-            <div>
-                <label for="execution_time">Temps de préparation (en minutes): </label>
-                <input type="number" id="execution_time" name="execution_time" required value="<?= htmlspecialchars($detail_recipe->get("execution_time")) ?>">
-            </div>
-            <div>
-                <label for="difficulty">Difficulté: </label>
-                <!-- on verifie la valeur de $detail_recipe->get("difficulty") dejà enregistrer pour cocher le bon radio par defaut -->
-                <input type="radio" id="tres_facile" name="difficulty" value="très facile" required
-                    <?= ($detail_recipe->get("difficulty") === "très facile") ? "checked" : "" ?>>
-                <label for="tres_facile">Très facile</label>
+        <div class="create-recipe-title">
+            <label for="title">Titre: </label>
+            <input type="text" name="title" id="title" placeholder="Titre de la recette" required value="<?= htmlspecialchars($detail_recipe->get("title")) ?>">
+        </div>
+        <div class="create-recipe-description">
+            <label for="description">Description: </label>
+            <textarea id="description" name="description" rows="5" cols="40" placeholder="Description de la recette" required><?= htmlspecialchars($detail_recipe->get("description")) ?></textarea>
+        </div>
+        <div class="create-recipe-time">
+            <label for="execution_time">Temps de préparation (en minutes): </label>
+            <input type="number" id="execution_time" name="execution_time" required value="<?= htmlspecialchars($detail_recipe->get("execution_time")) ?>">
+        </div>
+        <div class="create-recipe-difficulty">
+            <span>Difficulté: </span>
+            <!-- on verifie la valeur de $detail_recipe->get("difficulty") dejà enregistrer pour cocher le bon radio par defaut -->
+            <input type="radio" id="tres_facile" name="difficulty" value="très facile" required
+                <?= ($detail_recipe->get("difficulty") === "très facile") ? "checked" : "" ?>>
+            <label for="tres_facile">Très facile</label>
 
-                <input type="radio" id="facile" name="difficulty" value="facile"
-                    <?= ($detail_recipe->get("difficulty") === "facile") ? "checked" : "" ?>> 
-                <label for="facile">Facile</label>
+            <input type="radio" id="facile" name="difficulty" value="facile"
+                <?= ($detail_recipe->get("difficulty") === "facile") ? "checked" : "" ?>> 
+            <label for="facile">Facile</label>
 
-                <input type="radio" id="difficile" name="difficulty" value="difficile"
-                    <?= ($detail_recipe->get("difficulty") === "difficile") ? "checked" : "" ?>>
-                <label for="difficile">Difficile</label>
-            </div>
+            <input type="radio" id="difficile" name="difficulty" value="difficile"
+                <?= ($detail_recipe->get("difficulty") === "difficile") ? "checked" : "" ?>>
+            <label for="difficile">Difficile</label>
         </div>
         <div id="list_current_ingredients">
             <?php
                 include 'templates/fragments/list/frag_list_current_ingredients.php';
             ?>
         </div>
-        <div id="form_add_ingredient">
+        <div>
             <?php
                 include 'templates/fragments/form/frag_form_add_ingredients.php';
             ?>
         </div>
         <div id="list_ingredients"></div> <!-- frag_list_ingredients.php -->
-
-        <button type="button" class="secondary-btn open-btn" onclick="recordModifRecipe(event, 'modif_recipe', 'detail_recipe')">Enregistrer</button>
+        <div>
+            <button type="button" class="validate-btn" onclick="recordModifRecipe(event, 'modif_recipe', 'detail_recipe')">Enregistrer</button>
+        </div>
     </form>
-    <div>
-        <a href="delete_recipe.php?id=<?= $detail_recipe->id() ?>">Supprimer la recette</a>
+    <div class="footer-modal">
+        <a href="delete_recipe.php?id=<?= $detail_recipe->id() ?>" class="delete-btn" >Supprimer la recette</a>
     </div>
 </div>
